@@ -17,6 +17,7 @@ import {
   FileText,
   PieChart,
   LifeBuoy,
+  Star,
 } from "lucide-react";
 
 /* Imports Images */
@@ -133,6 +134,24 @@ const Home = () => {
       iconBg: "bg-cyan-100",
     },
   ];
+  const testimonials = [
+    {
+      name: "Paulo Júnior",
+      role: "Designer, JB Designer",
+      initials: "PJ",
+      color: "bg-blue-800",
+      quote:
+        '"A Nexium organizou meu fluxo de trabalho e eliminou ruídos. Hoje produzo com mais foco e consistência."',
+    },
+    {
+      name: "Gabriel Barboza",
+      role: "Desenvolvedor, GBZ Digital",
+      initials: "GB",
+      color: "bg-orange-800",
+      quote:
+        '"Com a Nexium, centralizei meus clientes e processos. Ganhei controle real da operação e mais eficiência nas entregas."',
+    },
+  ];
 
   return (
     <div>
@@ -141,7 +160,7 @@ const Home = () => {
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <div className="flex items-center gap-2 cursor-pointer">
-              <img src={Logo} alt="Nexus Logo" className="h-13 w-13" />
+              <img src={Logo} alt="Nexium Logo" className="h-13 w-13" />
             </div>
 
             {/* Desktop Nav */}
@@ -251,7 +270,7 @@ const Home = () => {
             <div className="hidden md:flex relative mt-12 lg:mt-0 justify-center">
               <img
                 src={HeroMockup}
-                alt="Interface do Sistema Nexus"
+                alt="Interface do Sistema Nexium"
                 className="w-full max-w-2xl h-auto drop-shadow-2xl rounded-xl object-contain"
               />
             </div>
@@ -351,24 +370,19 @@ const Home = () => {
             <div className="lg:pl-10 flex justify-center">
               <img
                 src={EndMockup}
-                alt="Sistema de PDV e Impressão Nexus"
+                alt="Sistema de PDV e Impressão Nexium"
                 className="w-full max-w-xl h-auto drop-shadow-2xl rounded-xl object-contain"
               />
             </div>
           </div>
         </div>
       </section>
-    </div>
-  );
-};
 
-export default Home;
-
-/* {/* --- Testimonials Section --- 
+      {/* --- Testimonials Section --- */}
       <section className="bg-emerald-50 py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Left Side *
+            {/* Left Side */}
             <div>
               <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
                 O que dizem os
@@ -376,7 +390,7 @@ export default Home;
                 líderes que
                 <br />
                 escolheram a<br />
-                Nexus
+                Nexium
               </h2>
               <p className="text-lg text-gray-600 mb-10 max-w-md">
                 Junte-se a centenas de empresas que modernizaram sua gestão com
@@ -403,41 +417,48 @@ export default Home;
               </div>
             </div>
 
-            {/* Right Side - Cards 
-            <div className="flex flex-col gap-6">
-              {testimonials.map((testi, index) => (
-                <div
-                  key={index}
-                  className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100"
-                >
-                  <div className="flex justify-between items-start mb-4">
-                    <div className="flex items-center gap-4">
-                      {/* Avatar *
-                      <div
-                        className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold ${testi.color}`}
-                      >
-                        {testi.initials}
+            {
+              /* Right Side - Cards */
+              <div className="flex flex-col gap-6">
+                {testimonials.map((testi, index) => (
+                  <div
+                    key={index}
+                    className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100"
+                  >
+                    <div className="flex justify-between items-start mb-4">
+                      <div className="flex items-center gap-4">
+                        {/* Avatar */}
+                        <div
+                          className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold ${testi.color}`}
+                        >
+                          {testi.initials}
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-gray-900">
+                            {testi.name}
+                          </h4>
+                          <p className="text-xs text-gray-500">{testi.role}</p>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="font-bold text-gray-900">
-                          {testi.name}
-                        </h4>
-                        <p className="text-xs text-gray-500">{testi.role}</p>
+                      {/* Stars */}
+                      <div className="flex text-emerald-400">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-current" />
+                        ))}
                       </div>
                     </div>
-                    {/* Stars *}
-                    <div className="flex text-emerald-400">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-current" />
-                      ))}
-                    </div>
+                    <p className="text-gray-700 italic text-sm md:text-base">
+                      {testi.quote}
+                    </p>
                   </div>
-                  <p className="text-gray-700 italic text-sm md:text-base">
-                    {testi.quote}
-                  </p>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            }
           </div>
         </div>
-      </section> */
+      </section>
+    </div>
+  );
+};
+
+export default Home;
