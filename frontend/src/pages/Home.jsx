@@ -30,13 +30,13 @@ import SmattexLogo from "../assets/smarttex.png";
 
 const Home = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const navLinks = [
     { name: "Soluções", href: "#solu" },
     { name: "Recursos", href: "#recursos" },
     { name: "Enterprise", href: "#enterprise" },
     { name: "Plataforma", href: "#plataforma" },
   ];
-
   const segments = [
     {
       title: "Varejo",
@@ -102,7 +102,6 @@ const Home = () => {
       linkColor: "text-orange-500",
     },
   ];
-
   const features = [
     {
       title: "Gestão Financeira Ágil",
@@ -325,7 +324,10 @@ const Home = () => {
                 <Plus className="h-6 w-6" />
               </div>
               <p className="text-emerald-900 text-[10px] tracking-wide uppercase max-w-50">
-                <span className="font-bold" > Não encontrou seu segmento? <br/></span>
+                <span className="font-bold">
+                  {" "}
+                  Não encontrou seu segmento? <br />
+                </span>
                 Veja todas as soluções {"->"}
               </p>
             </div>
@@ -465,9 +467,10 @@ const Home = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#064E3B] text-emerald-50 pt-16 pb-8">
+      {/* Footer */}
+      <footer className="bg-[#064E3B] text-emerald-50 pt-10 pb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-5 lg:gap-8 mb-5">
             {/* Brand Info */}
             <div className="lg:col-span-1">
               <div className="flex items-center gap-2 mb-6">
@@ -493,9 +496,9 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Links columns */}
-            <div className="lg:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-8">
-              <div>
+            {/* Links columns - Agora lado a lado com rolagem horizontal */}
+            <div className="lg:col-span-3 flex flex-nowrap gap-8 overflow-x-auto pb-4 snap-x">
+              <div className="min-w-37.5 snap-start">
                 <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">
                   Produto
                 </h4>
@@ -503,7 +506,7 @@ const Home = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-emerald-200 hover:text-white transition-colors text-sm"
+                      className="text-emerald-200 hover:text-white transition-colors text-sm whitespace-nowrap"
                     >
                       Segmentos
                     </a>
@@ -511,7 +514,7 @@ const Home = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-emerald-200 hover:text-white transition-colors text-sm"
+                      className="text-emerald-200 hover:text-white transition-colors text-sm whitespace-nowrap"
                     >
                       Integrações
                     </a>
@@ -519,14 +522,14 @@ const Home = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-emerald-200 hover:text-white transition-colors text-sm"
+                      className="text-emerald-200 hover:text-white transition-colors text-sm whitespace-nowrap"
                     >
                       Ferramentas
                     </a>
                   </li>
                 </ul>
               </div>
-              <div>
+              <div className="min-w-37.5 snap-start">
                 <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">
                   Companhia
                 </h4>
@@ -534,7 +537,7 @@ const Home = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-emerald-200 hover:text-white transition-colors text-sm"
+                      className="text-emerald-200 hover:text-white transition-colors text-sm whitespace-nowrap"
                     >
                       Sobre Nós
                     </a>
@@ -542,7 +545,7 @@ const Home = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-emerald-200 hover:text-white transition-colors text-sm"
+                      className="text-emerald-200 hover:text-white transition-colors text-sm whitespace-nowrap"
                     >
                       Trabalhe Conosco
                     </a>
@@ -550,14 +553,14 @@ const Home = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-emerald-200 hover:text-white transition-colors text-sm"
+                      className="text-emerald-200 hover:text-white transition-colors text-sm whitespace-nowrap"
                     >
                       Contato
                     </a>
                   </li>
                 </ul>
               </div>
-              <div className="col-span-2 md:col-span-1">
+              <div className="min-w-37.5 snap-start">
                 <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">
                   Legal
                 </h4>
@@ -565,7 +568,7 @@ const Home = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-emerald-200 hover:text-white transition-colors text-sm"
+                      className="text-emerald-200 hover:text-white transition-colors text-sm whitespace-nowrap"
                     >
                       Política de Privacidade
                     </a>
@@ -573,7 +576,7 @@ const Home = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-emerald-200 hover:text-white transition-colors text-sm"
+                      className="text-emerald-200 hover:text-white transition-colors text-sm whitespace-nowrap"
                     >
                       Termos de Serviços
                     </a>
@@ -581,7 +584,7 @@ const Home = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-emerald-200 hover:text-white transition-colors text-sm"
+                      className="text-emerald-200 hover:text-white transition-colors text-sm whitespace-nowrap"
                     >
                       Sustentabilidade
                     </a>
@@ -592,15 +595,14 @@ const Home = () => {
           </div>
 
           {/* Bottom Bar */}
-          <div className="border-t border-emerald-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-emerald-400">
+          <div className="border-t border-emerald-800 pt-5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-emerald-400 text-center md:text-left">
             <p>© 2026 Nexus. Automação para o seu negócio.</p>
-            <p className="flex items-center gap-1">
+            <p className="flex flex-wrap justify-center md:justify-end items-center gap-1">
               Construído com a tecnologia de ponta por{" "}
               <img
                 src={SmattexLogo}
                 alt="Smarttex"
-                className="h-4"
-                href="www.smarttex.com.br"
+                className="h-4 object-contain"
               />
             </p>
           </div>
