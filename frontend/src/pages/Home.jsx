@@ -324,8 +324,9 @@ const Home = () => {
               <div className="w-12 h-12 bg-[#22C55E] rounded-full flex items-center justify-center text-white mb-4 shadow-sm">
                 <Plus className="h-6 w-6" />
               </div>
-              <p className="text-emerald-900 font-bold text-sm tracking-wide uppercase max-w-50">
-                Não encontrou seu segmento? Fale com as soluções {"->"}
+              <p className="text-emerald-900 text-[10px] tracking-wide uppercase max-w-50">
+                <span className="font-bold" > Não encontrou seu segmento? <br/></span>
+                Veja todas as soluções {"->"}
               </p>
             </div>
           </div>
