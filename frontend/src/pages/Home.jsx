@@ -18,12 +18,15 @@ import {
   PieChart,
   LifeBuoy,
   Star,
+  MessageCircle,
+  Instagram,
 } from "lucide-react";
 
 /* Imports Images */
 import Logo from "../assets/logo.png";
 import HeroMockup from "../assets/heroMockup.png";
 import EndMockup from "../assets/resourcesMockup.png";
+import SmattexLogo from "../assets/smarttex.png";
 
 const Home = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -379,12 +382,12 @@ const Home = () => {
       </section>
 
       {/* --- Testimonials Section --- */}
-      <section className="bg-emerald-50 py-20 lg:py-28">
+      <section className="bg-[#D7F8E1] py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left Side */}
             <div>
-              <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+              <h2 className="text-4xl md:text-5xl font-extrabold text-[#14532D] mb-6 leading-tight">
                 O que dizem os
                 <br />
                 líderes que
@@ -392,7 +395,7 @@ const Home = () => {
                 escolheram a<br />
                 Nexium
               </h2>
-              <p className="text-lg text-gray-600 mb-10 max-w-md">
+              <p className="text-md text-gray-600 mb-10 max-w-md">
                 Junte-se a centenas de empresas que modernizaram sua gestão com
                 nossa tecnologia de ponta.
               </p>
@@ -400,7 +403,7 @@ const Home = () => {
               <div className="flex gap-10">
                 <div>
                   <div className="text-3xl font-extrabold text-emerald-600 mb-1">
-                    500+
+                    30+
                   </div>
                   <div className="text-xs font-bold text-gray-900 tracking-wider uppercase">
                     Clientes Ativos
@@ -434,14 +437,16 @@ const Home = () => {
                           {testi.initials}
                         </div>
                         <div>
-                          <h4 className="font-bold text-gray-900">
+                          <h4 className="font-bold text-orange-900">
                             {testi.name}
                           </h4>
-                          <p className="text-xs text-gray-500">{testi.role}</p>
+                          <p className="text-xs text-orange-500 text-extrabold">
+                            {testi.role}
+                          </p>
                         </div>
                       </div>
                       {/* Stars */}
-                      <div className="flex text-emerald-400">
+                      <div className="flex text-orange-400">
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} className="h-4 w-4 fill-current" />
                         ))}
@@ -457,6 +462,149 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="bg-[#064E3B] text-emerald-50 pt-16 pb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+            {/* Brand Info */}
+            <div className="lg:col-span-1">
+              <div className="flex items-center gap-2 mb-6">
+                <img src={Logo} className="h-13 w-13" alt="Nexium Logo" />
+              </div>
+              <p className="text-emerald-200 text-sm mb-6 max-w-xs leading-relaxed">
+                Automatize finanças, gere boletos e garanta segurança em todos
+                os processos da sua empresa, focando apenas no crescimento.
+              </p>
+              <div className="flex gap-4">
+                <a
+                  href="#"
+                  className="w-10 h-10 rounded-full bg-emerald-900 flex items-center justify-center hover:bg-emerald-800 transition-colors"
+                >
+                  <Instagram className="h-5 w-5 text-emerald-300" />
+                </a>
+                <a
+                  href="#"
+                  className="w-10 h-10 rounded-full bg-emerald-900 flex items-center justify-center hover:bg-emerald-800 transition-colors"
+                >
+                  <MessageCircle className="h-5 w-5 text-emerald-300" />
+                </a>
+              </div>
+            </div>
+
+            {/* Links columns */}
+            <div className="lg:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-8">
+              <div>
+                <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">
+                  Produto
+                </h4>
+                <ul className="space-y-4">
+                  <li>
+                    <a
+                      href="#"
+                      className="text-emerald-200 hover:text-white transition-colors text-sm"
+                    >
+                      Segmentos
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="text-emerald-200 hover:text-white transition-colors text-sm"
+                    >
+                      Integrações
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="text-emerald-200 hover:text-white transition-colors text-sm"
+                    >
+                      Ferramentas
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">
+                  Companhia
+                </h4>
+                <ul className="space-y-4">
+                  <li>
+                    <a
+                      href="#"
+                      className="text-emerald-200 hover:text-white transition-colors text-sm"
+                    >
+                      Sobre Nós
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="text-emerald-200 hover:text-white transition-colors text-sm"
+                    >
+                      Trabalhe Conosco
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="text-emerald-200 hover:text-white transition-colors text-sm"
+                    >
+                      Contato
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div className="col-span-2 md:col-span-1">
+                <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">
+                  Legal
+                </h4>
+                <ul className="space-y-4">
+                  <li>
+                    <a
+                      href="#"
+                      className="text-emerald-200 hover:text-white transition-colors text-sm"
+                    >
+                      Política de Privacidade
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="text-emerald-200 hover:text-white transition-colors text-sm"
+                    >
+                      Termos de Serviços
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="text-emerald-200 hover:text-white transition-colors text-sm"
+                    >
+                      Sustentabilidade
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="border-t border-emerald-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-emerald-400">
+            <p>© 2026 Nexus. Automação para o seu negócio.</p>
+            <p className="flex items-center gap-1">
+              Construído com a tecnologia de ponta por{" "}
+              <img
+                src={SmattexLogo}
+                alt="Smarttex"
+                className="h-4"
+                href="www.smarttex.com.br"
+              />
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
