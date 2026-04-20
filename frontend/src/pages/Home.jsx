@@ -50,7 +50,7 @@ const Home = () => {
     {
       title: "Bar & Restaurantes",
       description:
-        "Controle mesas, pedidos e finanças em tempo real, com total agilidade no balcão e...",
+        "Controle mesas, pedidos e insumos em tempo real, com mais agilidade na operação.",
       icon: Utensils,
       iconColor: "text-purple-500",
       iconBg: "bg-purple-100",
@@ -59,7 +59,7 @@ const Home = () => {
     {
       title: "Assistências Tec.",
       description:
-        "Gestão de manutenção e operação com controle total de serviços.",
+        "Venda e manutenção de aparelhos com controle total da operação.",
       icon: Wrench,
       iconColor: "text-blue-500",
       iconBg: "bg-blue-100",
@@ -68,7 +68,7 @@ const Home = () => {
     {
       title: "Consultórios",
       description:
-        "Agendamentos, gestão de pacientes e prontuários atendendo a todas as...",
+        "Agendamentos, gestão de pacientes e controle de atendimentos em um  só sistema.",
       icon: Stethoscope,
       iconColor: "text-pink-500",
       iconBg: "bg-pink-100",
@@ -77,7 +77,7 @@ const Home = () => {
     {
       title: "Mercados",
       description:
-        "Agilidade de PDV, controle detalhado de inventário, margens e composição de...",
+        "Agilize o caixa, controle a validade dos produtos organize a reposição do estoque",
       icon: ShoppingBasket,
       iconColor: "text-cyan-500",
       iconBg: "bg-cyan-100",
@@ -86,7 +86,7 @@ const Home = () => {
     {
       title: "Farmácias",
       description:
-        "Gestão integrada, controle de lotes e convênios facilitados.",
+        "SNGPC integrado, controle de lotes e convênios facilitados.",
       icon: Pill,
       iconColor: "text-emerald-500",
       iconBg: "bg-emerald-100",
@@ -293,14 +293,14 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 ">
             {segments.map((segment, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-lg transition-shadow duration-300 group flex flex-col"
+                className="bg-white rounded-2xl p-8 shadow-sm border gap-3 border-gray-100 hover:shadow-lg transition-shadow duration-300 group flex flex-col"
               >
                 <div
-                  className={`w-12 h-16 rounded-xl flex items-center justify-center mb-6 ${segment.iconBg}`}
+                  className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${segment.iconBg}`}
                 >
                   <segment.icon className={`h-6 w-6 ${segment.iconColor}`} />
                 </div>
@@ -371,7 +371,7 @@ const Home = () => {
             </div>
 
             {/* Right Visual */}
-            <div className="lg:pl-10 flex justify-center">
+            <div className="hidden md:flex lg:pl-10 justify-center">
               <img
                 src={EndMockup}
                 alt="Sistema de PDV e Impressão Nexium"
