@@ -13,6 +13,10 @@ import {
   Store,
   ChevronRight,
   Plus,
+  TrendingUp,
+  FileText,
+  PieChart,
+  LifeBuoy,
 } from "lucide-react";
 
 /* Imports Images */
@@ -92,6 +96,41 @@ const Home = () => {
       iconColor: "text-orange-500",
       iconBg: "bg-orange-100",
       linkColor: "text-orange-500",
+    },
+  ];
+
+  const features = [
+    {
+      title: "Gestão Financeira Ágil",
+      description:
+        "O coração do negócio. Tenha o controle de fluxo de caixa, faturamento e contas a pagar/receber em um só lugar.",
+      icon: TrendingUp,
+      iconColor: "text-blue-500",
+      iconBg: "bg-blue-100",
+    },
+    {
+      title: "Emissão de NF-e & NFS-e",
+      description:
+        "Automatize e simplifique a emissão de notas fiscais de forma integrada e sem estresse.",
+      icon: FileText,
+      iconColor: "text-purple-500",
+      iconBg: "bg-purple-100",
+    },
+    {
+      title: "Dashboards de Performance",
+      description:
+        "Inteligência em tempo real. Avalie as métricas da empresa, de vendas e produtividade com dashboards precisos.",
+      icon: PieChart,
+      iconColor: "text-pink-500",
+      iconBg: "bg-pink-100",
+    },
+    {
+      title: "Suporte Especializado",
+      description:
+        "Conte com um time experiente, ágil e acessível e pronto para ajudar o seu negócio.",
+      icon: LifeBuoy,
+      iconColor: "text-cyan-500",
+      iconBg: "bg-cyan-100",
     },
   ];
 
@@ -175,7 +214,7 @@ const Home = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-white flex items-center min-h-[70dvh] md:min-h-[70vh] py-10 border-b border-gray-100">
+      <section className="relative overflow-hidden bg-white flex items-center min-h-[70dvh] sm:min-h-[70vh] border-b border-gray-100">
         {/* Efeito de background (Ajustado para cobrir a section inteira no mobile) */}
         <div className="absolute bg-white blur-3xl opacity-50 -z-10 inset-0 w-full h-full m-0 rounded-none md:inset-auto md:top-0 md:right-0 md:w-160 md:h-160 md:-mt-20 md:-mr-20 md:rounded-full" />
 
@@ -270,8 +309,135 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Features Section */}
+      <section className="bg-white py-20 lg:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left Content */}
+            <div>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-12">
+                Recursos para o seu
+                <br />
+                Sucesso
+              </h2>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10 mb-12">
+                {features.map((feature, index) => (
+                  <div key={index}>
+                    <div
+                      className={`w-10 h-10 rounded-lg flex items-center justify-center mb-4 ${feature.iconBg}`}
+                    >
+                      <feature.icon
+                        className={`h-5 w-5 ${feature.iconColor}`}
+                      />
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <button className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3.5 rounded-xl text-base font-semibold transition-all shadow-sm">
+                Começar Agora
+              </button>
+            </div>
+
+            {/* Right Visual */}
+            <div className="lg:pl-10 flex justify-center">
+              <img
+                src={EndMockup}
+                alt="Sistema de PDV e Impressão Nexus"
+                className="w-full max-w-xl h-auto drop-shadow-2xl rounded-xl object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
 
 export default Home;
+
+/* {/* --- Testimonials Section --- 
+      <section className="bg-emerald-50 py-20 lg:py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left Side *
+            <div>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+                O que dizem os
+                <br />
+                líderes que
+                <br />
+                escolheram a<br />
+                Nexus
+              </h2>
+              <p className="text-lg text-gray-600 mb-10 max-w-md">
+                Junte-se a centenas de empresas que modernizaram sua gestão com
+                nossa tecnologia de ponta.
+              </p>
+
+              <div className="flex gap-10">
+                <div>
+                  <div className="text-3xl font-extrabold text-emerald-600 mb-1">
+                    500+
+                  </div>
+                  <div className="text-xs font-bold text-gray-900 tracking-wider uppercase">
+                    Clientes Ativos
+                  </div>
+                </div>
+                <div>
+                  <div className="text-3xl font-extrabold text-orange-500 mb-1">
+                    98%
+                  </div>
+                  <div className="text-xs font-bold text-gray-900 tracking-wider uppercase">
+                    Satisfação
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Side - Cards 
+            <div className="flex flex-col gap-6">
+              {testimonials.map((testi, index) => (
+                <div
+                  key={index}
+                  className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100"
+                >
+                  <div className="flex justify-between items-start mb-4">
+                    <div className="flex items-center gap-4">
+                      {/* Avatar *
+                      <div
+                        className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold ${testi.color}`}
+                      >
+                        {testi.initials}
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-gray-900">
+                          {testi.name}
+                        </h4>
+                        <p className="text-xs text-gray-500">{testi.role}</p>
+                      </div>
+                    </div>
+                    {/* Stars *}
+                    <div className="flex text-emerald-400">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-4 w-4 fill-current" />
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-gray-700 italic text-sm md:text-base">
+                    {testi.quote}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section> */
