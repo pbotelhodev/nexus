@@ -30,7 +30,7 @@ import Logo from "../assets/logo.png";
 import SignUpImage from "../assets/signMockup.png";
 import SegmIlust from "../assets/segmIlust.png";
 import PlanIlust from "../assets/planIlust.png"; 
-
+ 
 const SignUp = () => {
   const [step, setStep] = useState(1);
   const [selectedSegment, setSelectedSegment] = useState(null);
