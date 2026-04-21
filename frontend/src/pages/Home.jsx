@@ -291,13 +291,7 @@ const Home = () => {
             </div>
 
             {/* Visual/Mockups (Oculto no mobile via hidden md:flex) */}
-            <div className="flex lg:hidden relative my-5 justify-center">
-              <img
-                src={HeroMobileMockup}
-                alt="Interface do Sistema Nexium"
-                className="w-full max-w-2xl h-auto drop-shadow-2xl rounded-xl object-contain"
-              />
-            </div>
+            
           </div>
         </div>
       </section>
