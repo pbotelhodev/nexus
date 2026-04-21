@@ -25,7 +25,6 @@ import {
 /* Imports Images */
 import Logo from "../assets/logo.png";
 import HeroMockup from "../assets/heroMockup.png";
-import HeroMobileMockup from "../assets/heroMobile.png";
 import EndMockup from "../assets/resourcesMockup.png";
 import SmattexLogo from "../assets/smarttex.png";
 
