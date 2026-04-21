@@ -242,7 +242,7 @@ const Home = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-white flex items-center min-h-[70dvh] sm:min-h-[70vh] border-b border-gray-100">
+      <section className="relative overflow-hidden bg-white flex items-center min-h-[75dvh] sm:min-h-[70vh] border-b border-gray-100">
         {/* Efeito de background (Ajustado para cobrir a section inteira no mobile) */}
         <div className="absolute bg-white blur-3xl opacity-50 -z-10 inset-0 w-full h-full m-0 rounded-none md:inset-auto md:top-0 md:right-0 md:w-160 md:h-160 md:-mt-20 md:-mr-20 md:rounded-full" />
 
