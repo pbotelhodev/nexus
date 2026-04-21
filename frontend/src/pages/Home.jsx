@@ -25,6 +25,7 @@ import {
 /* Imports Images */
 import Logo from "../assets/logo.png";
 import HeroMockup from "../assets/heroMockup.png";
+import HeroMobileMockup from "../assets/heroMobile.png";
 import EndMockup from "../assets/resourcesMockup.png";
 import SmattexLogo from "../assets/smarttex.png";
 
@@ -33,9 +34,9 @@ const Home = () => {
 
   const navLinks = [
     { name: "Soluções", href: "#solucoes" },
-    { name: "Planos", href: "" },
+    { name: "Planos", href: "/planos" },
     { name: "Recursos", href: "#recursos" },
-    { name: "Enterprise", href: "" },
+    { name: "Enterprise", href: "/enterprise" },
   ];
   const segments = [
     {
@@ -214,24 +215,27 @@ const Home = () => {
         {mobileMenuOpen && (
           <div className="absolute top-20 left-0 w-full z-50 md:hidden bg-white border-b border-gray-100 px-4 pt-2 pb-6 space-y-4 shadow-lg">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.href}
                 className="block text-base font-medium text-gray-700 hover:text-primary"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
             <div className="pt-4 flex flex-col gap-3">
-              <a
-                href="#"
+              <Link
+                to="/login"
                 className="block text-center border border-[#caddd2] text-gray-700 px-5 py-2.5 rounded-lg text-base font-medium hover:text-primary"
               >
                 Acessar Conta
-              </a>
-              <button className="w-full bg-[#16A34A] hover:bg-emerald-700 text-white px-5 py-3 rounded-lg text-base font-semibold transition-colors">
+              </Link>
+              <Link
+                to="/signup"
+                className="w-full text-center bg-[#16A34A] hover:bg-emerald-700 text-white px-5 py-3 rounded-lg text-base font-semibold transition-colors"
+              >
                 Criar conta grátis
-              </button>
+              </Link>
             </div>
           </div>
         )}
@@ -242,7 +246,7 @@ const Home = () => {
         {/* Efeito de background (Ajustado para cobrir a section inteira no mobile) */}
         <div className="absolute bg-white blur-3xl opacity-50 -z-10 inset-0 w-full h-full m-0 rounded-none md:inset-auto md:top-0 md:right-0 md:w-160 md:h-160 md:-mt-20 md:-mr-20 md:rounded-full" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 mt-7 lg:px-8 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Text Content */}
             <div className="max-w-2xl">
@@ -261,13 +265,19 @@ const Home = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-primary hover:bg-emerald-900 cursor-pointer text-white px-8 py-3.5 rounded-xl text-base font-semibold transition-all shadow-sm hover:shadow-md text-center">
+                <Link
+                  to="/signup"
+                  className="bg-primary hover:bg-emerald-900 cursor-pointer text-white px-8 py-3.5 rounded-xl text-base font-semibold transition-all shadow-sm hover:shadow-md text-center"
+                >
                   Criar Conta Grátis
-                </button>
-                <button className="bg-white cursor-pointer hover:bg-gray-50 border-2 color-primary border-gray-200 text-gray-800 px-8 py-3.5 rounded-xl text-base font-semibold transition-all flex items-center justify-center gap-2">
+                </Link>
+                <Link
+                  to="/demo"
+                  className="bg-white cursor-pointer hover:bg-gray-50 border-2 color-primary border-gray-200 text-gray-800 px-8 py-3.5 rounded-xl text-base font-semibold transition-all flex items-center justify-center gap-2"
+                >
                   <Play className="h-5 w-5 color-primary" />
                   Ver como funciona
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -275,6 +285,15 @@ const Home = () => {
             <div className="hidden md:flex relative mt-12 lg:mt-0 justify-center">
               <img
                 src={HeroMockup}
+                alt="Interface do Sistema Nexium"
+                className="w-full max-w-2xl h-auto drop-shadow-2xl rounded-xl object-contain"
+              />
+            </div>
+
+            {/* Visual/Mockups (Oculto no mobile via hidden md:flex) */}
+            <div className="flex lg:hidden relative my-5 justify-center">
+              <img
+                src={HeroMobileMockup}
                 alt="Interface do Sistema Nexium"
                 className="w-full max-w-2xl h-auto drop-shadow-2xl rounded-xl object-contain"
               />
@@ -372,11 +391,11 @@ const Home = () => {
                   </div>
                 ))}
               </div>
-                <Link to="/signup">
-                  <button className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3.5 rounded-xl text-base font-semibold transition-all shadow-sm">
-                    Criar conta grátis
-                  </button>
-                </Link>
+              <Link to="/signup">
+                <button className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3.5 rounded-xl text-base font-semibold transition-all shadow-sm">
+                  Criar conta grátis
+                </button>
+              </Link>
             </div>
 
             {/* Right Visual */}
