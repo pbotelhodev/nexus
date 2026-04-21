@@ -34,8 +34,8 @@ const Home = () => {
 
   const navLinks = [
     { name: "Soluções", href: "#solucoes" },
-    { name: "Planos", href: "/planos" },
     { name: "Recursos", href: "#recursos" },
+    { name: "Planos", href: "/planos" },
     { name: "Enterprise", href: "/enterprise" },
   ];
   const segments = [
@@ -47,6 +47,7 @@ const Home = () => {
       iconColor: "text-emerald-500",
       iconBg: "bg-emerald-100",
       linkColor: "text-emerald-500",
+      slug: "varejo",
     },
     {
       title: "Bar & Restaurantes",
@@ -56,6 +57,7 @@ const Home = () => {
       iconColor: "text-purple-500",
       iconBg: "bg-purple-100",
       linkColor: "text-purple-500",
+      slug: "food-service",
     },
     {
       title: "Assistências Técnicas",
@@ -65,6 +67,7 @@ const Home = () => {
       iconColor: "text-blue-500",
       iconBg: "bg-blue-100",
       linkColor: "text-blue-500",
+      slug: "assistencia",
     },
     {
       title: "Consultórios",
@@ -74,6 +77,7 @@ const Home = () => {
       iconColor: "text-pink-500",
       iconBg: "bg-pink-100",
       linkColor: "text-pink-500",
+      slug: "saude",
     },
     {
       title: "Mercados",
@@ -83,6 +87,7 @@ const Home = () => {
       iconColor: "text-cyan-500",
       iconBg: "bg-cyan-100",
       linkColor: "text-cyan-500",
+      slug: "mercados",
     },
     {
       title: "Farmácias",
@@ -92,6 +97,7 @@ const Home = () => {
       iconColor: "text-emerald-500",
       iconBg: "bg-emerald-100",
       linkColor: "text-emerald-500",
+      slug: "farmacias",
     },
     {
       title: "Oficinas",
@@ -101,6 +107,7 @@ const Home = () => {
       iconColor: "text-orange-500",
       iconBg: "bg-orange-100",
       linkColor: "text-orange-500",
+      slug: "oficinas",
     },
   ];
   const features = [
@@ -291,7 +298,6 @@ const Home = () => {
             </div>
 
             {/* Visual/Mockups (Oculto no mobile via hidden md:flex) */}
-            
           </div>
         </div>
       </section>
@@ -328,28 +334,30 @@ const Home = () => {
                 <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-1">
                   {segment.description}
                 </p>
-                <a
-                  href="#"
+                <Link
+                  to={`/segmentos/${segment.slug}`}
                   className={`inline-flex items-center text-xs font-bold tracking-wider uppercase ${segment.linkColor} group-hover:underline`}
                 >
                   Saiba Mais <ChevronRight className="h-4 w-4 ml-1" />
-                </a>
+                </Link>
               </div>
             ))}
 
             {/* CTA Card */}
-            <div className="bg-emerald-50 rounded-2xl p-8 border-2 border-dashed border-emerald-200 flex flex-col items-center justify-center text-center hover:bg-emerald-100 transition-colors cursor-pointer">
-              <div className="w-12 h-12 bg-[#22C55E] rounded-full flex items-center justify-center text-white mb-4 shadow-sm">
-                <Plus className="h-6 w-6" />
+            <Link to="/segmentos">
+              <div className="h-full bg-emerald-50 rounded-2xl p-8 border-2 border-dashed border-[#D7F8E1] flex flex-col items-center justify-center text-center hover:bg-emerald-100 transition-colors cursor-pointer">
+                <div className="w-12 h-12 bg-[#22C55E] rounded-full flex items-center justify-center text-white mb-4 shadow-sm">
+                  <Plus className="h-6 w-6" />
+                </div>  
+                <p className="text-emerald-900 text-[10px] tracking-wide uppercase max-w-50">
+                  <span className="font-bold">
+                   
+                    Não encontrou seu segmento? <br />
+                  </span>
+                  Veja todas as soluções {<ChevronRight className="h-3 w-3 inline" />}
+                </p>
               </div>
-              <p className="text-emerald-900 text-[10px] tracking-wide uppercase max-w-50">
-                <span className="font-bold">
-                  {" "}
-                  Não encontrou seu segmento? <br />
-                </span>
-                Veja todas as soluções {"->"}
-              </p>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -386,7 +394,7 @@ const Home = () => {
                 ))}
               </div>
               <Link to="/signup">
-                <button className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3.5 rounded-xl text-base font-semibold transition-all shadow-sm">
+                <button className="bg-primary hover:bg-emerald-600 text-white px-8 py-3.5 rounded-xl text-base font-semibold transition-all shadow-sm">
                   Criar conta grátis
                 </button>
               </Link>
@@ -425,7 +433,7 @@ const Home = () => {
 
               <div className="flex gap-10">
                 <div>
-                  <div className="text-3xl font-extrabold text-emerald-600 mb-1">
+                  <div className="text-3xl font-extrabold text-[#14532D] mb-1">
                     30+
                   </div>
                   <div className="text-xs font-bold text-gray-900 tracking-wider uppercase">
@@ -488,7 +496,7 @@ const Home = () => {
 
       {/* Footer */}
       {/* Footer */}
-      <footer className="bg-[#064E3B] border-t-3 border-orange-500 text-emerald-50 pt-10 pb-8 ">
+      <footer className="bg-[#052E16] border-t-3 border-orange-500 text-emerald-50 pt-10 pb-8 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
           <div className="grid grid-cols-1  lg:grid-cols-4 mt-5 gap-5 lg:gap-8 mb-5">
             {/* Brand Info */}
@@ -498,7 +506,7 @@ const Home = () => {
                   <img src={Logo} className="h-13 w-13" alt="Nexium Logo" />
                 </Link>
               </div>
-              <p className="text-emerald-200 text-sm mb-6 max-w-xs leading-relaxed">
+              <p className="text-[#aadfba] text-sm mb-6 max-w-xs leading-relaxed">
                 Automatize finanças, gere boletos e garanta segurança em todos
                 os processos da sua empresa, focando apenas no crescimento.
               </p>
@@ -521,14 +529,14 @@ const Home = () => {
             {/* Links columns - Agora lado a lado com rolagem horizontal */}
             <div className="lg:col-span-3 flex flex-nowrap gap-8 overflow-x-auto pb-4 snap-x">
               <div className="min-w-37.5 snap-start">
-                <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">
+                <h4 className="font-bold text-[#aadfba] mb-6 uppercase tracking-wider text-sm">
                   Produto
                 </h4>
                 <ul className="space-y-4">
                   <li>
                     <a
                       href="#"
-                      className="text-emerald-200 hover:text-white transition-colors text-sm whitespace-nowrap"
+                      className="text-[#aadfba] hover:text-white transition-colors text-sm whitespace-nowrap"
                     >
                       Segmentos
                     </a>
@@ -536,7 +544,7 @@ const Home = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-emerald-200 hover:text-white transition-colors text-sm whitespace-nowrap"
+                      className="text-[#aadfba] hover:text-white transition-colors text-sm whitespace-nowrap"
                     >
                       Integrações
                     </a>
@@ -544,7 +552,7 @@ const Home = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-emerald-200 hover:text-white transition-colors text-sm whitespace-nowrap"
+                      className="text-[#aadfba] hover:text-white transition-colors text-sm whitespace-nowrap"
                     >
                       Ferramentas
                     </a>
@@ -552,14 +560,14 @@ const Home = () => {
                 </ul>
               </div>
               <div className="min-w-37.5 snap-start">
-                <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">
+                <h4 className="font-bold text-[#aadfba] mb-6 uppercase tracking-wider text-sm">
                   Companhia
                 </h4>
                 <ul className="space-y-4">
                   <li>
                     <a
                       href="#"
-                      className="text-emerald-200 hover:text-white transition-colors text-sm whitespace-nowrap"
+                      className="text-[#aadfba] hover:text-white transition-colors text-sm whitespace-nowrap"
                     >
                       Sobre Nós
                     </a>
@@ -567,7 +575,7 @@ const Home = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-emerald-200 hover:text-white transition-colors text-sm whitespace-nowrap"
+                      className="text-[#aadfba] hover:text-white transition-colors text-sm whitespace-nowrap"
                     >
                       Trabalhe Conosco
                     </a>
@@ -575,7 +583,7 @@ const Home = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-emerald-200 hover:text-white transition-colors text-sm whitespace-nowrap"
+                      className="text-[#aadfba] hover:text-white transition-colors text-sm whitespace-nowrap"
                     >
                       Contato
                     </a>
@@ -583,14 +591,14 @@ const Home = () => {
                 </ul>
               </div>
               <div className="min-w-37.5 snap-start">
-                <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">
+                <h4 className="font-bold text-[#aadfba] mb-6 uppercase tracking-wider text-sm">
                   Legal
                 </h4>
                 <ul className="space-y-4">
                   <li>
                     <a
                       href="#"
-                      className="text-emerald-200 hover:text-white transition-colors text-sm whitespace-nowrap"
+                      className="text-[#aadfba] hover:text-white transition-colors text-sm whitespace-nowrap"
                     >
                       Política de Privacidade
                     </a>
@@ -598,17 +606,9 @@ const Home = () => {
                   <li>
                     <a
                       href="#"
-                      className="text-emerald-200 hover:text-white transition-colors text-sm whitespace-nowrap"
+                      className="text-[#aadfba] hover:text-white transition-colors text-sm whitespace-nowrap"
                     >
                       Termos de Serviços
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="text-emerald-200 hover:text-white transition-colors text-sm whitespace-nowrap"
-                    >
-                      Sustentabilidade
                     </a>
                   </li>
                 </ul>
@@ -617,14 +617,14 @@ const Home = () => {
           </div>
 
           {/* Bottom Bar */}
-          <div className="border-t border-emerald-800 pt-5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-emerald-400 text-center md:text-left">
-            <p>© 2026 Nexus. Automação para o seu negócio.</p>
+          <div className="border-t border-emerald-800 pt-5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#aadfba] text-center md:text-left">
+            <p>© 2026 Nexium. Automação para o seu negócio.</p>
             <p className="flex flex-wrap justify-center md:justify-end items-center gap-1">
               Construído com a tecnologia de ponta por{" "}
               <img
                 src={SmattexLogo}
                 alt="Smarttex"
-                className="h-4 object-contain"
+                className="h-5 object-contain flex justify-center items-center"
               />
             </p>
           </div>
