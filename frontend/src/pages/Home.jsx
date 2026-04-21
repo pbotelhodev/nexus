@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
 /* Imports Icons */
 import {
   Menu,
@@ -32,10 +32,10 @@ const Home = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: "Soluções", href: "#solu" },
+    { name: "Soluções", href: "#solucoes" },
+    { name: "Planos", href: "" },
     { name: "Recursos", href: "#recursos" },
-    { name: "Enterprise", href: "#enterprise" },
-    { name: "Plataforma", href: "#plataforma" },
+    { name: "Enterprise", href: "" },
   ];
   const segments = [
     {
@@ -57,7 +57,7 @@ const Home = () => {
       linkColor: "text-purple-500",
     },
     {
-      title: "Assistências Tec.",
+      title: "Assistências Técnicas",
       description:
         "Venda e manutenção de aparelhos com controle total da operação.",
       icon: Wrench,
@@ -180,15 +180,18 @@ const Home = () => {
 
             {/* Desktop CTAs */}
             <div className="hidden md:flex items-center gap-4">
-              <a
-                href="#"
+              <Link
+                to="/login"
                 className="text-sm font-medium border border-[#caddd2] text-gray-600 px-5 py-2.5 rounded-lg hover:text-primary transition-colors"
               >
-                Acessar Portal
-              </a>
-              <button className="bg-primary hover:bg-emerald-600 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-all shadow-sm hover:shadow">
-                Começar Agora
-              </button>
+                Acessar Conta
+              </Link>
+              <Link
+                to="/signup"
+                className="bg-primary hover:bg-emerald-600 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-all shadow-sm hover:shadow"
+              >
+                Criar Conta Grátis
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -224,10 +227,10 @@ const Home = () => {
                 href="#"
                 className="block text-center border border-[#caddd2] text-gray-700 px-5 py-2.5 rounded-lg text-base font-medium hover:text-primary"
               >
-                Acessar Portal
+                Acessar Conta
               </a>
               <button className="w-full bg-[#16A34A] hover:bg-emerald-700 text-white px-5 py-3 rounded-lg text-base font-semibold transition-colors">
-                Começar Agora
+                Criar conta grátis
               </button>
             </div>
           </div>
@@ -259,11 +262,11 @@ const Home = () => {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="bg-primary hover:bg-emerald-900 cursor-pointer text-white px-8 py-3.5 rounded-xl text-base font-semibold transition-all shadow-sm hover:shadow-md text-center">
-                  Começar Agora
+                  Criar Conta Grátis
                 </button>
-                <button className="bg-white cursor-pointer hover:bg-gray-50 border-2 border-gray-200 text-gray-800 px-8 py-3.5 rounded-xl text-base font-semibold transition-all flex items-center justify-center gap-2">
-                  <Play className="h-5 w-5" />
-                  Ver Demo
+                <button className="bg-white cursor-pointer hover:bg-gray-50 border-2 color-primary border-gray-200 text-gray-800 px-8 py-3.5 rounded-xl text-base font-semibold transition-all flex items-center justify-center gap-2">
+                  <Play className="h-5 w-5 color-primary" />
+                  Ver como funciona
                 </button>
               </div>
             </div>
@@ -281,7 +284,10 @@ const Home = () => {
       </section>
 
       {/* Segmentos de Negócio */}
-      <section className="bg-gray-50 py-20 lg:py-28 border-y border-gray-100">
+      <section
+        id="solucoes"
+        className=" bg-gray-50 py-20 lg:py-28 border-y border-gray-100"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
@@ -296,7 +302,7 @@ const Home = () => {
             {segments.map((segment, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-8 shadow-sm border gap-3 border-gray-100 hover:shadow-lg transition-shadow duration-300 group flex flex-col"
+                className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-lg transition-shadow duration-300 group flex flex-col"
               >
                 <div
                   className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${segment.iconBg}`}
@@ -336,7 +342,7 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="bg-white py-20 lg:py-32">
+      <section id="recursos" className="bg-white py-20 scroll-mt-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left Content */}
@@ -366,10 +372,11 @@ const Home = () => {
                   </div>
                 ))}
               </div>
-
-              <button className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3.5 rounded-xl text-base font-semibold transition-all shadow-sm">
-                Começar Agora
-              </button>
+                <Link to="/signup">
+                  <button className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-3.5 rounded-xl text-base font-semibold transition-all shadow-sm">
+                    Criar conta grátis
+                  </button>
+                </Link>
             </div>
 
             {/* Right Visual */}
@@ -414,7 +421,7 @@ const Home = () => {
                 </div>
                 <div>
                   <div className="text-3xl font-extrabold text-orange-500 mb-1">
-                    98%
+                    99%
                   </div>
                   <div className="text-xs font-bold text-gray-900 tracking-wider uppercase">
                     Satisfação
@@ -468,13 +475,15 @@ const Home = () => {
 
       {/* Footer */}
       {/* Footer */}
-      <footer className="bg-[#064E3B] text-emerald-50 pt-10 pb-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-5 lg:gap-8 mb-5">
+      <footer className="bg-[#064E3B] border-t-3 border-orange-500 text-emerald-50 pt-10 pb-8 ">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+          <div className="grid grid-cols-1  lg:grid-cols-4 mt-5 gap-5 lg:gap-8 mb-5">
             {/* Brand Info */}
             <div className="lg:col-span-1">
               <div className="flex items-center gap-2 mb-6">
-                <img src={Logo} className="h-13 w-13" alt="Nexium Logo" />
+                <Link to="/ ">
+                  <img src={Logo} className="h-13 w-13" alt="Nexium Logo" />
+                </Link>
               </div>
               <p className="text-emerald-200 text-sm mb-6 max-w-xs leading-relaxed">
                 Automatize finanças, gere boletos e garanta segurança em todos
