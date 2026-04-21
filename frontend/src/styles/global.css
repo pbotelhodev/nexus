@@ -1,7 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
 @import "tailwindcss";
 
 :root {
-  --font-primary: 'Inter', system-ui, sans-serif;
+  --font-primary: "Manrope", "Inter";
 }
 
 body {
@@ -9,13 +10,13 @@ body {
 }
 
 .text-primary {
-  color: #16A34A;
+  color: #16a34a;
 }
 
 .bg-primary {
-  background-color: #16A34A;
+  background-color: #16a34a;
 }
 
 .color-primary {
-  color: #16A34A;
+  color: #16a34a;
 }

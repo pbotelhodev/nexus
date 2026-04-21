@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 /* Imports Icons */
 import {
@@ -28,15 +27,12 @@ import HeroMockup from "../assets/heroMockup.png";
 import EndMockup from "../assets/resourcesMockup.png";
 import SmattexLogo from "../assets/smarttex.png";
 
-const Home = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+/* Components */
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
-  const navLinks = [
-    { name: "Soluções", href: "#solucoes" },
-    { name: "Recursos", href: "#recursos" },
-    { name: "Planos", href: "/planos" },
-    { name: "Enterprise", href: "/enterprise" },
-  ];
+const Home = () => {
+  
   const segments = [
     {
       title: "Varejo",
@@ -164,88 +160,7 @@ const Home = () => {
 
   return (
     <div>
-      <header className="sticky top-0 z-50 w-full bg-emerald/10 backdrop-blur-md border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            {/* Logo */}
-            <div className="flex items-center gap-2 cursor-pointer">
-              <img src={Logo} alt="Nexium Logo" className="h-13 w-13" />
-            </div>
-
-            {/* Desktop Nav */}
-            <nav className="hidden md:flex gap-8">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-sm font-medium text-gray-600 hover:text-primary transition-colors"
-                >
-                  {link.name}
-                </a>
-              ))}
-            </nav>
-
-            {/* Desktop CTAs */}
-            <div className="hidden md:flex items-center gap-4">
-              <Link
-                to="/login"
-                className="text-sm font-medium border border-[#caddd2] text-gray-600 px-5 py-2.5 rounded-lg hover:text-primary transition-colors"
-              >
-                Acessar Conta
-              </Link>
-              <Link
-                to="/signup"
-                className="bg-primary hover:bg-emerald-600 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-all shadow-sm hover:shadow"
-              >
-                Criar Conta Grátis
-              </Link>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center">
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="text-gray-600 hover:text-gray-900 focus:outline-none p-2"
-              >
-                {mobileMenuOpen ? (
-                  <X className="h-6 w-6" />
-                ) : (
-                  <Menu className="h-6 w-6" />
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Nav (Agora sobreposto) */}
-        {mobileMenuOpen && (
-          <div className="absolute top-20 left-0 w-full z-50 md:hidden bg-white border-b border-gray-100 px-4 pt-2 pb-6 space-y-4 shadow-lg">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className="block text-base font-medium text-gray-700 hover:text-primary"
-              >
-                {link.name}
-              </Link>
-            ))}
-            <div className="pt-4 flex flex-col gap-3">
-              <Link
-                to="/login"
-                className="block text-center border border-[#caddd2] text-gray-700 px-5 py-2.5 rounded-lg text-base font-medium hover:text-primary"
-              >
-                Acessar Conta
-              </Link>
-              <Link
-                to="/signup"
-                className="w-full text-center bg-[#16A34A] hover:bg-emerald-700 text-white px-5 py-3 rounded-lg text-base font-semibold transition-colors"
-              >
-                Criar conta grátis
-              </Link>
-            </div>
-          </div>
-        )}
-      </header>
+      <Header/>
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-white flex items-center min-h-[75dvh] sm:min-h-[70vh] border-b border-gray-100">
@@ -462,7 +377,7 @@ const Home = () => {
                       <div className="flex items-center gap-4">
                         {/* Avatar */}
                         <div
-                          className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold ${testi.color}`}
+                          className={`w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold ${testi.color}`}
                         >
                           {testi.initials}
                         </div>
@@ -494,141 +409,7 @@ const Home = () => {
       </section>
 
       {/* Footer */}
-      {/* Footer */}
-      <footer className="bg-[#052E16] border-t-3 border-orange-500 text-emerald-50 pt-10 pb-8 ">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-          <div className="grid grid-cols-1  lg:grid-cols-4 mt-5 gap-5 lg:gap-8 mb-5">
-            {/* Brand Info */}
-            <div className="lg:col-span-1">
-              <div className="flex items-center gap-2 mb-6">
-                <Link to="/ ">
-                  <img src={Logo} className="h-13 w-13" alt="Nexium Logo" />
-                </Link>
-              </div>
-              <p className="text-[#aadfba] text-sm mb-6 max-w-xs leading-relaxed">
-                Automatize finanças, gere boletos e garanta segurança em todos
-                os processos da sua empresa, focando apenas no crescimento.
-              </p>
-              <div className="flex gap-4">
-                <a
-                  href="#"
-                  className="w-10 h-10 rounded-full bg-emerald-900 flex items-center justify-center hover:bg-emerald-800 transition-colors"
-                >
-                  <Instagram className="h-5 w-5 text-emerald-300" />
-                </a>
-                <a
-                  href="#"
-                  className="w-10 h-10 rounded-full bg-emerald-900 flex items-center justify-center hover:bg-emerald-800 transition-colors"
-                >
-                  <MessageCircle className="h-5 w-5 text-emerald-300" />
-                </a>
-              </div>
-            </div>
-
-            {/* Links columns - Agora lado a lado com rolagem horizontal */}
-            <div className="lg:col-span-3 flex flex-nowrap gap-8 overflow-x-auto pb-4 snap-x">
-              <div className="min-w-37.5 snap-start">
-                <h4 className="font-bold text-[#aadfba] mb-6 uppercase tracking-wider text-sm">
-                  Produto
-                </h4>
-                <ul className="space-y-4">
-                  <li>
-                    <a
-                      href="#"
-                      className="text-[#aadfba] hover:text-white transition-colors text-sm whitespace-nowrap"
-                    >
-                      Segmentos
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="text-[#aadfba] hover:text-white transition-colors text-sm whitespace-nowrap"
-                    >
-                      Integrações
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="text-[#aadfba] hover:text-white transition-colors text-sm whitespace-nowrap"
-                    >
-                      Ferramentas
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className="min-w-37.5 snap-start">
-                <h4 className="font-bold text-[#aadfba] mb-6 uppercase tracking-wider text-sm">
-                  Companhia
-                </h4>
-                <ul className="space-y-4">
-                  <li>
-                    <a
-                      href="#"
-                      className="text-[#aadfba] hover:text-white transition-colors text-sm whitespace-nowrap"
-                    >
-                      Sobre Nós
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="text-[#aadfba] hover:text-white transition-colors text-sm whitespace-nowrap"
-                    >
-                      Trabalhe Conosco
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="text-[#aadfba] hover:text-white transition-colors text-sm whitespace-nowrap"
-                    >
-                      Contato
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className="min-w-37.5 snap-start">
-                <h4 className="font-bold text-[#aadfba] mb-6 uppercase tracking-wider text-sm">
-                  Legal
-                </h4>
-                <ul className="space-y-4">
-                  <li>
-                    <a
-                      href="#"
-                      className="text-[#aadfba] hover:text-white transition-colors text-sm whitespace-nowrap"
-                    >
-                      Política de Privacidade
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="text-[#aadfba] hover:text-white transition-colors text-sm whitespace-nowrap"
-                    >
-                      Termos de Serviços
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Bar */}
-          <div className="border-t border-emerald-800 pt-5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#aadfba] text-center md:text-left">
-            <p>© 2026 Nexium. Automação para o seu negócio.</p>
-            <p className="flex flex-wrap justify-center md:justify-end items-center gap-1">
-              Construído com a tecnologia de ponta por{" "}
-              <img
-                src={SmattexLogo}
-                alt="Smarttex"
-                className="h-5 object-contain flex justify-center items-center"
-              />
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer/>
     </div>
   );
 };
