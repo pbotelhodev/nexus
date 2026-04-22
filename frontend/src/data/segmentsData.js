@@ -41,21 +41,21 @@ import {
 } from "lucide-react";
 
 // --- Imports das Hero Images locais ---
-import Varejo from "../assets/heroImages/varejo.png";
-import Food from "../assets/heroImages/food.png";
-import Assistencia from "../assets/heroImages/assistencia.png";
-import Oficinas from "../assets/heroImages/oficinas.png";
-import Saude from "../assets/heroImages/saude.png";
-import Beleza from "../assets/heroImages/beleza.png";
-import Pet from "../assets/heroImages/pet.png";
-import Hotelaria from "../assets/heroImages/hotelaria.png";
-import Condominios from "../assets/heroImages/condominio.png";
-import Estetica from "../assets/heroImages/estetica.png";
-import Estacionamento from "../assets/heroImages/estacionamento.png";
-import Escolas from "../assets/heroImages/escola.png";
-import Mercados from "../assets/heroImages/mercado.png";
-import Farmacias from "../assets/heroImages/farmacia.png";
-import Academias from "../assets/heroImages/academia.png";
+import Varejo from "../assets/images/varejo.png";
+import Food from "../assets/images/food.png";
+import Assistencia from "../assets/images/assistencia.png";
+import Oficinas from "../assets/images/oficinas.png";
+import Saude from "../assets/images/saude.png";
+import Beleza from "../assets/images/beleza.png";
+import Pet from "../assets/images/pet.png";
+import Hotelaria from "../assets/images/hotelaria.png";
+import Condominios from "../assets/images/condominio.png";
+import Estetica from "../assets/images/estetica.png";
+import Estacionamento from "../assets/images/estacionamento.png";
+import Escolas from "../assets/images/escola.png";
+import Mercados from "../assets/images/mercado.png";
+import Farmacias from "../assets/images/farmacia.png";
+import Academias from "../assets/images/academia.png";
 
 export const themeColors = {
   orange: {
