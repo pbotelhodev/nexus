@@ -34,14 +34,8 @@ import Footer from "../components/Footer";
 /* Import data */
 import { segmentsDatabase, themeColors } from "../data/segmentsData";
 
-
-const HeroImage =
-  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800";
-
 const DashboardMockup =
   "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000";
-const Logo = "https://placehold.co/120x40/10b981/ffffff?text=NexusERP";
-const SmattexLogo = "https://placehold.co/100x30/052E16/10b981?text=Smarttex";
 
 
 const SegmentoDetalhe = () => {
@@ -75,8 +69,7 @@ const SegmentoDetalhe = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans selection:bg-emerald-200">
-
-      <Header/>
+      <Header />
 
       {/* --- HERO SECTION --- */}
       <section className="relative bg-white pt-16 pb-20 lg:pt-24 lg:pb-28 overflow-hidden">
@@ -142,7 +135,7 @@ const SegmentoDetalhe = () => {
             <div className="relative lg:ml-10">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-100">
                 <img
-                  src={HeroImage}
+                  src={data.HeroImage}
                   alt={data.name}
                   className="w-full h-100 object-cover"
                 />
@@ -347,7 +340,7 @@ const SegmentoDetalhe = () => {
         </div>
       </section>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 };

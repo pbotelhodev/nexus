@@ -1,4 +1,3 @@
-// src/data/segmentsData.js
 import {
   Utensils,
   Store,
@@ -13,6 +12,32 @@ import {
   Shield,
   Package,
   Users,
+  Wrench,
+  Settings,
+  Stethoscope,
+  Scissors,
+  Dog,
+  Hotel,
+  Building,
+  Car,
+  CircleParking,
+  GraduationCap,
+  ShoppingCart,
+  Pill,
+  Dumbbell,
+  Calendar,
+  FileText,
+  CreditCard,
+  Printer,
+  Bell,
+  Monitor,
+  BookOpen,
+  Activity,
+  CheckSquare,
+  Briefcase,
+  Key,
+  Lock,
+  ClipboardList,
 } from "lucide-react";
 
 export const themeColors = {
@@ -23,6 +48,9 @@ export const themeColors = {
     iconText: "text-orange-600",
     dashBlob: "bg-orange-500/10",
     dashBadge: "text-orange-600 bg-orange-50 border-orange-100",
+    cardBg: "bg-orange-100",
+    cardText: "text-orange-600",
+    cardGroupHover: "group-hover:bg-orange-50",
   },
   emerald: {
     heroBlob: "bg-emerald-50",
@@ -31,133 +59,117 @@ export const themeColors = {
     iconText: "text-emerald-600",
     dashBlob: "bg-emerald-500/10",
     dashBadge: "text-emerald-600 bg-emerald-50 border-emerald-100",
+    cardBg: "bg-emerald-100",
+    cardText: "text-emerald-600",
+    cardGroupHover: "group-hover:bg-emerald-50",
+  },
+  blue: {
+    heroBlob: "bg-blue-50",
+    badge: "bg-blue-100 border-blue-200 text-blue-800",
+    iconBg: "bg-blue-100",
+    iconText: "text-blue-600",
+    dashBlob: "bg-blue-500/10",
+    dashBadge: "text-blue-600 bg-blue-50 border-blue-100",
+    cardBg: "bg-blue-100",
+    cardText: "text-blue-600",
+    cardGroupHover: "group-hover:bg-blue-50",
+  },
+  pink: {
+    heroBlob: "bg-pink-50",
+    badge: "bg-pink-100 border-pink-200 text-pink-800",
+    iconBg: "bg-pink-100",
+    iconText: "text-pink-600",
+    dashBlob: "bg-pink-500/10",
+    dashBadge: "text-pink-600 bg-pink-50 border-pink-100",
+    cardBg: "bg-pink-100",
+    cardText: "text-pink-600",
+    cardGroupHover: "group-hover:bg-pink-50",
+  },
+  cyan: {
+    heroBlob: "bg-cyan-50",
+    badge: "bg-cyan-100 border-cyan-200 text-cyan-800",
+    iconBg: "bg-cyan-100",
+    iconText: "text-cyan-600",
+    dashBlob: "bg-cyan-500/10",
+    dashBadge: "text-cyan-600 bg-cyan-50 border-cyan-100",
+    cardBg: "bg-cyan-100",
+    cardText: "text-cyan-600",
+    cardGroupHover: "group-hover:bg-cyan-50",
+  },
+  amber: {
+    heroBlob: "bg-amber-50",
+    badge: "bg-amber-100 border-amber-200 text-amber-800",
+    iconBg: "bg-amber-100",
+    iconText: "text-amber-600",
+    dashBlob: "bg-amber-500/10",
+    dashBadge: "text-amber-600 bg-amber-50 border-amber-100",
+    cardBg: "bg-amber-100",
+    cardText: "text-amber-600",
+    cardGroupHover: "group-hover:bg-amber-50",
+  },
+  slate: {
+    heroBlob: "bg-slate-50",
+    badge: "bg-slate-100 border-slate-200 text-slate-800",
+    iconBg: "bg-slate-100",
+    iconText: "text-slate-600",
+    dashBlob: "bg-slate-500/10",
+    dashBadge: "text-slate-600 bg-slate-50 border-slate-100",
+    cardBg: "bg-slate-200",
+    cardText: "text-slate-700",
+    cardGroupHover: "group-hover:bg-slate-50",
+  },
+  violet: {
+    heroBlob: "bg-violet-50",
+    badge: "bg-violet-100 border-violet-200 text-violet-800",
+    iconBg: "bg-violet-100",
+    iconText: "text-violet-600",
+    dashBlob: "bg-violet-500/10",
+    dashBadge: "text-violet-600 bg-violet-50 border-violet-100",
+    cardBg: "bg-violet-100",
+    cardText: "text-violet-600",
+    cardGroupHover: "group-hover:bg-violet-50",
   },
 };
 
 export const segmentsDatabase = {
-  "food-service": {
-    name: "Bar & Restaurantes",
-    icon: Utensils,
-    badge: "Food Service & Gastronomia",
-    title: "Mesas cheias, operação vazia de problemas.",
-    subtitle:
-      "Da comanda eletrônica na mão do garçom até a ficha técnica na cozinha. O Nexium integra todo o seu restaurante para você focar no lucro.",
-    colorTheme: "orange",
-    features: [
-      {
-        title: "Comandas e Mesas",
-        desc: "Lançamento via smartphone...",
-        icon: Smartphone,
-      },
-      {
-        title: "Ficha e Estoque",
-        desc: "Baixa automática de insumos...",
-        icon: Receipt,
-      },
-      {
-        title: "KDS (Cozinha)",
-        desc: "Monitores na cozinha...",
-        icon: ChefHat,
-      },
-      {
-        title: "Autoatendimento",
-        desc: "Cardápio via QR Code...",
-        icon: QrCode,
-      },
-      {
-        title: "Controle de Caixa",
-        desc: "Abertura, suprimento...",
-        icon: Calculator,
-      },
-    ],
-    plans: [
-      {
-        id: "free",
-        name: "Free Trial - 14 Dias",
-        price: "0",
-        desc: "Para food trucks...",
-        icon: Coffee,
-        features: [
-          "1 PDV Balcão",
-          "Pedidos Ilimitados",
-          "Cardápio Digital",
-          "Suporte",
-        ],
-      },
-      {
-        id: "starter",
-        name: "Starter",
-        price: "97",
-        desc: "Para bares em crescimento...",
-        icon: Zap,
-        features: [
-          "Até 2 Caixas",
-          "Até 25 Mesas",
-          "Comanda Eletrônica",
-          "Suporte Email",
-        ],
-      },
-      {
-        id: "pro",
-        name: "Profissional",
-        price: "297",
-        desc: "Para restaurantes de alto fluxo.",
-        icon: Building2,
-        popular: true,
-        features: [
-          "Mesas Ilimitadas",
-          "Fichas Técnicas",
-          "Controle Insumos",
-          "WhatsApp",
-        ],
-      },
-      {
-        id: "enterprise",
-        name: "Enterprise",
-        price: "897",
-        desc: "Redes de restaurantes e franquias.",
-        icon: Shield,
-        features: [
-          "Múltiplas Lojas",
-          "API Totens",
-          "Gestor Dedicado",
-          "Treinamento",
-        ],
-      },
-    ],
-  },
   varejo: {
     name: "Varejo",
+    legenda:
+      "Controle de vendas, estoque e operação em tempo real com organização e eficiência.",
     icon: Store,
     badge: "Solução para Lojistas",
     title: "Controle absoluto para o seu Varejo.",
     subtitle:
-      "Do PDV ao controle de estoque multi-lojas. O Nexium centraliza sua operação para que você foque em vender mais e melhor.",
+      "Do PDV ao controle de estoque multi-lojas. Centralize sua operação para focar em vender mais.",
     colorTheme: "emerald",
+    heroImage:
+      "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?q=80&w=800&auto=format",
+    dashboardImage:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format",
     features: [
       {
         title: "PDV Rápido",
-        desc: "Frente de caixa ágil, compatível com leitores de código de barras e desenhado para evitar filas.",
+        desc: "Frente de caixa ágil, compatível com leitores de código de barras.",
         icon: Store,
       },
       {
         title: "Estoque Inteligente",
-        desc: "Alertas de mínimo, gestão de fornecedores e controle multi-lojas em tempo real.",
+        desc: "Alertas de mínimo, gestão de fornecedores e grade de produtos.",
         icon: Package,
       },
       {
         title: "Emissão de Notas",
-        desc: "NFC-e/NF-e emitidas em segundos, integradas com a Sefaz e sua contabilidade.",
+        desc: "NFC-e/NF-e emitidas em segundos, integradas com a Sefaz.",
         icon: Receipt,
       },
       {
         title: "Fidelização",
-        desc: "Cadastro rápido, histórico de compras e campanhas de cashback para clientes.",
+        desc: "Cadastro rápido e campanhas de cashback para clientes.",
         icon: Users,
       },
       {
         title: "Fluxo de Caixa",
-        desc: "Controle financeiro completo integrado diretamente com as vendas do balcão.",
+        desc: "Controle financeiro integrado diretamente com as vendas.",
         icon: Calculator,
       },
     ],
@@ -172,7 +184,7 @@ export const segmentsDatabase = {
           "1 PDV / 1 Usuário",
           "Até 50 Vendas/mês",
           "Controle Básico",
-          "Suporte na Comunidade",
+          "Suporte Comunidade",
         ],
       },
       {
@@ -185,7 +197,7 @@ export const segmentsDatabase = {
           "Até 2 Usuários",
           "Vendas Ilimitadas",
           "Emissão NFC-e",
-          "Suporte por Email",
+          "Suporte Email",
         ],
       },
       {
@@ -217,5 +229,1356 @@ export const segmentsDatabase = {
       },
     ],
   },
-  // Adicione os outros 8 segmentos aqui facilmente
+  food: {
+    name: "Bares & Restaurantes",
+    legenda:
+      "Controle mesas, pedidos e insumos em tempo real, com mais agilidade na operação.",
+    icon: Utensils,
+    badge: "Food Service & Gastronomia",
+    title: "Mesas cheias, operação vazia de problemas.",
+    subtitle:
+      "Da comanda eletrônica na mão do garçom até a ficha técnica na cozinha. O sistema integra tudo.",
+    colorTheme: "orange",
+    heroImage:
+      "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800&auto=format",
+    dashboardImage:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format",
+    features: [
+      {
+        title: "Comandas e Mesas",
+        desc: "Lançamento via smartphone, sem erros de anotação.",
+        icon: Smartphone,
+      },
+      {
+        title: "Ficha e Estoque",
+        desc: "Baixa automática de insumos por receita.",
+        icon: Receipt,
+      },
+      {
+        title: "KDS (Cozinha)",
+        desc: "Monitores na cozinha com controle de tempo.",
+        icon: ChefHat,
+      },
+      {
+        title: "Autoatendimento",
+        desc: "Cardápio via QR Code direto na mesa.",
+        icon: QrCode,
+      },
+      {
+        title: "Controle de Caixa",
+        desc: "Fechamento cego para blindar seu financeiro.",
+        icon: Calculator,
+      },
+    ],
+    plans: [
+      {
+        id: "free",
+        name: "Free Trial",
+        price: "0",
+        desc: "Para food trucks.",
+        icon: Coffee,
+        features: [
+          "1 PDV Balcão",
+          "Pedidos Ilimitados",
+          "Cardápio Digital",
+          "Suporte Comunidade",
+        ],
+      },
+      {
+        id: "starter",
+        name: "Starter",
+        price: "127",
+        desc: "Para bares em crescimento.",
+        icon: Zap,
+        features: [
+          "Até 2 Caixas",
+          "Até 25 Mesas",
+          "Comanda Eletrônica",
+          "Suporte Email",
+        ],
+      },
+      {
+        id: "pro",
+        name: "Profissional",
+        price: "297",
+        desc: "Para restaurantes de alto fluxo.",
+        icon: Building2,
+        popular: true,
+        features: [
+          "Mesas Ilimitadas",
+          "Fichas Técnicas",
+          "Controle Insumos",
+          "WhatsApp",
+        ],
+      },
+      {
+        id: "enterprise",
+        name: "Enterprise",
+        price: "897",
+        desc: "Redes de restaurantes.",
+        icon: Shield,
+        features: [
+          "Múltiplas Lojas",
+          "API Totens",
+          "Integração Delivery",
+          "Treinamento",
+        ],
+      },
+    ],
+  },
+  assistencia: {
+    name: "Assistências Técnicas",
+    legenda:
+      "Gestão completa de OS, orçamentos e controle de peças para assistências.",
+    icon: Wrench,
+    badge: "Gestão de Reparos",
+    title: "Organize sua bancada e fature mais.",
+    subtitle:
+      "Fim do papel. Controle o status dos aparelhos, envie orçamentos por WhatsApp e gerencie seu estoque de peças.",
+    colorTheme: "blue",
+    heroImage:
+      "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=800&auto=format",
+    dashboardImage:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format",
+    features: [
+      {
+        title: "Ordens de Serviço",
+        desc: "Acompanhamento de status (Na bancada, Aguardando Peça, Pronto).",
+        icon: FileText,
+      },
+      {
+        title: "Avisos Automáticos",
+        desc: "Notifique o cliente via WhatsApp a cada atualização.",
+        icon: Bell,
+      },
+      {
+        title: "Garantias",
+        desc: "Controle de prazo de garantia por número de série.",
+        icon: Shield,
+      },
+      {
+        title: "Estoque de Peças",
+        desc: "Saiba exatamente o que tem na gaveta antes de orçar.",
+        icon: Package,
+      },
+      {
+        title: "Comissões",
+        desc: "Cálculo automático de comissão por técnico.",
+        icon: Calculator,
+      },
+    ],
+    plans: [
+      {
+        id: "free",
+        name: "Free",
+        price: "0",
+        desc: "Técnicos autônomos.",
+        icon: Coffee,
+        features: [
+          "1 Usuário",
+          "Até 30 OS/mês",
+          "Cadastro Simples",
+          "Suporte Comunidade",
+        ],
+      },
+      {
+        id: "starter",
+        name: "Starter",
+        price: "97",
+        desc: "Pequenas assistências.",
+        icon: Zap,
+        features: [
+          "Até 3 Usuários",
+          "OS Ilimitadas",
+          "Impressão de Termos",
+          "Suporte Email",
+        ],
+      },
+      {
+        id: "pro",
+        name: "Profissional",
+        price: "247",
+        desc: "Assistências estruturadas.",
+        icon: Building2,
+        popular: true,
+        features: [
+          "Até 10 Usuários",
+          "Alertas WhatsApp",
+          "Estoque de Peças",
+          "Controle de Comissões",
+        ],
+      },
+      {
+        id: "enterprise",
+        name: "Enterprise",
+        price: "797",
+        desc: "Redes e autorizadas.",
+        icon: Shield,
+        features: [
+          "Multi-lojas",
+          "SLA de Atendimento",
+          "API Externa",
+          "Gerente Dedicado",
+        ],
+      },
+    ],
+  },
+  oficinas: {
+    name: "Oficinas Mecânicas",
+    legenda:
+      "Orçamentos precisos, histórico de veículos e gestão da equipe mecânica.",
+    icon: Settings,
+    badge: "Centros Automotivos",
+    title: "Sua oficina rodando em alta performance.",
+    subtitle:
+      "Do orçamento rápido à entrega do veículo. Centralize o histórico de placas e maximize o tempo dos seus elevadores.",
+    colorTheme: "slate",
+    heroImage:
+      "https://images.unsplash.com/photo-1530046339160-ce3e5b0c7a2f?q=80&w=800&auto=format",
+    dashboardImage:
+      "https://images.unsplash.com/photo-1504868584401-ce0368df3303?q=80&w=1000&auto=format",
+    features: [
+      {
+        title: "Histórico por Placa",
+        desc: "Puxe todo o histórico de serviços apenas digitando a placa.",
+        icon: Car,
+      },
+      {
+        title: "Orçamentos Claros",
+        desc: "Gere orçamentos profissionais separando peças e mão de obra.",
+        icon: FileText,
+      },
+      {
+        title: "Inspeção Veicular",
+        desc: "Checklist de entrada com fotos para evitar dores de cabeça legais.",
+        icon: CheckSquare,
+      },
+      {
+        title: "Agenda de Elevadores",
+        desc: "Distribua os serviços para a equipe de forma visual.",
+        icon: Calendar,
+      },
+      {
+        title: "Emissão de NFS-e",
+        desc: "Notas de serviço emitidas com um clique no fechamento.",
+        icon: Receipt,
+      },
+    ],
+    plans: [
+      {
+        id: "free",
+        name: "Free",
+        price: "0",
+        desc: "Oficinas de 1 elevador.",
+        icon: Coffee,
+        features: [
+          "1 Usuário",
+          "Até 20 Veículos/mês",
+          "OS Básica",
+          "Suporte Comunidade",
+        ],
+      },
+      {
+        id: "starter",
+        name: "Starter",
+        price: "147",
+        desc: "Oficinas em crescimento.",
+        icon: Zap,
+        features: [
+          "Até 3 Usuários",
+          "Placas Ilimitadas",
+          "Checklist Digital",
+          "Suporte Email",
+        ],
+      },
+      {
+        id: "pro",
+        name: "Profissional",
+        price: "347",
+        desc: "Centros automotivos.",
+        icon: Building2,
+        popular: true,
+        features: [
+          "Múltiplos Mecânicos",
+          "Avisos WhatsApp",
+          "Controle de Comissões",
+          "Emissão NFS-e",
+        ],
+      },
+      {
+        id: "enterprise",
+        name: "Enterprise",
+        price: "997",
+        desc: "Redes de auto centers.",
+        icon: Shield,
+        features: [
+          "Multi-unidades",
+          "Integração Fornecedores",
+          "BI Avançado",
+          "Treinamento",
+        ],
+      },
+    ],
+  },
+  saude: {
+    name: "Consultórios & Clínicas",
+    legenda: "Agendamentos, prontuário eletrônico e faturamento unificados.",
+    icon: Stethoscope,
+    badge: "Gestão de Saúde",
+    title: "Sua clínica com agenda cheia e organizada.",
+    subtitle:
+      "Reduza faltas com lembretes automáticos e mantenha o histórico dos pacientes seguro.",
+    colorTheme: "pink",
+    heroImage:
+      "https://images.unsplash.com/photo-1629909613654-28711ee1366e?q=80&w=800&auto=format",
+    dashboardImage:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format",
+    features: [
+      {
+        title: "Agenda Inteligente",
+        desc: "Visualização por profissional, sala ou equipamento.",
+        icon: Calendar,
+      },
+      {
+        title: "Prontuário Eletrônico",
+        desc: "Histórico clínico customizável e totalmente seguro.",
+        icon: FileText,
+      },
+      {
+        title: "Lembretes Automáticos",
+        desc: "Reduza o absenteísmo com mensagens de WhatsApp.",
+        icon: Bell,
+      },
+      {
+        title: "Gestão Financeira",
+        desc: "Controle de repasses, guias e faturamento de consultas.",
+        icon: Calculator,
+      },
+      {
+        title: "Telemedicina",
+        desc: "Links de vídeo integrados direto no agendamento.",
+        icon: Monitor,
+      },
+    ],
+    plans: [
+      {
+        id: "free",
+        name: "Free",
+        price: "0",
+        desc: "Profissional autônomo.",
+        icon: Coffee,
+        features: [
+          "1 Agenda",
+          "Prontuário Básico",
+          "Até 50 Consultas/mês",
+          "Suporte Comunidade",
+        ],
+      },
+      {
+        id: "starter",
+        name: "Starter",
+        price: "197",
+        desc: "Consultórios pequenos.",
+        icon: Zap,
+        features: [
+          "Até 3 Profissionais",
+          "Agendas Ilimitadas",
+          "Lembretes SMS",
+          "Suporte Email",
+        ],
+      },
+      {
+        id: "pro",
+        name: "Profissional",
+        price: "497",
+        desc: "Clínicas estruturadas.",
+        icon: Building2,
+        popular: true,
+        features: [
+          "Profissionais Ilimitados",
+          "Lembretes WhatsApp",
+          "Repasses Financeiros",
+          "Emissão NFS-e",
+        ],
+      },
+      {
+        id: "enterprise",
+        name: "Enterprise",
+        price: "1297",
+        desc: "Policlínicas.",
+        icon: Shield,
+        features: [
+          "Múltiplas Unidades",
+          "Faturamento de Guias",
+          "BI de Produtividade",
+          "Gerente Conta",
+        ],
+      },
+    ],
+  },
+  beleza: {
+    name: "Salões & Barbearias",
+    legenda:
+      "Comissões precisas, agendamento online e gestão do fluxo de clientes.",
+    icon: Scissors,
+    badge: "Estética e Beleza",
+    title: "Beleza na entrega, precisão na gestão.",
+    subtitle:
+      "Agendamento que funciona sozinho 24h por dia e fechamento de comissões em um clique.",
+    colorTheme: "violet",
+    heroImage:
+      "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=80&w=800&auto=format",
+    dashboardImage:
+      "https://images.unsplash.com/photo-1504868584401-ce0368df3303?q=80&w=1000&auto=format",
+    features: [
+      {
+        title: "Link de Agendamento",
+        desc: "Seu cliente marca o horário sozinho pelo Instagram.",
+        icon: Smartphone,
+      },
+      {
+        title: "Split de Pagamento",
+        desc: "Calcule e separe a comissão do profissional automaticamente.",
+        icon: Calculator,
+      },
+      {
+        title: "Comandas Digitais",
+        desc: "Controle serviços executados e produtos consumidos.",
+        icon: Receipt,
+      },
+      {
+        title: "Pacotes e Assinaturas",
+        desc: "Venda pacotes (ex: 4 cortes) com baixa automática.",
+        icon: CreditCard,
+      },
+      {
+        title: "Controle de Estoque",
+        desc: "Saiba quanto de produto de uso interno está sendo consumido.",
+        icon: Package,
+      },
+    ],
+    plans: [
+      {
+        id: "free",
+        name: "Free",
+        price: "0",
+        desc: "Profissional Solo.",
+        icon: Coffee,
+        features: [
+          "1 Agenda",
+          "Link de Agendamento",
+          "Gestão Básica",
+          "Suporte Comunidade",
+        ],
+      },
+      {
+        id: "starter",
+        name: "Starter",
+        price: "87",
+        desc: "Pequenos estúdios.",
+        icon: Zap,
+        features: [
+          "Até 3 Profissionais",
+          "Comandas Digitais",
+          "Cálculo de Comissões",
+          "Suporte Email",
+        ],
+      },
+      {
+        id: "pro",
+        name: "Profissional",
+        price: "197",
+        desc: "Salões e Barbearias.",
+        icon: Building2,
+        popular: true,
+        features: [
+          "Até 10 Profissionais",
+          "Lembretes WhatsApp",
+          "Controle de Pacotes",
+          "Emissão NFS-e",
+        ],
+      },
+      {
+        id: "enterprise",
+        name: "Enterprise",
+        price: "597",
+        desc: "Redes e franquias.",
+        icon: Shield,
+        features: [
+          "Unidades Ilimitadas",
+          "App Customizado",
+          "BI de Retenção",
+          "Treinamento",
+        ],
+      },
+    ],
+  },
+  pet: {
+    name: "Pet Shops e Veterinárias",
+    legenda:
+      "Integre a venda do pet shop com o agendamento de banho e o prontuário veterinário.",
+    icon: Dog,
+    badge: "Mundo Pet",
+    title: "Gestão completa para quem cuida de pets.",
+    subtitle:
+      "Do controle de vacinas ao pacote de banho e tosa. Uma única plataforma para a loja e para a clínica.",
+    colorTheme: "amber",
+    heroImage:
+      "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?q=80&w=800&auto=format",
+    dashboardImage:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format",
+    features: [
+      {
+        title: "Prontuário Pet",
+        desc: "Histórico de peso, raça, vacinas e consultas.",
+        icon: FileText,
+      },
+      {
+        title: "Agenda Banho & Tosa",
+        desc: "Controle de pacotes mensais e controle de fila.",
+        icon: Calendar,
+      },
+      {
+        title: "Avisos de Retorno",
+        desc: "Lembre o dono que está na hora do vermífugo ou vacina.",
+        icon: Bell,
+      },
+      {
+        title: "Venda de Balcão",
+        desc: "PDV rápido integrado para venda de ração e acessórios.",
+        icon: ShoppingCart,
+      },
+      {
+        title: "Comissões",
+        desc: "Pagamento do tosador ou veterinário sem planilhas.",
+        icon: Calculator,
+      },
+    ],
+    plans: [
+      {
+        id: "free",
+        name: "Free",
+        price: "0",
+        desc: "Iniciantes.",
+        icon: Coffee,
+        features: [
+          "1 Usuário",
+          "Agenda Simples",
+          "Cadastro de Pets",
+          "Suporte Comunidade",
+        ],
+      },
+      {
+        id: "starter",
+        name: "Starter",
+        price: "127",
+        desc: "Pet shops focados em estética.",
+        icon: Zap,
+        features: [
+          "Até 3 Usuários",
+          "Controle Banho/Tosa",
+          "PDV Básico",
+          "Suporte Email",
+        ],
+      },
+      {
+        id: "pro",
+        name: "Profissional",
+        price: "297",
+        desc: "Clínicas com loja.",
+        icon: Building2,
+        popular: true,
+        features: [
+          "Usuários Ilimitados",
+          "Prontuário Completo",
+          "Alertas WhatsApp",
+          "Emissão Fiscal",
+        ],
+      },
+      {
+        id: "enterprise",
+        name: "Enterprise",
+        price: "897",
+        desc: "Hospitais Veterinários.",
+        icon: Shield,
+        features: [
+          "Multi-lojas",
+          "Internação",
+          "Exames Laboratoriais",
+          "Gerente Dedicado",
+        ],
+      },
+    ],
+  },
+  hotelaria: {
+    name: "Hotelaria",
+    legenda:
+      "Mapa de reservas, check-in ágil e controle de consumo para pousadas e hostels.",
+    icon: Hotel,
+    badge: "Hospedagem",
+    title: "Sua pousada no controle total.",
+    subtitle:
+      "Evite overbooking, acelere o check-out e saiba exatamente a rentabilidade de cada quarto.",
+    colorTheme: "cyan",
+    heroImage:
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format",
+    dashboardImage:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format",
+    features: [
+      {
+        title: "Mapa de Reservas",
+        desc: "Visualização em grade (Gantt) para facilitar alocações.",
+        icon: Calendar,
+      },
+      {
+        title: "Gestão de Consumo",
+        desc: "O hóspede consome no bar e vai direto para a conta do quarto.",
+        icon: Utensils,
+      },
+      {
+        title: "Controle de Limpeza",
+        desc: "Status de quarto (Sujo, Limpando, Livre) em tempo real.",
+        icon: CheckSquare,
+      },
+      {
+        title: "Motor de Reservas",
+        desc: "Receba reservas diretas sem pagar taxas de plataformas.",
+        icon: Smartphone,
+      },
+      {
+        title: "Faturamento",
+        desc: "Separação de diárias e consumo para emissão fiscal correta.",
+        icon: Receipt,
+      },
+    ],
+    plans: [
+      {
+        id: "free",
+        name: "Free",
+        price: "0",
+        desc: "Hostels muito pequenos.",
+        icon: Coffee,
+        features: [
+          "Até 5 Quartos",
+          "Mapa Básico",
+          "Controle Manual",
+          "Suporte Comunidade",
+        ],
+      },
+      {
+        id: "starter",
+        name: "Starter",
+        price: "197",
+        desc: "Pequenas pousadas.",
+        icon: Zap,
+        features: [
+          "Até 15 Quartos",
+          "Consumo Interno",
+          "Motor de Reservas",
+          "Suporte Email",
+        ],
+      },
+      {
+        id: "pro",
+        name: "Profissional",
+        price: "497",
+        desc: "Hotéis e Pousadas estruturadas.",
+        icon: Building2,
+        popular: true,
+        features: [
+          "Quartos Ilimitados",
+          "Integração OTA",
+          "Automação Limpeza",
+          "NFS-e",
+        ],
+      },
+      {
+        id: "enterprise",
+        name: "Enterprise",
+        price: "1497",
+        desc: "Redes hoteleiras.",
+        icon: Shield,
+        features: [
+          "Múltiplas Propriedades",
+          "API Fechada",
+          "Fechaduras Inteligentes",
+          "Gerente Conta",
+        ],
+      },
+    ],
+  },
+  condominios: {
+    name: "Gestão de Condomínios",
+    legenda:
+      "Emissão de boletos, controle de inadimplência e comunicação com moradores.",
+    icon: Building,
+    badge: "Administração",
+    title: "Administração transparente e sem estresse.",
+    subtitle:
+      "Automatize as cobranças, organize reservas de áreas e preste contas aos moradores com clareza.",
+    colorTheme: "slate",
+    heroImage:
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format",
+    dashboardImage:
+      "https://images.unsplash.com/photo-1504868584401-ce0368df3303?q=80&w=1000&auto=format",
+    features: [
+      {
+        title: "Cobrança Recorrente",
+        desc: "Emissão automática de boletos e Pix com baixa instantânea.",
+        icon: CreditCard,
+      },
+      {
+        title: "Reserva de Áreas",
+        desc: "Morador agenda churrasqueira ou salão pelo app.",
+        icon: Calendar,
+      },
+      {
+        title: "Controle de Portaria",
+        desc: "Registro de visitantes e recebimento de encomendas.",
+        icon: Shield,
+      },
+      {
+        title: "Prestação de Contas",
+        desc: "Dashboard financeiro transparente para o síndico.",
+        icon: Activity,
+      },
+      {
+        title: "Avisos e Mural",
+        desc: "Comunicação oficial digital, sem papel nos elevadores.",
+        icon: Bell,
+      },
+    ],
+    plans: [
+      {
+        id: "free",
+        name: "Free",
+        price: "0",
+        desc: "Pequenos prédios.",
+        icon: Coffee,
+        features: [
+          "Até 10 Unidades",
+          "Mural Simples",
+          "Contas a Pagar",
+          "Suporte Comunidade",
+        ],
+      },
+      {
+        id: "starter",
+        name: "Starter",
+        price: "147",
+        desc: "Condomínios residenciais.",
+        icon: Zap,
+        features: [
+          "Até 50 Unidades",
+          "Emissão de Boletos",
+          "Reserva de Áreas",
+          "Suporte Email",
+        ],
+      },
+      {
+        id: "pro",
+        name: "Profissional",
+        price: "397",
+        desc: "Condomínios Clubes.",
+        icon: Building2,
+        popular: true,
+        features: [
+          "Até 200 Unidades",
+          "Controle de Portaria",
+          "Baixa Automática Pix",
+          "App Morador",
+        ],
+      },
+      {
+        id: "enterprise",
+        name: "Enterprise",
+        price: "997",
+        desc: "Administradoras.",
+        icon: Shield,
+        features: [
+          "Múltiplos Prédios",
+          "Régua de Cobrança",
+          "API Bancária",
+          "Treinamento",
+        ],
+      },
+    ],
+  },
+  estetica: {
+    name: "Estética Automotiva",
+    legenda:
+      "Agendamento de boxes, venda de pacotes e controle de serviços detalhados.",
+    icon: Car,
+    badge: "Detailing",
+    title: "Valorize o serviço de alto padrão.",
+    subtitle:
+      "Controle de polimentos, vitrificações e higienizações. Organize sua agenda para serviços que levam dias.",
+    colorTheme: "blue",
+    heroImage:
+      "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=800&auto=format",
+    dashboardImage:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format",
+    features: [
+      {
+        title: "Agendamento de Box",
+        desc: "Garanta a disponibilidade do espaço físico para o carro.",
+        icon: Calendar,
+      },
+      {
+        title: "Checklist de Pintura",
+        desc: "Registro fotográfico do estado do veículo na entrada.",
+        icon: CheckSquare,
+      },
+      {
+        title: "Orçamentos Premium",
+        desc: "Propostas comerciais com visual de alto padrão em PDF.",
+        icon: FileText,
+      },
+      {
+        title: "Controle de Insumos",
+        desc: "Saiba exatamente quanto de cera e composto foi usado.",
+        icon: Package,
+      },
+      {
+        title: "CRM de Retenção",
+        desc: "Avise o cliente quando vencer a manutenção da vitrificação.",
+        icon: Bell,
+      },
+    ],
+    plans: [
+      {
+        id: "free",
+        name: "Free",
+        price: "0",
+        desc: "Detailers autônomos.",
+        icon: Coffee,
+        features: [
+          "1 Box",
+          "Agenda Básica",
+          "Cadastro Clientes",
+          "Suporte Comunidade",
+        ],
+      },
+      {
+        id: "starter",
+        name: "Starter",
+        price: "97",
+        desc: "Studios em crescimento.",
+        icon: Zap,
+        features: [
+          "Até 3 Boxes",
+          "Checklist Fotográfico",
+          "Emissão Orçamentos",
+          "Suporte Email",
+        ],
+      },
+      {
+        id: "pro",
+        name: "Profissional",
+        price: "247",
+        desc: "Centros de estética.",
+        icon: Building2,
+        popular: true,
+        features: [
+          "Boxes Ilimitados",
+          "Controle de Insumos",
+          "Avisos WhatsApp",
+          "Emissão NFS-e",
+        ],
+      },
+      {
+        id: "enterprise",
+        name: "Enterprise",
+        price: "797",
+        desc: "Franquias.",
+        icon: Shield,
+        features: [
+          "Multi-unidades",
+          "Painel Franqueador",
+          "BI de Vendas",
+          "Gerente Conta",
+        ],
+      },
+    ],
+  },
+  estacionamento: {
+    name: "Estacionamento",
+    legenda:
+      "Entrada e saída ágil, controle de pátio e faturamento de mensalistas.",
+    icon: CircleParking,
+    badge: "Controle de Pátio",
+    title: "Giro rápido e pátio sob controle.",
+    subtitle:
+      "Do rotativo ao mensalista. Evite fraudes no caixa e saiba a ocupação real do seu terreno.",
+    colorTheme: "amber",
+    heroImage:
+      "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?q=80&w=800&auto=format",
+    dashboardImage:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format",
+    features: [
+      {
+        title: "Ticket Rápido",
+        desc: "Emissão em segundos via impressora térmica móvel.",
+        icon: Printer,
+      },
+      {
+        title: "Gestão de Mensalistas",
+        desc: "Cobrança automática via Pix e bloqueio de inadimplentes.",
+        icon: CreditCard,
+      },
+      {
+        title: "Convênios",
+        desc: "Controle de selos e descontos atrelados a lojas parceiras.",
+        icon: Briefcase,
+      },
+      {
+        title: "Ocupação em Tempo Real",
+        desc: "Painel mostrando vagas ocupadas vs livres.",
+        icon: Activity,
+      },
+      {
+        title: "Tabela Dinâmica",
+        desc: "Preços que mudam por faixa de horário ou eventos.",
+        icon: Calculator,
+      },
+    ],
+    plans: [
+      {
+        id: "free",
+        name: "Free",
+        price: "0",
+        desc: "Terrenos pequenos.",
+        icon: Coffee,
+        features: [
+          "1 Operador",
+          "Tabela Fixa",
+          "Entrada/Saída Manual",
+          "Suporte Comunidade",
+        ],
+      },
+      {
+        id: "starter",
+        name: "Starter",
+        price: "97",
+        desc: "Estacionamentos rotativos.",
+        icon: Zap,
+        features: [
+          "Até 3 Operadores",
+          "Impressão Ticket",
+          "Controle Mensalistas",
+          "Suporte Email",
+        ],
+      },
+      {
+        id: "pro",
+        name: "Profissional",
+        price: "297",
+        desc: "Pátios estruturados.",
+        icon: Building2,
+        popular: true,
+        features: [
+          "Operadores Ilimitados",
+          "Tabelas Dinâmicas",
+          "Gestão Convênios",
+          "NFS-e",
+        ],
+      },
+      {
+        id: "enterprise",
+        name: "Enterprise",
+        price: "897",
+        desc: "Redes de estacionamentos.",
+        icon: Shield,
+        features: [
+          "Múltiplos Pátios",
+          "Integração LPR (Câmera)",
+          "Painel DRE",
+          "Treinamento",
+        ],
+      },
+    ],
+  },
+  escolas: {
+    name: "Escolas",
+    legenda:
+      "Matrículas, controle de inadimplência e portal do aluno/responsável.",
+    icon: GraduationCap,
+    badge: "Gestão Educacional",
+    title: "Educação sem dor de cabeça administrativa.",
+    subtitle:
+      "Foque no ensino. Nós automatizamos a emissão de boletos, o controle de diários e a comunicação.",
+    colorTheme: "violet",
+    heroImage:
+      "https://images.unsplash.com/photo-1503676260728-1c00da07bb5e?q=80&w=800&auto=format",
+    dashboardImage:
+      "https://images.unsplash.com/photo-1504868584401-ce0368df3303?q=80&w=1000&auto=format",
+    features: [
+      {
+        title: "Gestão Financeira",
+        desc: "Régua de cobrança automática de mensalidades.",
+        icon: CreditCard,
+      },
+      {
+        title: "Matrícula Digital",
+        desc: "Assinatura de contratos online na virada de semestre.",
+        icon: FileText,
+      },
+      {
+        title: "Diário de Classe",
+        desc: "Lançamento de notas e faltas pelo professor online.",
+        icon: BookOpen,
+      },
+      {
+        title: "Portal do Aluno",
+        desc: "Transparência financeira e acadêmica para os responsáveis.",
+        icon: Users,
+      },
+      {
+        title: "Controle de Turmas",
+        desc: "Alocação de salas e professores otimizada.",
+        icon: Calendar,
+      },
+    ],
+    plans: [
+      {
+        id: "free",
+        name: "Free",
+        price: "0",
+        desc: "Professores particulares.",
+        icon: Coffee,
+        features: [
+          "Até 20 Alunos",
+          "Cobrança Manual",
+          "Cadastro Simples",
+          "Suporte Comunidade",
+        ],
+      },
+      {
+        id: "starter",
+        name: "Starter",
+        price: "197",
+        desc: "Cursos livres pequenos.",
+        icon: Zap,
+        features: [
+          "Até 100 Alunos",
+          "Emissão Boletos",
+          "Diário Online",
+          "Suporte Email",
+        ],
+      },
+      {
+        id: "pro",
+        name: "Profissional",
+        price: "497",
+        desc: "Escolas regulares.",
+        icon: Building2,
+        popular: true,
+        features: [
+          "Até 500 Alunos",
+          "Portal do Aluno",
+          "Régua Cobrança Automática",
+          "NFS-e",
+        ],
+      },
+      {
+        id: "enterprise",
+        name: "Enterprise",
+        price: "1297",
+        desc: "Redes de ensino.",
+        icon: Shield,
+        features: [
+          "Alunos Ilimitados",
+          "Integração MEC",
+          "App Personalizado",
+          "Gerente Dedicado",
+        ],
+      },
+    ],
+  },
+  mercados: {
+    name: "Mercados",
+    legenda:
+      "Frente de caixa para alto giro, integração com balanças e curva ABC.",
+    icon: ShoppingCart,
+    badge: "Alto Giro",
+    title: "Velocidade no caixa, precisão no estoque.",
+    subtitle:
+      "Evite filas, controle rupturas de prateleira e saiba exatamente o que está gerando seu lucro.",
+    colorTheme: "emerald",
+    heroImage:
+      "https://images.unsplash.com/photo-1534723452862-4c874018d66d?q=80&w=800&auto=format",
+    dashboardImage:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format",
+    features: [
+      {
+        title: "PDV Offline",
+        desc: "Continue vendendo mesmo se a internet cair.",
+        icon: Zap,
+      },
+      {
+        title: "Integração Balança",
+        desc: "Leitura automática de peso e etiquetas no caixa.",
+        icon: Calculator,
+      },
+      {
+        title: "Gestão de Validade",
+        desc: "Alertas automáticos de lotes próximos do vencimento.",
+        icon: Bell,
+      },
+      {
+        title: "Curva ABC",
+        desc: "Relatórios focados nos produtos que mais vendem.",
+        icon: Activity,
+      },
+      {
+        title: "Controle de Perdas",
+        desc: "Registro de quebras para ajuste real de margem.",
+        icon: Package,
+      },
+    ],
+    plans: [
+      {
+        id: "free",
+        name: "Free",
+        price: "0",
+        desc: "Mercearias de bairro.",
+        icon: Coffee,
+        features: [
+          "1 PDV",
+          "Venda Simples",
+          "Sem Balança",
+          "Suporte Comunidade",
+        ],
+      },
+      {
+        id: "starter",
+        name: "Starter",
+        price: "147",
+        desc: "Mini-mercados.",
+        icon: Zap,
+        features: [
+          "Até 3 PDVs",
+          "Integração Balança",
+          "Gestão de Validades",
+          "Suporte Email",
+        ],
+      },
+      {
+        id: "pro",
+        name: "Profissional",
+        price: "397",
+        desc: "Supermercados.",
+        icon: Building2,
+        popular: true,
+        features: [
+          "Até 10 PDVs",
+          "PDV Offline",
+          "Curva ABC Completa",
+          "Suporte WhatsApp",
+        ],
+      },
+      {
+        id: "enterprise",
+        name: "Enterprise",
+        price: "1497",
+        desc: "Redes supermercadistas.",
+        icon: Shield,
+        features: [
+          "Multi-lojas",
+          "Integração Contábil ERP",
+          "Gestão de Açougue",
+          "Suporte 24/7",
+        ],
+      },
+    ],
+  },
+  farmacias: {
+    name: "Farmácias",
+    legenda:
+      "Controle de lotes rigoroso, gestão de convênios e integração SNGPC.",
+    icon: Pill,
+    badge: "Drogaria",
+    title: "Conformidade legal e saúde financeira.",
+    subtitle:
+      "Atenda a todas as exigências da Anvisa sem sacrificar a velocidade da sua frente de caixa.",
+    colorTheme: "emerald",
+    heroImage:
+      "https://images.unsplash.com/photo-1586015555751-63bb77f4322a?q=80&w=800&auto=format",
+    dashboardImage:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format",
+    features: [
+      {
+        title: "Controle SNGPC",
+        desc: "Gestão de medicamentos controlados integrada à Anvisa.",
+        icon: Shield,
+      },
+      {
+        title: "Lote e Validade",
+        desc: "Impossibilita a venda de produtos vencidos no caixa.",
+        icon: FileText,
+      },
+      {
+        title: "Farmácia Popular",
+        desc: "Módulo homologado para transações do governo.",
+        icon: Activity,
+      },
+      {
+        title: "Gestão de Convênios",
+        desc: "Controle de limites para empresas parceiras.",
+        icon: Briefcase,
+      },
+      {
+        title: "Reposição Inteligente",
+        desc: "Sugestão de compras baseada no histórico de vendas.",
+        icon: ShoppingCart,
+      },
+    ],
+    plans: [
+      {
+        id: "free",
+        name: "Free Trial",
+        price: "0",
+        desc: "Validação do sistema.",
+        icon: Coffee,
+        features: ["1 PDV", "Venda Simples", "Sem SNGPC", "14 Dias"],
+      },
+      {
+        id: "starter",
+        name: "Starter",
+        price: "197",
+        desc: "Drogarias independentes.",
+        icon: Zap,
+        features: [
+          "Até 3 PDVs",
+          "Lotes e Validades",
+          "Controle de Convênios",
+          "Suporte Email",
+        ],
+      },
+      {
+        id: "pro",
+        name: "Profissional",
+        price: "497",
+        desc: "Farmácias de alto fluxo.",
+        icon: Building2,
+        popular: true,
+        features: [
+          "Até 10 PDVs",
+          "Integração SNGPC",
+          "Farmácia Popular",
+          "Suporte WhatsApp",
+        ],
+      },
+      {
+        id: "enterprise",
+        name: "Enterprise",
+        price: "1297",
+        desc: "Redes de drogarias.",
+        icon: Shield,
+        features: [
+          "Multi-lojas",
+          "Laboratório",
+          "Roteirização Entregas",
+          "Gerente Conta",
+        ],
+      },
+    ],
+  },
+  academias: {
+    name: "Academia",
+    legenda:
+      "Cobrança recorrente, controle de catraca e app de treinos para o aluno.",
+    icon: Dumbbell,
+    badge: "Fitness & Studios",
+    title: "Retenção no alto, inadimplência no chão.",
+    subtitle:
+      "Automatize suas cobranças. Se o aluno não pagar, o sistema bloqueia a entrada automaticamente.",
+    colorTheme: "orange",
+    heroImage:
+      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format",
+    dashboardImage:
+      "https://images.unsplash.com/photo-1504868584401-ce0368df3303?q=80&w=1000&auto=format",
+    features: [
+      {
+        title: "Motor Recorrente",
+        desc: "Cobrança em cartão sem comprometer o limite do cliente.",
+        icon: CreditCard,
+      },
+      {
+        title: "Controle de Acesso",
+        desc: "Integração direta com catracas faciais ou biométricas.",
+        icon: Key,
+      },
+      {
+        title: "Gestão de Treinos",
+        desc: "Acompanhamento das fichas via smartphone.",
+        icon: Activity,
+      },
+      {
+        title: "Venda de Balcão",
+        desc: "PDV interno para suplementos e roupas.",
+        icon: ShoppingCart,
+      },
+      {
+        title: "CRM de Renovação",
+        desc: "Alertas para alunos ausentes (foco em retenção).",
+        icon: Users,
+      },
+    ],
+    plans: [
+      {
+        id: "free",
+        name: "Free",
+        price: "0",
+        desc: "Personal Trainers.",
+        icon: Coffee,
+        features: [
+          "Até 30 Alunos",
+          "Cobrança Manual",
+          "Fichas em PDF",
+          "Suporte Comunidade",
+        ],
+      },
+      {
+        id: "starter",
+        name: "Starter",
+        price: "147",
+        desc: "Studios de Funcional.",
+        icon: Zap,
+        features: [
+          "Até 150 Alunos",
+          "Cobrança Recorrente",
+          "Agendamento Turmas",
+          "Suporte Email",
+        ],
+      },
+      {
+        id: "pro",
+        name: "Profissional",
+        price: "397",
+        desc: "Academias de bairro.",
+        icon: Building2,
+        popular: true,
+        features: [
+          "Até 800 Alunos",
+          "Integração Catraca",
+          "CRM de Retenção",
+          "NFS-e",
+        ],
+      },
+      {
+        id: "enterprise",
+        name: "Enterprise",
+        price: "1097",
+        desc: "Grandes redes fitness.",
+        icon: Shield,
+        features: [
+          "Alunos Ilimitados",
+          "Aplicativo White-label",
+          "Multi-unidades",
+          "Gerente Dedicado",
+        ],
+      },
+    ],
+  },
 };
