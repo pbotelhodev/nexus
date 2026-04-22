@@ -6,6 +6,7 @@ import Segmentos from "./pages/Segmentos";
 import SegmentoDetalhe from "./pages/SegmPage"; 
 import Planos from "./pages/Planos";
 import Enterprise from "./pages/Enterprise";
+import Food from "./pages/telas/Food";
 
 
 function App() {
@@ -32,6 +33,9 @@ function App() {
 
       {/* Rota para a página de enterprise */}
       <Route path="/enterprise" element={<Enterprise />} />
+
+      {/* Rota para tela Food */}
+      <Route path="/dashboard" element={<Food />} />
 
     </Routes>
   );

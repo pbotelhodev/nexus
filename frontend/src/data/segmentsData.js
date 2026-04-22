@@ -250,7 +250,7 @@ export const segmentsDatabase = {
   legenda:
     "Controle mesas, pedidos e insumos em tempo real, com mais agilidade na operação.",
   icon: Utensils,
-  badge: "Food Service & Gastronomia",
+  badge: "Bares, Cafés & Restaurantes",
   title: "Mesas cheias, operação vazia de problemas.",
   subtitle:
     "Da comanda eletrônica na mão do garçom até a ficha técnica na cozinha. O sistema integra tudo.",
