@@ -320,7 +320,7 @@ export const segmentsDatabase = {
           "Cardápio Digital (QR Code)",
           "Cadastro de Produtos",
           "Relatórios Básicos de Vendas",
-          "Emissão NFC-e / Fiscal",
+          "Emissão NF-e, NFC-e / Fiscal",
           "Estoque Básico",
           "Fornecedores e Devedores (básico)",
           "Suporte via Email",
