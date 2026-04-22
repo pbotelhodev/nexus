@@ -40,6 +40,23 @@ import {
   ClipboardList,
 } from "lucide-react";
 
+// --- Imports das Hero Images locais ---
+import Varejo from "../assets/heroImages/varejo.png";
+import Food from "../assets/heroImages/food.png";
+import Assistencia from "../assets/heroImages/assistencia.png";
+import Oficinas from "../assets/heroImages/oficinas.png";
+import Saude from "../assets/heroImages/saude.png";
+import Beleza from "../assets/heroImages/beleza.png";
+import Pet from "../assets/heroImages/pet.png";
+import Hotelaria from "../assets/heroImages/hotelaria.png";
+import Condominios from "../assets/heroImages/condominio.png";
+import Estetica from "../assets/heroImages/estetica.png";
+import Estacionamento from "../assets/heroImages/estacionamento.png";
+import Escolas from "../assets/heroImages/escola.png";
+import Mercados from "../assets/heroImages/mercado.png";
+import Farmacias from "../assets/heroImages/farmacia.png";
+import Academias from "../assets/heroImages/academia.png";
+
 export const themeColors = {
   orange: {
     heroBlob: "bg-orange-50",
@@ -142,8 +159,7 @@ export const segmentsDatabase = {
     subtitle:
       "Do PDV ao controle de estoque multi-lojas. Centralize sua operação para focar em vender mais.",
     colorTheme: "emerald",
-    heroImage:
-      "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?q=80&w=800&auto=format",
+    heroImage: Varejo,
     dashboardImage:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format",
     features: [
@@ -239,8 +255,7 @@ export const segmentsDatabase = {
     subtitle:
       "Da comanda eletrônica na mão do garçom até a ficha técnica na cozinha. O sistema integra tudo.",
     colorTheme: "orange",
-    heroImage:
-      "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800&auto=format",
+    heroImage: Food,
     dashboardImage:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format",
     features: [
@@ -336,8 +351,7 @@ export const segmentsDatabase = {
     subtitle:
       "Fim do papel. Controle o status dos aparelhos, envie orçamentos por WhatsApp e gerencie seu estoque de peças.",
     colorTheme: "blue",
-    heroImage:
-      "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=800&auto=format",
+    heroImage: Assistencia,
     dashboardImage:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format",
     features: [
@@ -433,8 +447,7 @@ export const segmentsDatabase = {
     subtitle:
       "Do orçamento rápido à entrega do veículo. Centralize o histórico de placas e maximize o tempo dos seus elevadores.",
     colorTheme: "slate",
-    heroImage:
-      "https://images.unsplash.com/photo-1530046339160-ce3e5b0c7a2f?q=80&w=800&auto=format",
+    heroImage: Oficinas,
     dashboardImage:
       "https://images.unsplash.com/photo-1504868584401-ce0368df3303?q=80&w=1000&auto=format",
     features: [
@@ -529,8 +542,7 @@ export const segmentsDatabase = {
     subtitle:
       "Reduza faltas com lembretes automáticos e mantenha o histórico dos pacientes seguro.",
     colorTheme: "pink",
-    heroImage:
-      "https://images.unsplash.com/photo-1629909613654-28711ee1366e?q=80&w=800&auto=format",
+    heroImage: Saude,
     dashboardImage:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format",
     features: [
@@ -626,8 +638,7 @@ export const segmentsDatabase = {
     subtitle:
       "Agendamento que funciona sozinho 24h por dia e fechamento de comissões em um clique.",
     colorTheme: "violet",
-    heroImage:
-      "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=80&w=800&auto=format",
+    heroImage: Beleza,
     dashboardImage:
       "https://images.unsplash.com/photo-1504868584401-ce0368df3303?q=80&w=1000&auto=format",
     features: [
@@ -723,8 +734,7 @@ export const segmentsDatabase = {
     subtitle:
       "Do controle de vacinas ao pacote de banho e tosa. Uma única plataforma para a loja e para a clínica.",
     colorTheme: "amber",
-    heroImage:
-      "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?q=80&w=800&auto=format",
+    heroImage: Pet,
     dashboardImage:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format",
     features: [
@@ -820,8 +830,7 @@ export const segmentsDatabase = {
     subtitle:
       "Evite overbooking, acelere o check-out e saiba exatamente a rentabilidade de cada quarto.",
     colorTheme: "cyan",
-    heroImage:
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format",
+    heroImage: Hotelaria,
     dashboardImage:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format",
     features: [
@@ -917,8 +926,7 @@ export const segmentsDatabase = {
     subtitle:
       "Automatize as cobranças, organize reservas de áreas e preste contas aos moradores com clareza.",
     colorTheme: "slate",
-    heroImage:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format",
+    heroImage: Condominios,
     dashboardImage:
       "https://images.unsplash.com/photo-1504868584401-ce0368df3303?q=80&w=1000&auto=format",
     features: [
@@ -1014,8 +1022,7 @@ export const segmentsDatabase = {
     subtitle:
       "Controle de polimentos, vitrificações e higienizações. Organize sua agenda para serviços que levam dias.",
     colorTheme: "blue",
-    heroImage:
-      "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=800&auto=format",
+    heroImage: Estetica,
     dashboardImage:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format",
     features: [
@@ -1111,8 +1118,7 @@ export const segmentsDatabase = {
     subtitle:
       "Do rotativo ao mensalista. Evite fraudes no caixa e saiba a ocupação real do seu terreno.",
     colorTheme: "amber",
-    heroImage:
-      "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?q=80&w=800&auto=format",
+    heroImage: Estacionamento,
     dashboardImage:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format",
     features: [
@@ -1208,8 +1214,7 @@ export const segmentsDatabase = {
     subtitle:
       "Foque no ensino. Nós automatizamos a emissão de boletos, o controle de diários e a comunicação.",
     colorTheme: "violet",
-    heroImage:
-      "https://images.unsplash.com/photo-1503676260728-1c00da07bb5e?q=80&w=800&auto=format",
+    heroImage: Escolas,
     dashboardImage:
       "https://images.unsplash.com/photo-1504868584401-ce0368df3303?q=80&w=1000&auto=format",
     features: [
@@ -1305,8 +1310,7 @@ export const segmentsDatabase = {
     subtitle:
       "Evite filas, controle rupturas de prateleira e saiba exatamente o que está gerando seu lucro.",
     colorTheme: "emerald",
-    heroImage:
-      "https://images.unsplash.com/photo-1534723452862-4c874018d66d?q=80&w=800&auto=format",
+    heroImage: Mercados,
     dashboardImage:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format",
     features: [
@@ -1402,8 +1406,7 @@ export const segmentsDatabase = {
     subtitle:
       "Atenda a todas as exigências da Anvisa sem sacrificar a velocidade da sua frente de caixa.",
     colorTheme: "emerald",
-    heroImage:
-      "https://images.unsplash.com/photo-1586015555751-63bb77f4322a?q=80&w=800&auto=format",
+    heroImage: Farmacias,
     dashboardImage:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format",
     features: [
@@ -1494,8 +1497,7 @@ export const segmentsDatabase = {
     subtitle:
       "Automatize suas cobranças. Se o aluno não pagar, o sistema bloqueia a entrada automaticamente.",
     colorTheme: "orange",
-    heroImage:
-      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format",
+    heroImage: Academias,
     dashboardImage:
       "https://images.unsplash.com/photo-1504868584401-ce0368df3303?q=80&w=1000&auto=format",
     features: [

@@ -135,7 +135,7 @@ const SegmentoDetalhe = () => {
             <div className="relative lg:ml-10">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-100">
                 <img
-                  src={data.HeroImage}
+                  src={data.heroImage}
                   alt={data.name}
                   className="w-full h-100 object-cover"
                 />
