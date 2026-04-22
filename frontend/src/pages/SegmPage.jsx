@@ -272,10 +272,22 @@ const SegmentoDetalhe = () => {
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             {data.plans.map((plan) => {
               const Icon = plan.icon;
+
+              // 🔥 cálculo do anual com 15% OFF
+              const monthly = parseFloat(plan.price);
+              const annual =
+                plan.id === "starter" || plan.id === "pro"
+                  ? Math.round(monthly * 12 * 0.85)
+                  : null;
+
               return (
                 <div
                   key={plan.id}
-                  className={`bg-white rounded-2xl p-6 xl:p-8 border-2 flex flex-col relative ${plan.popular ? "border-emerald-500 shadow-xl shadow-emerald-500/10 lg:-translate-y-4" : "border-gray-100 shadow-sm"}`}
+                  className={`bg-white rounded-2xl p-6 xl:p-8 border-2 flex flex-col relative ${
+                    plan.popular
+                      ? "border-emerald-500 shadow-xl shadow-emerald-500/10 lg:-translate-y-4"
+                      : "border-gray-100 shadow-sm"
+                  }`}
                 >
                   {plan.popular && (
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-emerald-500 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm whitespace-nowrap">
@@ -285,7 +297,11 @@ const SegmentoDetalhe = () => {
 
                   <div className="flex items-center gap-3 mb-6">
                     <div
-                      className={`p-2.5 rounded-xl ${plan.popular ? "bg-emerald-100 text-emerald-600" : "bg-slate-100 text-slate-600"}`}
+                      className={`p-2.5 rounded-xl ${
+                        plan.popular
+                          ? "bg-emerald-100 text-emerald-600"
+                          : "bg-slate-100 text-slate-600"
+                      }`}
                     >
                       <Icon className="w-6 h-6" />
                     </div>
@@ -302,6 +318,13 @@ const SegmentoDetalhe = () => {
                           R$ {plan.price}
                         </span>
                         <span className="text-gray-500 font-medium">/mês</span>
+
+                        {/* 👇 anual com 15% */}
+                        {annual && (
+                          <p className="text-sm text-emerald-600 font-semibold mt-1">
+                            ou R$ {annual}/ano (15% OFF)
+                          </p>
+                        )}
                       </>
                     ) : (
                       <span className="text-3xl font-bold text-gray-900">
@@ -328,7 +351,9 @@ const SegmentoDetalhe = () => {
                         className="flex items-start gap-3 text-sm text-gray-700 font-medium"
                       >
                         <CheckCircle2
-                          className={`w-5 h-5 shrink-0 ${plan.popular ? "text-emerald-500" : "text-gray-400"}`}
+                          className={`w-5 h-5 shrink-0 ${
+                            plan.popular ? "text-emerald-500" : "text-gray-400"
+                          }`}
                         />
                         {feat}
                       </li>
