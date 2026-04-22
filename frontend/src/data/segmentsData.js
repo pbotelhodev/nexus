@@ -289,8 +289,8 @@ export const segmentsDatabase = {
     {
       id: "starter",
       name: "Starter",
-      price: 129.9,
-      annualPrice: 109.9, // 🔥 anual (economia real)
+      price: 129,
+      annualPrice: 109, // 🔥 anual (economia real)
       desc: "Operação essencial para crescimento.",
       icon: Zap,
       features: [
@@ -301,7 +301,7 @@ export const segmentsDatabase = {
         "Suporte por email",
       ],
       addon: {
-        label: "Integração Delivery",
+        label: "Integração Delivery/ifood",
         price: "19.90",
         desc: "+ R$ 19,90/mês",
       },
@@ -322,7 +322,7 @@ export const segmentsDatabase = {
         "Multi-usuário + permissões",
         "Fidelidade e clientes",
         "Relatórios avançados (DRE)",
-        "Integração delivery inclusa",
+        "Integração delivery/ifood inclusa",
         "Suporte prioritário",
       ],
     },
