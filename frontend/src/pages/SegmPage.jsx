@@ -1,5 +1,5 @@
 /* Import tools */
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   Utensils,
   Store,
@@ -37,10 +37,8 @@ import { segmentsDatabase, themeColors } from "../data/segmentsData";
 const DashboardMockup =
   "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000";
 
-
 const SegmentoDetalhe = () => {
   const { slug } = useParams();
-  // 4. Busca os dados.
   const data = segmentsDatabase[slug];
 
   if (!data) {
@@ -63,7 +61,6 @@ const SegmentoDetalhe = () => {
     );
   }
 
-  // 5. Configura as cores e ícones dinâmicos
   const theme = themeColors[data.colorTheme] || themeColors.emerald;
   const HeroIcon = data.icon;
 
@@ -111,7 +108,6 @@ const SegmentoDetalhe = () => {
                 </a>
               </div>
 
-              {/* Benefícios Rápidos Genéricos */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm text-gray-700 font-medium">
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4 text-emerald-500 shrink-0" />
@@ -298,18 +294,34 @@ const SegmentoDetalhe = () => {
                     </h3>
                   </div>
 
-                  <div className="mb-6">
-                    <span className="text-4xl font-bold text-gray-900">
-                      R$ {plan.price}
-                    </span>
-                    <span className="text-gray-500 font-medium">/mês</span>
+                  {/* Preço */}
+                  <div className="mb-2">
+                    {plan.price ? (
+                      <>
+                        <span className="text-4xl font-bold text-gray-900">
+                          R$ {plan.price}
+                        </span>
+                        <span className="text-gray-500 font-medium">/mês</span>
+                      </>
+                    ) : (
+                      <span className="text-3xl font-bold text-gray-900">
+                        Sob consulta
+                      </span>
+                    )}
                   </div>
+
+                  {/* Trial note */}
+                  {plan.trialNote && (
+                    <p className="text-xs text-emerald-600 font-semibold mb-4 leading-snug">
+                      ✦ {plan.trialNote}
+                    </p>
+                  )}
 
                   <p className="text-sm text-gray-500 mb-8 min-h-10 leading-relaxed">
                     {plan.desc}
                   </p>
 
-                  <ul className="space-y-4 mb-8 flex-1">
+                  <ul className="space-y-4 mb-6 flex-1">
                     {plan.features.map((feat, i) => (
                       <li
                         key={i}
@@ -323,16 +335,37 @@ const SegmentoDetalhe = () => {
                     ))}
                   </ul>
 
-                  <a
-                    href={plan.id === "enterprise" ? "/enterprise" : "/signup"}
+                  {/* Add-on opcional */}
+                  {plan.addon && (
+                    <div className="mb-6 rounded-xl border border-dashed border-orange-300 bg-orange-50 px-4 py-3">
+                      <p className="text-xs font-bold text-orange-500 uppercase tracking-wider mb-1">
+                        ➕ Add-on opcional
+                      </p>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-sm text-gray-700 font-medium leading-snug">
+                          {plan.addon.label}
+                        </span>
+                        <span className="text-sm font-bold text-orange-600 whitespace-nowrap">
+                          {plan.addon.desc}
+                        </span>
+                      </div>
+                    </div>
+                  )}
+
+                  <Link
+                    to={plan.id === "enterprise" ? "/enterprise" : "/signup"}
                     className={`w-full py-3.5 rounded-xl text-center font-bold transition-all ${
                       plan.popular
                         ? "bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg"
                         : "bg-slate-100 hover:bg-slate-200 text-slate-800"
                     }`}
                   >
-                    {plan.id === "free" ? "Começar Grátis" : "Assinar Plano"}
-                  </a>
+                    {plan.id === "free"
+                      ? "Começar Grátis"
+                      : plan.id === "enterprise"
+                        ? plan.cta || "Falar com Consultor"
+                        : "Assinar Plano"}
+                  </Link>
                 </div>
               );
             })}
