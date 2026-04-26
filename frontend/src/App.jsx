@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+/* Import Landing Page */
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
@@ -6,6 +7,9 @@ import Segmentos from "./pages/Segmentos";
 import SegmentoDetalhe from "./pages/SegmPage"; 
 import Planos from "./pages/Planos";
 import Enterprise from "./pages/Enterprise";
+
+/* Import App Layout */
+import AppLayout from "./layouts/AppLayout";
 import Food from "./pages/telas/Food";
 
 
@@ -34,8 +38,10 @@ function App() {
       {/* Rota para a página de enterprise */}
       <Route path="/enterprise" element={<Enterprise />} />
 
-      {/* Rota para tela Food */}
-      <Route path="/dashboard" element={<Food />} />
+      {/* Rota para tela do App */}
+      <Route path="/app" element={<AppLayout />}>
+
+      </Route>
 
     </Routes>
   );
