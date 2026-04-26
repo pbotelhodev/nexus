@@ -8,14 +8,22 @@ import SegmentoDetalhe from "./pages/SegmPage";
 import Planos from "./pages/Planos";
 import Enterprise from "./pages/Enterprise";
 
-/* Import App Layout */
+/* Import App Layout - Bar e Restaurante */
 import AppLayout from "./layouts/AppLayout";
-import Food from "./pages/telas/Food";
+import Comanda from "./pages/telas/Pedidos";
+import Dashboard from "./pages/telas/Dashboard";
+import Mesas from "./pages/telas/Mesa";
+import Cardapio from "./pages/telas/Cardapio";
+import Delivery from "./pages/telas/Delivery";
+import Cozinha from "./pages/telas/Cozinha";
+import Estoque from "./pages/telas/Estoque";
+import Financeiro from "./pages/telas/Financeiro";
+import Configuracoes from "./pages/telas/Configuracoes";
+
 
 
 function App() {
   return (
-    
     <Routes>
       {/* Rota inicial */}
       <Route path="/" element={<Home />} />
@@ -38,11 +46,20 @@ function App() {
       {/* Rota para a página de enterprise */}
       <Route path="/enterprise" element={<Enterprise />} />
 
+      {/* Rotas - Bar e Restaurante */}
+
       {/* Rota para tela do App */}
       <Route path="/app" element={<AppLayout />}>
-
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="comanda" element={<Comanda />} />
+        <Route path="mesas" element={<Mesas />} />
+        <Route path="cardapio" element={<Cardapio />} />
+        <Route path="delivery" element={<Delivery />} />
+        <Route path="cozinha" element={<Cozinha />} />
+        <Route path="estoque" element={<Estoque />} />
+        <Route path="financeiro" element={<Financeiro />} />
+        <Route path="configuracoes" element={<Configuracoes />} />
       </Route>
-
     </Routes>
   );
 }
