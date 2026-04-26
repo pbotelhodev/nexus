@@ -1,5 +1,5 @@
 const AppLayout = () => {
-  return <div>TESTE</div>;
+  return <div>Cardápio</div>;
 };
 
 export default AppLayout;

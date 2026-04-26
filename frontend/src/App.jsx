@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Segmentos from "./pages/Segmentos";
-import SegmentoDetalhe from "./pages/SegmPage"; 
+import SegmentoDetalhe from "./pages/SegmPage";
 import Planos from "./pages/Planos";
 import Enterprise from "./pages/Enterprise";
 
@@ -18,9 +18,8 @@ import Delivery from "./pages/telas/Delivery";
 import Cozinha from "./pages/telas/Cozinha";
 import Estoque from "./pages/telas/Estoque";
 import Financeiro from "./pages/telas/Financeiro";
-import Configuracoes from "./pages/telas/Configuracoes";
 
-
+/* Rotas de Configurações */
 
 function App() {
   return (
@@ -58,7 +57,18 @@ function App() {
         <Route path="cozinha" element={<Cozinha />} />
         <Route path="estoque" element={<Estoque />} />
         <Route path="financeiro" element={<Financeiro />} />
-        <Route path="configuracoes" element={<Configuracoes />} />
+      </Route>
+
+      {/* Rota para a página de configurações */}
+      <Route path="/settings" element={<div>Configurações</div>}> {/* Página de Configurações */}
+        <Route path="profile" element={<div>Configurações de Perfil</div>} /> {/* Página de configurações de perfil */}
+        <Route
+          path="enterprise"
+          element={<div>Configurações de Empresa</div>}
+        /> {/* Página de configurações de empresa */}
+        <Route path="business" element={<div>Configurações de Negócios</div>} /> {/* Página de configurações de negócios */}
+        <Route path="billing" element={<div>Configurações de Cobrança</div>} /> {/* Página de configurações de dados fiscais */}
+        <Route path="plans" element={<div>Configurações de Planos</div>} /> {/* Página de configurações de planos */}
       </Route>
     </Routes>
   );

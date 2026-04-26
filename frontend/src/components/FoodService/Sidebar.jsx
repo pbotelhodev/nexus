@@ -1,62 +1,155 @@
-import { Banknote, BookOpen, LayoutGrid, Package, Sofa, Soup } from "lucide-react";
+/* Import Tools */
+import { useState, useEffect, useRef } from "react";
+import { Link, NavLink } from "react-router-dom";
 
-import Logo from "../../assets/logo.png"; // Imagem do logo
+import {
+  Banknote,
+  BookOpen,
+  LayoutGrid,
+  Package,
+  Soup,
+  Plus,
+  HandPlatter,
+  Motorbike,
+  Settings,
+} from "lucide-react";
 
+import Logo from "../../assets/logo.png";
 
-const Sidebar = () => {
-    
-    const navItems = [
-    { name: "Visão Geral", icon: LayoutGrid, active: true },
-    { name: "Mesas", icon: Sofa, active: false },
-    { name: "Cardápio", icon: BookOpen, active: false },
-    { name: "Cozinha", icon: Soup, active: false },
-    { name: "Estoque", icon: Package, active: false },
-    { name: "Financeiro", icon: Banknote, active: false },
+const Sidebar = ({menuAberto, setMenuAberto}) => {
+  
+  const [activeItem, setActiveItem] = useState("Dashboard");
+
+  /* Variaveis */
+
+  const sidebarRef = useRef(null);
+
+  const navItems = [
+    { name: "Comanda", slug: "comanda", icon: Plus, color: true },
+    { name: "Dashboard", slug: "dashboard", icon: LayoutGrid, color: false },
+    { name: "Mesas", slug: "mesas", icon: HandPlatter, color: false },
+    { name: "Cardápio", slug: "cardapio", icon: BookOpen, color: false },
+    { name: "Cozinha", slug: "cozinha", icon: Soup, color: false },
+    { name: "Delivery", slug: "delivery", icon: Motorbike, color: false },
+    { name: "Estoque", slug: "estoque", icon: Package, color: false },
+    { name: "Financeiro", slug: "financeiro", icon: Banknote, color: false },
+    { name: "Configurações", slug: "configuracoes", icon: Settings, color: false },
   ];
 
-    return (
-      <aside className="w-65 bg-white flex flex-col z-10 shadow-[2px_0_8px_rgba(0,0,0,0.02)]">
-        {/* Header da Sidebar (Logo) */}
-        <div className="p-6">
-          <div className="flex items-center gap-2 mb-1">
-            {/* Representação visual do logo via CSS */}
-            <img src={Logo} alt="" className="w-10 h-10" />
-            <span className="text-xl font-bold text-gray-800 tracking-tight">
-              Nexius
-            </span>
-          </div>
-        </div>
+  /* Effects */
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      // só roda no mobile
+      if (window.innerWidth < 1024) {
+        if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
+          setMenuAberto(false);
+        }
+      }
+    };
 
-        {/* Botão de Ação Principal */}
-        <div className="px-6 mb-6">
-          <button className="w-full bg-[#1aa350] hover:bg-[#168b44] text-white font-medium py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors shadow-sm">
-            <Plus size={18} strokeWidth={2.5} />
-            Novo Pedido
-          </button>
-        </div>
+    document.addEventListener("mousedown", handleClickOutside);
 
-        {/* Menu de Navegação */}
-        <nav className="flex-1 px-3 space-y-1">
-          {navItems.map((item) => (
-            <a
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  return (
+    <aside
+      ref={sidebarRef}
+      onMouseEnter={() => {
+        if (window.innerWidth >= 1024) setMenuAberto(true);
+      }}
+      onMouseLeave={() => {
+        if (window.innerWidth >= 1024) setMenuAberto(false);
+      }}
+      onClick={() => {
+        if (window.innerWidth < 1024) {
+          setMenuAberto(true);
+        }
+      }}
+      className={`bg-white flex flex-col z-10 shadow-[2px_0_8px_rgba(0,0,0,0.02)] transition-all duration-300 ease-in-out min-h-screen overflow-hidden ${
+        menuAberto ? "w-50" : "w-18"
+      }`}
+    >
+      {/* Header da Sidebar */}
+      <div className="p-6">
+        <div className="flex items-center gap-2 mb-1 overflow-hidden transition-all duration-300">
+          <img
+            src={Logo}
+            alt="Logo Nexium"
+            className="w-6 h-6 shrink-0 transition-all duration-300"
+          />
+
+          <span
+            className={`text-lg font-bold text-gray-800 tracking-tight whitespace-nowrap overflow-hidden ease-in-out ${
+              menuAberto
+                ? "opacity-100 max-w-40 translate-x-0"
+                : "opacity-0 max-w-0 -translate-x-2"
+            }`}
+          >
+            Nexium
+          </span>
+        </div>
+      </div>
+
+      {/* Menu de Navegação */}
+      <nav className="flex-1 px-3 space-y-1">
+        {navItems.map((item) => {
+          const Icon = item.icon;
+          const isNovoPedido = item.name === "Comanda";
+          const isActive = item.name === activeItem;
+
+          return (
+            <NavLink
               key={item.name}
-              href="#"
-              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium text-sm transition-colors ${
-                item.active
-                  ? "text-gray-800 bg-gray-50"
-                  : "text-gray-500 hover:text-gray-800 hover:bg-gray-50"
+              to={`${item.name === "Configurações" ? "/settings" : `/app/${item.slug}`}`}
+              onClick={() => {
+                setActiveItem(item.name);
+              }}
+              className={`flex items-center rounded-lg font-medium text-sm whitespace-nowrap overflow-hidden transition-all duration-300 ease-in-out ${
+                menuAberto
+                  ? "justify-start gap-3 px-3 py-2.5"
+                  : "justify-center gap-0 px-0 py-2.5"
+              } ${
+                isNovoPedido
+                  ? "bg-primary hover:bg-hover text-white"
+                  : isActive
+                    ? "text-primary"
+                    : "text-gray-500 hover:text-gray-800 hover:bg-gray-50"
               }`}
             >
-              <item.icon
+              <Icon
                 size={20}
-                strokeWidth={item.active ? 2.5 : 2}
-                className={item.active ? "text-gray-800" : "text-gray-400"}
+                strokeWidth={isActive ? 2.5 : 2}
+                className={`shrink-0 transition-all duration-300 ${
+                  isNovoPedido
+                    ? "text-white"
+                    : isActive
+                      ? "text-primary"
+                      : "text-gray-400"
+                }`}
               />
-              {item.name}
-            </a>
-          ))}
-        </nav>
-      </aside>
-    );
-}
- export default Sidebar;
+
+              <span
+                className={`overflow-hidden whitespace-nowrap transition-all duration-300 ease-in-out ${
+                  menuAberto
+                    ? "opacity-100 max-w-40 translate-x-0"
+                    : "opacity-0 max-w-0 -translate-x-2"
+                }`}
+              >
+                {item.name === "Comanda"
+                  ? "Novo Pedido"
+                  : item.name === "Dashboard"
+                    ? "Visão Geral"
+                    : item.name}
+              </span>
+            </NavLink>
+          );
+        })}
+      </nav>
+    </aside>
+  );
+};
+
+export default Sidebar;

@@ -3,7 +3,6 @@
 
 :root {
   --font-primary: "Manrope", "Inter";
-
 }
 
 body {
@@ -16,6 +15,10 @@ body {
 
 .bg-primary {
   background-color: #16a34a;
+}
+
+.bg-hover:hover {
+  background-color: #168b44;
 }
 
 .color-primary {
@@ -47,4 +50,19 @@ body {
   background: rgba(51, 65, 85, 0.5);
   border: 2px solid transparent;
   background-clip: content-box;
+}
+
+/* Keyframes */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 6s linear infinite;
 }
