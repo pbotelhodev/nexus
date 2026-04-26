@@ -56,7 +56,7 @@ const AppLayout = () => {
               <div
                 className={`w-12 h-12 flex items-center justify-center bg-gray-200 rounded-lg`}
               >
-                <card.icone className="w-9 h-9 "/>
+                <card.icone className="w-7 h-7 "/>
               </div>
               <div className="text-center">
                 <p>{card.legenda}</p>
