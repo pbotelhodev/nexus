@@ -16,7 +16,7 @@ const AppLayout = () => {
       <Sidebar menuAberto={menuAberto} setMenuAberto={setMenuAberto} />
 
       {/* ÁREA PRINCIPAL */}
-      <div className="hidden lg:flex-1 lg:flex lg:flex-col lg:min-w-0">
+      <div className="flex-1 flex flex-col min-w-0">
         {/* HEADER SUPERIOR */}
         <Header />
 
