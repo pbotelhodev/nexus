@@ -6,6 +6,8 @@ import { useOutletContext } from "react-router-dom";
 
 const Dashboard = () => {
   const { menuAberto } = useOutletContext();
+
+  /* Infos para dinamica dos carns ========== Trocar pelos dados reais */
   const mesas = 30;
   const mesasOcupadas = 17;
   const pedidosAtivos = 22;
