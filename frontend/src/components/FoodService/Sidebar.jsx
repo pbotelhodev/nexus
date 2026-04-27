@@ -1,6 +1,6 @@
 /* Import Tools */
-import { useState, useEffect, useRef } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 import {
   Banknote,
@@ -16,12 +16,9 @@ import {
 
 import Logo from "../../assets/logo.png";
 
-const Sidebar = ({menuAberto, setMenuAberto}) => {
-  
-  const [activeItem, setActiveItem] = useState("Dashboard");
-
+const Sidebar = ({ menuAberto, setMenuAberto }) => {
   /* Variaveis */
-
+  const location = useLocation();
   const sidebarRef = useRef(null);
 
   const navItems = [
@@ -33,7 +30,12 @@ const Sidebar = ({menuAberto, setMenuAberto}) => {
     { name: "Delivery", slug: "delivery", icon: Motorbike, color: false },
     { name: "Estoque", slug: "estoque", icon: Package, color: false },
     { name: "Financeiro", slug: "financeiro", icon: Banknote, color: false },
-    { name: "Configurações", slug: "configuracoes", icon: Settings, color: false },
+    {
+      name: "Configurações",
+      slug: "configuracoes",
+      icon: Settings,
+      color: false,
+    },
   ];
 
   /* Effects */
@@ -68,7 +70,7 @@ const Sidebar = ({menuAberto, setMenuAberto}) => {
           setMenuAberto(true);
         }
       }}
-      className={`bg-white flex flex-col z-10 shadow-[2px_0_8px_rgba(0,0,0,0.02)] transition-all duration-300 ease-in-out min-h-full overflow-hidden ${
+      className={`bg-white sticky top-0 h-screen flex flex-col z-10 shadow-[2px_0_8px_rgba(0,0,0,0.02)] transition-all duration-300 ease-in-out min-h-full overflow-hidden ${
         menuAberto ? "w-50" : "w-18"
       }`}
     >
@@ -98,34 +100,34 @@ const Sidebar = ({menuAberto, setMenuAberto}) => {
         {navItems.map((item) => {
           const Icon = item.icon;
           const isNovoPedido = item.name === "Comanda";
-          const isActive = item.name === activeItem;
+
+          const isItemAtivo = location.pathname === `/app/${item.slug}`;
 
           return (
             <NavLink
               key={item.name}
               to={`${item.name === "Configurações" ? "/settings" : `/app/${item.slug}`}`}
-              onClick={() => {
-                setActiveItem(item.name);
-              }}
-              className={`flex items-center rounded-lg font-medium text-sm whitespace-nowrap overflow-hidden transition-all duration-300 ease-in-out ${
-                menuAberto
-                  ? "justify-start gap-3 px-3 py-2.5"
-                  : "justify-center gap-0 px-0 py-2.5"
-              } ${
-                isNovoPedido
-                  ? "bg-primary hover:bg-hover text-white"
-                  : isActive
-                    ? "text-primary"
-                    : "text-gray-500 hover:text-gray-800 hover:bg-gray-50"
-              }`}
+              className={({ isActive }) =>
+                `flex items-center rounded-lg font-medium text-sm whitespace-nowrap overflow-hidden transition-all duration-300 ease-in-out ${
+                  menuAberto
+                    ? "justify-start gap-3 px-3 py-2.5"
+                    : "justify-center gap-0 px-0 py-2.5"
+                } ${
+                  isNovoPedido
+                    ? "bg-primary hover:bg-hover text-white"
+                    : isActive
+                      ? "text-primary"
+                      : "text-gray-500 hover:text-gray-800 hover:bg-gray-50"
+                }`
+              }
             >
               <Icon
                 size={20}
-                strokeWidth={isActive ? 2.5 : 2}
+                strokeWidth={isItemAtivo ? 2.5 : 2}
                 className={`shrink-0 transition-all duration-300 ${
                   isNovoPedido
                     ? "text-white"
-                    : isActive
+                    : isItemAtivo
                       ? "text-primary"
                       : "text-gray-400"
                 }`}

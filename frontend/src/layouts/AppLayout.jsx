@@ -11,12 +11,12 @@ const AppLayout = () => {
   const [menuAberto, setMenuAberto] = useState(false);
 
   return (
-    <div className="flex h-screen bg-[#f8f9fa] text-gray-800">
+    <div className="flex min-h-screen bg-[#f8f9fa] text-gray-800">
       {/* SIDEBAR (Barra Lateral) */}
       <Sidebar menuAberto={menuAberto} setMenuAberto={setMenuAberto} />
 
       {/* ÁREA PRINCIPAL */}
-      <div className="flex-1 flex flex-col min-w-0">
+      <div className="flex-1 flex flex-col min-w-0 sticky top-0">
         {/* HEADER SUPERIOR */}
 
         <div className="hidden lg:flex lg:flex-col lg:min-w-0">

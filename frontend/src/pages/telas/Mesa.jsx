@@ -4,7 +4,7 @@ import { Plus, CalendarCheck, Clock } from "lucide-react";
 /* Import tools */
 
 /* Import COmponents */
-const AppLayout = () => {
+const Mesa = () => {
   const [filterSelect, setFilterSelect] = useState(1);
 
   const mesas = [
@@ -158,7 +158,10 @@ const AppLayout = () => {
     { numero: "30", status: "Livre", valor: 0 },
   ];
   const filtros = [
-    { nome: `Todas as mesas(${mesas.length})`, id: 1 },
+    {
+      nome: `Todas as mesas(${mesas.length})`,
+      id: 1,
+    },
     {
       nome: `Livres(${mesas.filter((e) => e.status == "Livre").length})`,
       id: 2,
@@ -171,11 +174,34 @@ const AppLayout = () => {
       nome: `Reservadas(${mesas.filter((e) => e.status == "Reservada").length})`,
       id: 4,
     },
+    {
+      nome: `Aguardando a conta(${mesas.filter((e) => e.status == "Aguardando a conta").length})`,
+      id: 5,
+    },
+    {
+      nome: `Fechamento(${mesas.filter((e) => e.status == "Fechamento").length})`,
+      id: 6,
+    },
   ];
 
+  const produtosFilter =
+    filterSelect === 1
+      ? mesas
+      : filterSelect === 2
+        ? mesas.filter((e) => e.status == "Livre")
+        : filterSelect === 3
+          ? mesas.filter((e) => e.status == "Ocupada")
+          : filterSelect === 4
+            ? mesas.filter((e) => e.status == "Reservada")
+            : filterSelect === 5
+              ? mesas.filter((e) => e.status == "Aguardando a conta")
+              : filterSelect === 6
+                ? mesas.filter((e) => e.status == "Fechamento")
+                : null;
+
   /* Variaveis */
-  const renderLivre = (item, index) => (
-    <div key={index} className="p-5 border-3 rounded-xl border-slate-200 border-dotted  flex flex-col justify-center items-center">
+  const renderLivre = (item) => (
+    <div key={item.numero} className="p-5 min-h-70 border-3 rounded-xl border-slate-200 border-dotted  flex flex-col justify-center items-center">
       {/* icone */}
       <div className="p-3 bg-slate-200 rounded-full">
         <Plus className="w-8 h-8" />
@@ -183,13 +209,13 @@ const AppLayout = () => {
 
       {/* Dados */}
       <div className="flex flex-col items-center text-sm font-bold mt-2">
-        <p>{"Mesa 05"}</p>
+        <p>Mesa {item.numero}</p>
         <p className="mt-1 text-xs font-medium">Livre pra ocupação</p>
       </div>
     </div>
   );
-  const renderReservado = (item, index, bgPrimary, textPrimary) => (
-    <div key={index} className="p-5 rounded-xl border-3 border-slate-200 border-dotted bg-slate-100 flex flex-col justify-between">
+  const renderReservado = (item, bgPrimary, textPrimary) => (
+    <div key={item.numero} className="p-5 min-h-70 rounded-xl border-3 border-slate-200 border-dotted bg-slate-100 flex flex-col justify-between">
       {/* Superior */}
       <div className="items-center flex">
         <div
@@ -237,8 +263,8 @@ const AppLayout = () => {
         ))}
       </div>
       {/* ========== Cards Mesa ========== */}
-      <div className="p-5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5">
-        {mesas.map((item) => {
+      <div className="p-5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
+        {produtosFilter.map((item) => {
           const textPrimary =
             item.status == "Livre"
               ? "text-slate-500"
@@ -261,7 +287,7 @@ const AppLayout = () => {
                     : "bg-amber-500";
 
           return item.status === "Livre" ? (
-            renderLivre()
+            renderLivre(item)
           ) : item.status === "Reservada" ? (
             renderReservado(item, bgPrimary, textPrimary)
           ) : (
@@ -339,4 +365,4 @@ const AppLayout = () => {
   );
 };
 
-export default AppLayout;
+export default Mesa;
