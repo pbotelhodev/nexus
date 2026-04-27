@@ -95,6 +95,24 @@ const Dashboard = () => {
       acao: "Abriu a mesa",
       valor: "",
     },
+    {
+      mesa: "Mesa 21",
+      icone: ClipboardPenLine,
+      acao: "Novo pedido: 2x Chopp",
+      valor: "R$ 24,00",
+    },
+    {
+      mesa: "Mesa 28",
+      icone: ClipboardClock,
+      acao: "Solicitação da conta",
+      valor: "R$ 128,90",
+    },
+    {
+      mesa: "Mesa 01",
+      icone: UtensilsCrossed,
+      acao: "Abriu a mesa",
+      valor: "",
+    },
   ];
 
   /* Trocar pelo DB da mesas */
@@ -146,18 +164,19 @@ const Dashboard = () => {
 
   return (
     <>
-      {/* Cards de Informações */}
+      {/*  ==========  ========== Cards de Informações ==========  ==========  */}
       <div className="p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {cardItens.map((card, index) => (
           <div key={index} className={`bg-white p-5 rounded-xl`}>
+            {/* ========== Superior do card ==========  */}
             <div className="flex items-start justify-between gap-3 mb-4">
-              {/* Ícone do Card */}
+              {/* ========== Ícone do Card ========== */}
               <div
                 className={`w-12 h-12 flex items-center justify-center ${card.secondaryColor} rounded-lg`}
               >
                 <card.icone className={`w-6 h-6 ${card.primaryColor}`} />
               </div>
-              {/* Legenda do Card */}
+              {/* ========== Legenda do Card ========== */}
               <div
                 className={`${menuAberto ? `hidden md:block` : "block"} text-xs ${card.primaryColor} ${card.secondaryColor} rounded-lg px-2 py-0.5`}
               >
@@ -166,19 +185,19 @@ const Dashboard = () => {
             </div>
             {/* Conteúdo do Card */}
             <div className="mt-5">
-              {/* nome do Card */}
+              {/* ========== nome do Card  ========== */}
               <div>
                 <h3 className="font-semibold text-[12px] mb-2">
                   {card.name.toUpperCase()}
                 </h3>
               </div>
-              {/* Dado Principal do Card */}
+              {/* ========== Dado Principal do Card ========== */}
               <div>
                 <p className="text-2xl lg:text-3xl">
                   {card.name === "Receita Hoje" ||
                   card.name === "Ticket Médio" ? (
                     <>
-                      <span className="text-sm">R$ </span>{" "}
+                      <span className="text-sm mr-1">R$ </span>{" "}
                       <span className="font-regular">{card.data}</span>
                     </>
                   ) : (
@@ -190,11 +209,11 @@ const Dashboard = () => {
           </div>
         ))}
       </div>
-      {/* Graficos */}
+      {/*  ==========   ========== Graficos ==========  ==========  */}
       <div className="pr-5 pl-5 pb-5 grid grid-cols-1 md:grid-cols-2 gap-4 ">
         {/* Mapa de mesas */}
         <div className="bg-white p-5 rounded-xl flex flex-col h-[calc(100vh-302px)] min-h-0">
-          {/* Titulo & sub-titulo */}
+          {/* Titulo & Sub-titulo */}
           <div className="">
             {/* nome do Card */}
             <div>
@@ -205,22 +224,32 @@ const Dashboard = () => {
               <p className="text-sm mb-2">Salão Principal e Demais Áreas</p>
             </div>
           </div>
-          {/* Legenda */}
+          {/*  ==========  Legenda  ========== */}
           <div className="grid grid-cols-1 lg:grid-cols-3 mt-3">
             <div className="text-green-500 flex items-center gap-1 font-bold text-xs">
               <div className="bg-green-500 rounded full w-2 h-2" />
-              LIVRE <span>({mesasCard.filter(e => e.status === "livre").length})</span>
+              LIVRE{" "}
+              <span>
+                ({mesasCard.filter((e) => e.status === "livre").length})
+              </span>
             </div>
             <div className="text-red-500 flex items-center gap-1 font-bold text-xs">
               <div className="bg-red-500 rounded full w-2 h-2" />
-              OCUPADA <span>({mesasCard.filter(e => e.status === "ocupada").length})</span>
+              OCUPADA{" "}
+              <span>
+                ({mesasCard.filter((e) => e.status === "ocupada").length})
+              </span>
             </div>
             <div className="text-amber-500 flex items-center gap-1 font-bold text-xs">
               <div className="bg-amber-500 rounded full w-2 h-2" />
-              RESERVADA <span>({mesasCard.filter(e => e.status === "reservada").length})</span>
+              RESERVADA{" "}
+              <span>
+                ({mesasCard.filter((e) => e.status === "reservada").length})
+              </span>
             </div>
           </div>
-          {/* Cards das mesas */}
+
+          {/* ========== Cards das mesas ========== */}
           <div className="flex-1 min-h-0 overflow-y-auto grid grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 mt-6">
             {mesasCard.map((mesa, index) => (
               <div
@@ -249,17 +278,29 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Pedidos Recentes */}
+        {/* ========== ========== Pedidos Recentes ==========  ==========  */}
         <div className="bg-white p-5 rounded-xl flex flex-col h-[calc(100vh-320px)] min-h-0">
           {/* Titulo */}
           <div>
-            <p className="text-2xl font-bold">Atualizaçõoes Recentes</p>
+            <p className="text-2xl font-bold">Atualizações Recentes</p>
           </div>
           {/* cards dos pedidos */}
-          <div>
+          <div className="flex-1 min-h-0 overflow-y-auto pr-2">
             {pedidosCard.map((card, index) => (
-              <div className="" key={index}>
-                {card.mesa}
+              <div className="flex items-center my-3" key={index}>
+                {/* ========== Icone ==========  */}
+                <div className="p-4 bg-blue-100 text-blue-500 rounded-full">
+                  <card.icone />
+                </div>
+                {/* ========== Dados ==========  */}
+                <div className="flex flex-col flex-8 px-4">
+                  {/* Mesa */}
+                  <div className="font-semibold">{card.mesa}</div>
+                  {/* Ação */}
+                  <div className="text-xs">{card.acao}</div>
+                </div>
+                {/* ========== Valor ==========  */}
+                <div className="flex-2 font-bold">{card.valor}</div>
               </div>
             ))}
           </div>
