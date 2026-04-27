@@ -227,21 +227,21 @@ const Dashboard = () => {
           {/*  ==========  Legenda  ========== */}
           <div className="grid grid-cols-1 lg:grid-cols-3 mt-3">
             <div className="text-green-500 flex items-center gap-1 font-bold text-xs">
-              <div className="bg-green-500 rounded full w-2 h-2" />
+              <div className="bg-green-500 rounded w-2 h-2" />
               LIVRE{" "}
               <span>
                 ({mesasCard.filter((e) => e.status === "livre").length})
               </span>
             </div>
             <div className="text-red-500 flex items-center gap-1 font-bold text-xs">
-              <div className="bg-red-500 rounded full w-2 h-2" />
+              <div className="bg-red-500 rounded w-2 h-2" />
               OCUPADA{" "}
               <span>
                 ({mesasCard.filter((e) => e.status === "ocupada").length})
               </span>
             </div>
             <div className="text-amber-500 flex items-center gap-1 font-bold text-xs">
-              <div className="bg-amber-500 rounded full w-2 h-2" />
+              <div className="bg-amber-500 rounded w-2 h-2" />
               RESERVADA{" "}
               <span>
                 ({mesasCard.filter((e) => e.status === "reservada").length})
