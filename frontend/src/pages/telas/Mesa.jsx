@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Plus, CalendarCheck, Clock } from "lucide-react";
+import { Plus, CalendarCheck, Clock, BoomBox } from "lucide-react";
 
 /* Import tools */
 
@@ -7,14 +7,14 @@ import { Plus, CalendarCheck, Clock } from "lucide-react";
 const Mesa = () => {
   const [filterSelect, setFilterSelect] = useState(1);
 
-  const mesas = [
+  const mesas = [ 
     {
       numero: "01",
       status: "Ocupada",
       valor: 182.5,
       atendente: "Cleiton P.",
       tempo: "2:45",
-    },
+    },  
     { numero: "02", status: "Livre", valor: 0 },
     { numero: "03", status: "Reservada", valor: 0 },
 
@@ -242,7 +242,7 @@ const Mesa = () => {
       </div>
       {/* Inferior */}
       <div
-        className={`w-full p-3 text-sm font-bold rounded-2xl flex justify-center items-center mt-5 text-gray-800 ${bgPrimary}`}
+        className={`w-full p-3 text-xs font-bold rounded-2xl flex justify-center items-center mt-5 text-gray-800 ${bgPrimary}`}
       >
         Check-in
       </div>
@@ -349,7 +349,7 @@ const Mesa = () => {
               </div>
               {/* ========== Botão de Ação ========== */}
               <div
-                className={`w-full p-3 text-sm font-bold rounded-2xl flex justify-center items-center mt-5 border-2  text-white ${bgPrimary}`}
+                className={`w-full p-3 text-xs font-bold rounded-2xl flex justify-center items-center mt-5 border-2  text-white ${bgPrimary}`}
               >
                 {item.status === "Aguardando a conta"
                   ? "Emitir Conta"
