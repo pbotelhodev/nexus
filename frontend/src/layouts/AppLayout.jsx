@@ -21,7 +21,7 @@ const AppLayout = () => {
         <Header />
 
         {/* CONTEÚDO DA PÁGINA*/}
-        <Outlet />
+        <Outlet context={{menuAberto}}/>
       </div>
     </div>
   );

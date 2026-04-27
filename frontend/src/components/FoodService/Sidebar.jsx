@@ -52,7 +52,7 @@ const Sidebar = ({menuAberto, setMenuAberto}) => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [setMenuAberto]);
 
   return (
     <aside
