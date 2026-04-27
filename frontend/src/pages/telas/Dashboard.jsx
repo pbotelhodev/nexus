@@ -99,7 +99,7 @@ const Dashboard = () => {
 
   /* Trocar pelo DB da mesas */
   const mesasCard = [
-    { numero: 1, status: "ocupada", valor: 182.5 },
+    { numero: 1, status: "ocupada", valor: 182.50 },
     { numero: 2, status: "livre", valor: 0 },
     { numero: 3, status: "reservada", valor: 0 },
     { numero: 4, status: "ocupada", valor: 96.3 },
@@ -242,7 +242,7 @@ const Dashboard = () => {
                     ? "RES."
                     : mesa.status == "livre"
                       ? "LIVRE"
-                      : `R$ ${mesa.valor}`}
+                      : `R$ ${mesa.valor.toFixed(2)}`}
                 </div>
               </div>
             ))}
