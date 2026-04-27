@@ -29,7 +29,7 @@ const Sidebar = ({menuAberto, setMenuAberto}) => {
     { name: "Dashboard", slug: "dashboard", icon: LayoutGrid, color: false },
     { name: "Mesas", slug: "mesas", icon: HandPlatter, color: false },
     { name: "Cardápio", slug: "cardapio", icon: BookOpen, color: false },
-    { name: "Cozinha", slug: "cozinha", icon: Soup, color: false },
+    { name: "Cozinha (KDS)", slug: "cozinha", icon: Soup, color: false },
     { name: "Delivery", slug: "delivery", icon: Motorbike, color: false },
     { name: "Estoque", slug: "estoque", icon: Package, color: false },
     { name: "Financeiro", slug: "financeiro", icon: Banknote, color: false },
@@ -68,7 +68,7 @@ const Sidebar = ({menuAberto, setMenuAberto}) => {
           setMenuAberto(true);
         }
       }}
-      className={`bg-white flex flex-col z-10 shadow-[2px_0_8px_rgba(0,0,0,0.02)] transition-all duration-300 ease-in-out min-h-screen overflow-hidden ${
+      className={`bg-white flex flex-col z-10 shadow-[2px_0_8px_rgba(0,0,0,0.02)] transition-all duration-300 ease-in-out min-h-full overflow-hidden ${
         menuAberto ? "w-50" : "w-18"
       }`}
     >
