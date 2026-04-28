@@ -16,12 +16,12 @@ const AppLayout = () => {
       <Sidebar menuAberto={menuAberto} setMenuAberto={setMenuAberto} />
 
       {/* ÁREA PRINCIPAL */}
-      <div className="flex-1 flex flex-col min-w-0 sticky top-0">
+      <div className="flex flex-col flex-1 min-h-0 min-w-0 sticky top-0">
         {/* HEADER SUPERIOR */}
 
-        <div className="hidden lg:flex lg:flex-col lg:min-w-0">
+        {/* <div className="hidden lg:flex lg:flex-col lg:min-w-0">
           <Header />
-        </div>
+        </div> */}
 
         {/* CONTEÚDO DA PÁGINA*/}
         <Outlet context={{ menuAberto }} />

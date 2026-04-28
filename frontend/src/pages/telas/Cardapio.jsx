@@ -2,15 +2,32 @@
 import { Plus, Tags, Pen } from "lucide-react";
 import { useState } from "react";
 
-const Cardapio = () => {
-  const [filterActive, setFilterActive] = useState(1);
+/* Import components */
 
+import Filtro from "../../components/FoodService/ui/Filtro"
+import Loading from "../../components/FoodService/ui/Loading";
+
+const Cardapio = () => {
+  /* States */
+  const [filterActive, setFilterActive] = useState(1);                            //State do filro atual
+  const [editarCardapio, setEditarCardapio ] = useState(false)                    //State para abrir o modal de editar produto
+  const [modalNovoProduto, setModalNovoProduto] = useState(false);                //State para abrir o modal de novo Produto
+  const [toggleAtivo, settoggleAtivo] = useState(false);                          //State para o Toggle
+
+
+  /* Funções */
+
+  
+  /* Effects */
+  
+  
+  /* bancos provisórios e Variáveis */
   const produtos = [
     {
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349",
       nome: "Hambúrguer Artesanal",
       preco: 32.9,
-      legenda: "Blend bovino suculento, pão brioche e cheddar derretido",
+      legenda: "Blend bovino suculento, pão brioche e cheddar derretido", //Permitir apenas 70 caractheres
       active: true,
       categoria: "Pratos",
     },
@@ -236,21 +253,20 @@ const Cardapio = () => {
   return (
     <div>
       {/* Div superior */}
-      <div className="p-5 flex flex-col lg:flex-row gap-5 justify-between">
+      <div className="p-5 flex flex-col lg:flex-row justify-between">
         {/* Filtros */}
-        <div className="flex flex-col gap-3 md:flex-row md:gap-1 p-2 rounded-2xl lg:rounded-full bg-gray-200 font-bold text-xs items-center">
-          {categoriasPadrao.map((e) => (
-            <div
-              onClick={() => setFilterActive(e.id)}
-              className={`w-full flex md:justify-between lg:justify-center lg:w-20 ${filterActive === e.id ? "bg-white " : null} rounded-2xl lg:rounded-full py-2 px-14`}
-            >
-              {e.nome}
-            </div>
-          ))}
-        </div>
+        <Filtro
+          filtros={categoriasPadrao}
+          funcaoFiltro={setFilterActive}
+          filtroAtual={filterActive}
+        />
         {/* Botao Cadastrar produto */}
-        <div className="flex font-bold text-sm items-center justify-center py-2 px-3 rounded-full bg-primary text-white">
-          <Plus /> Adicionar novo produto
+        <div
+          onClick={() => setModalNovoProduto(!modalNovoProduto)}
+          className="flex font-bold text-sm items-center justify-center py-2 px-4 gap-2 rounded-full bg-primary text-white cursor-pointer"
+        >
+          <Plus className="w-5 h-5" /> Adicionar{" "}
+          <span className="hidden md:block">novo produto</span>
         </div>
       </div>
       {/* Div cards cardápio */}
@@ -283,18 +299,43 @@ const Cardapio = () => {
               {/* Categoria & edit */}
               <div className="flex justify-between border-t border-gray-100 pt-2">
                 <div className="flex text-[10px] font-bold uppercase  gap-1 items-center">
-                  <Tags className="w-3 h-3" />
-                  {e.categoria}
+                  <button
+                    type="button"
+                    role="switch"
+                    aria-checked={toggleAtivo}
+                    onClick={() => settoggleAtivo(!toggleAtivo)}
+                    className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors duration-300 ease-in-out focus:outline-none ${
+                      toggleAtivo ? "bg-[#1aa350]" : "bg-gray-300"
+                    }`}
+                  >
+                    <span
+                      className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-sm ring-0 transition-transform duration-300 ease-in-out ${
+                        toggleAtivo ? "translate-x-5" : "translate-x-0"
+                      }`}
+                    />
+                  </button>
                 </div>
-                <div className="flex text-[10px] font-bold uppercase  gap-1 items-center">
+                <div
+                  onClick={() => setEditarCardapio(!editarCardapio)}
+                  className="flex text-[10px] font-bold uppercase cursor-pointer gap-1 items-center hover:bg-[#16a34a] p-2 rounded-full hover:text-white transition duration-300"
+                >
                   <Pen className="w-3 h-3" />
-                  {"Editar"}
+                  Editar
                 </div>
               </div>
             </div>
           </div>
         ))}
       </div>
+      {/* Modal Novo Pruduto */}
+      {modalNovoProduto && <div>Teste</div>}
+
+      {/* Modal Editar Produto */}
+      {editarCardapio && (
+        <div>
+          <Loading />
+        </div>
+      )}
     </div>
   );
 };

@@ -1,9 +1,10 @@
+/* Import tools */
 import { useState } from "react";
 import { Plus, CalendarCheck, Clock, BoomBox } from "lucide-react";
 
-/* Import tools */
-
 /* Import COmponents */
+import Filtro from "../../components/FoodService/ui/Filtro";
+
 const Mesa = () => {
   const [filterSelect, setFilterSelect] = useState(1);
 
@@ -159,7 +160,7 @@ const Mesa = () => {
   ];
   const filtros = [
     {
-      nome: `Todas as mesas(${mesas.length})`,
+      nome: `Tudo(${mesas.length})`,
       id: 1,
     },
     {
@@ -201,7 +202,7 @@ const Mesa = () => {
 
   /* Variaveis */
   const renderLivre = (item) => (
-    <div key={item.numero} className="p-5 min-h-70 border-3 rounded-xl border-slate-200 border-dotted  flex flex-col justify-center items-center">
+    <div key={item.numero} className="p-5 min-h-70 border-3 rounded-xl border-slate-200 border-dashed  flex flex-col justify-center items-center">
       {/* icone */}
       <div className="p-3 bg-slate-200 rounded-full">
         <Plus className="w-8 h-8" />
@@ -249,21 +250,11 @@ const Mesa = () => {
     </div>
   );
   return (
-    <div>
+    <div className="p-5">
       {/* ========== Filtros ========== */}
-      <div className="p-5 ">
-        {filtros.map((filtro, index) => (
-          <button
-            onClick={() => setFilterSelect(filtro.id)}
-            key={index}
-            className={`py-3 mr-3 cursor-pointer px-5 text-sm rounded-3xl font-semibold ${filterSelect == filtro.id ? "bg-green-500 text-white" : "bg-white"}`}
-          >
-            {filtro.nome}
-          </button>
-        ))}
-      </div>
+      <Filtro funcaoFiltro={setFilterSelect} filtros={filtros} filtroAtual={filterSelect}/>
       {/* ========== Cards Mesa ========== */}
-      <div className="p-5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 mt-5">
         {produtosFilter.map((item) => {
           const textPrimary =
             item.status == "Livre"

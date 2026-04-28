@@ -117,7 +117,7 @@ const Dashboard = () => {
 
   /* Trocar pelo DB da mesas */
   const mesasCard = [
-    { numero: 1, status: "ocupada", valor: 182.50 },
+    { numero: 1, status: "ocupada", valor: 182.5 },
     { numero: 2, status: "livre", valor: 0 },
     { numero: 3, status: "reservada", valor: 0 },
     { numero: 4, status: "ocupada", valor: 96.3 },
@@ -160,6 +160,17 @@ const Dashboard = () => {
     { numero: 38, status: "ocupada", valor: 59.2 },
     { numero: 39, status: "reservada", valor: 0 },
     { numero: 40, status: "reservada", valor: 0 },
+
+    { numero: 41, status: "livre", valor: 0 },
+    { numero: 42, status: "ocupada", valor: 67.3 },
+    { numero: 43, status: "ocupada", valor: 145.8 },
+    { numero: 44, status: "reservada", valor: 0 },
+    { numero: 45, status: "ocupada", valor: 98.1 },
+    { numero: 46, status: "livre", valor: 0 },
+    { numero: 47, status: "ocupada", valor: 176.4 },
+    { numero: 48, status: "ocupada", valor: 59.2 },
+    { numero: 49, status: "reservada", valor: 0 },
+    { numero: 50, status: "reservada", valor: 0 },
   ];
 
   return (
@@ -187,7 +198,7 @@ const Dashboard = () => {
             <div className="mt-5">
               {/* ========== nome do Card  ========== */}
               <div>
-                <h3 className="font-semibold text-[12px] mb-2">
+                <h3 className="font-bold text-[12px] mb-2">
                   {card.name.toUpperCase()}
                 </h3>
               </div>
@@ -212,7 +223,7 @@ const Dashboard = () => {
       {/*  ==========   ========== Graficos ==========  ==========  */}
       <div className="pr-5 pl-5 pb-5 grid grid-cols-1 md:grid-cols-2 gap-4 ">
         {/* Mapa de mesas */}
-        <div className="bg-white p-5 rounded-xl flex flex-col h-[calc(100vh-302px)] min-h-0">
+        <div className="bg-white p-5 rounded-xl flex flex-1 flex-col min-h-0 h-[calc(100vh-230px)] ">
           {/* Titulo & Sub-titulo */}
           <div className="">
             {/* nome do Card */}
@@ -250,7 +261,7 @@ const Dashboard = () => {
           </div>
 
           {/* ========== Cards das mesas ========== */}
-          <div className="flex-1 min-h-0 overflow-y-auto grid grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 mt-6">
+          <div className="flex-1 rounded-2xl min-h-0 overflow-y-auto grid grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 mt-6">
             {mesasCard.map((mesa, index) => (
               <div
                 key={index}
@@ -279,28 +290,28 @@ const Dashboard = () => {
         </div>
 
         {/* ========== ========== Pedidos Recentes ==========  ==========  */}
-        <div className="bg-white p-5 rounded-xl flex flex-col h-[calc(100vh-320px)] min-h-0">
+        <div className="bg-white p-5 rounded-xl flex flex-col h-[calc(100vh-230px)] min-h-0">
           {/* Titulo */}
           <div>
             <p className="text-2xl font-bold">Atualizações Recentes</p>
           </div>
           {/* cards dos pedidos */}
-          <div className="flex-1 min-h-0 overflow-y-auto pr-2">
+          <div className="flex-1 min-h-0 overflow-y-auto mt-3 rounded-2xl">
             {pedidosCard.map((card, index) => (
               <div className="flex items-center my-3" key={index}>
                 {/* ========== Icone ==========  */}
-                <div className="p-4 bg-blue-100 text-blue-500 rounded-full">
+                <div className="p-3 bg-blue-100 text-blue-500 rounded-full">
                   <card.icone />
                 </div>
                 {/* ========== Dados ==========  */}
-                <div className="flex flex-col flex-8 px-4">
+                <div className="flex flex-col flex-6 px-4">
                   {/* Mesa */}
                   <div className="font-semibold">{card.mesa}</div>
                   {/* Ação */}
                   <div className="text-xs">{card.acao}</div>
                 </div>
                 {/* ========== Valor ==========  */}
-                <div className="flex-2 font-bold">{card.valor}</div>
+                <div className="text-xs flex-2 lg:text-md font-bold">{card.valor}</div>
               </div>
             ))}
           </div>
