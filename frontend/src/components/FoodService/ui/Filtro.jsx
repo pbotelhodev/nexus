@@ -1,7 +1,7 @@
 const Filtro = ({ filtros, funcaoFiltro, filtroAtual }) => {
   return (
     <>
-      <div className="md:hidden w-full mb-3">
+      <div className="lg:hidden w-full mb-3">
         <select
           value={filtroAtual}
           onChange={(e) => funcaoFiltro(Number(e.target.value))}
@@ -15,7 +15,7 @@ const Filtro = ({ filtros, funcaoFiltro, filtroAtual }) => {
         </select>
       </div>
 
-      <div className="hidden md:flex w-fit gap-3 p-2 rounded-full bg-gray-200 font-bold text-xs transition duration-700">
+      <div className="hidden lg:flex w-fit gap-3 p-2 rounded-full bg-gray-200 font-bold text-xs transition duration-700">
         {filtros.map((e) => (
           <div
             key={e.id}
