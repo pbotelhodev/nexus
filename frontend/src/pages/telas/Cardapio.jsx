@@ -5,18 +5,26 @@ import { useEffect, useState } from "react";
 
 /* Import components */
 import Filtro from "../../components/FoodService/ui/Filtro";
+import NovoProduto from "../../components/FoodService/ui/NovoProduto";
 import Loading from "../../components/FoodService/ui/Loading";
+import EditarProduto from "../../components/FoodService/ui/EditarProduto";
 
 const Cardapio = () => {
   /* States */
   const [filterActive, setFilterActive] = useState(1);
   const [editarCardapio, setEditarCardapio] = useState(false);
   const [modalNovoProduto, setModalNovoProduto] = useState(false);
+  const [imagemAtualNew, setImagemAtualNew] = useState("");
   const [toggleAtivo, setToggleAtivo] = useState([]);
   const [loading, setLoading] = useState(false);
   const [produtos, setProdutos] = useState([]);
 
   /* Funções */
+
+  /* Abrir o modal de novo produto */
+
+/*   const modalEditProduto = () => {}; */
+
   const handleToggle = (nome) => {
     setToggleAtivo((prev) =>
       prev.includes(nome)
@@ -32,7 +40,7 @@ const Cardapio = () => {
     setLoading(true);
     setTimeout(() => {
       const produtosSalvos = localStorage.getItem("produtos");
-      setLoading(false)
+      setLoading(false);
       if (produtosSalvos) {
         setProdutos(JSON.parse(produtosSalvos));
       }
@@ -82,11 +90,10 @@ const Cardapio = () => {
         />
 
         <div
-          onClick={() => setModalNovoProduto(!modalNovoProduto)}
-          className="flex font-bold text-sm items-center justify-center py-2 px-4 gap-2 rounded-full bg-primary text-white cursor-pointer"
+          onClick={() => setModalNovoProduto(true)}
+          className="flex font-bold text-sm items-center justify-center py-2 px-4 rounded-full bg-primary text-white cursor-pointer"
         >
-          <Plus className="w-5 h-5" /> Adicionar{" "}
-          <span className="hidden md:block">novo produto</span>
+          <Plus className="w-5 h-5 mr-2" /> Adicionar novo produto
         </div>
       </div>
 
@@ -144,8 +151,10 @@ const Cardapio = () => {
         })}
       </div>
 
-      {modalNovoProduto && <div>Teste</div>}
-      {editarCardapio && <div></div>}
+      {modalNovoProduto && (
+        <NovoProduto setModal={setModalNovoProduto} />
+      )}
+      {editarCardapio && <EditarProduto/>}
       {loading && <Loading />}
     </div>
   );

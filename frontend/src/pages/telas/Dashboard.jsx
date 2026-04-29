@@ -198,7 +198,7 @@ const Dashboard = () => {
             <div className="mt-5">
               {/* ========== nome do Card  ========== */}
               <div>
-                <h3 className="font-bold text-[12px] mb-2">
+                <h3 className="font-extrabold text-[12px] mb-2">
                   {card.name.toUpperCase()}
                 </h3>
               </div>
@@ -209,10 +209,10 @@ const Dashboard = () => {
                   card.name === "Ticket Médio" ? (
                     <>
                       <span className="text-sm mr-1">R$ </span>{" "}
-                      <span className="font-regular">{card.data}</span>
+                      <span className="font-bold">{card.data}</span>
                     </>
                   ) : (
-                    <span className="font-regular">{card.data}</span>
+                    <span className="font-bold">{card.data}</span>
                   )}
                 </p>
               </div>

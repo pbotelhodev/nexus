@@ -8,5 +8,9 @@ export default defineConfig({
     proxy: {
       "/api": "http://localhost:3000",
     },
+    host: true,
+    watch: {
+      usePolling: true,
+    },
   },
 });

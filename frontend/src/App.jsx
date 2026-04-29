@@ -60,15 +60,31 @@ function App() {
       </Route>
 
       {/* Rota para a página de configurações */}
-      <Route path="/settings" element={<div>Configurações</div>}> {/* Página de Configurações */}
-        <Route path="profile" element={<div>Configurações de Perfil</div>} /> {/* Página de configurações de perfil */}
+      <Route path="/settings" element={<div>Configurações</div>}>
+        {" "}
+        {/* Página de Configurações */}
+        <Route
+          path="profile"
+          element={<div>Configurações de Perfil</div>}
+        />{" "}
+        {/* Página de configurações de perfil */}
         <Route
           path="enterprise"
           element={<div>Configurações de Empresa</div>}
-        /> {/* Página de configurações de empresa */}
-        <Route path="business" element={<div>Configurações de Negócios</div>} /> {/* Página de configurações de negócios */}
-        <Route path="billing" element={<div>Configurações de Cobrança</div>} /> {/* Página de configurações de dados fiscais */}
-        <Route path="plans" element={<div>Configurações de Planos</div>} /> {/* Página de configurações de planos */}
+        />{" "}
+        {/* Página de configurações de empresa */}
+        <Route
+          path="business"
+          element={<div>Configurações de Negócios</div>}
+        />{" "}
+        {/* Página de configurações de negócios */}
+        <Route
+          path="billing"
+          element={<div>Configurações de Cobrança</div>}
+        />{" "}
+        {/* Página de configurações de dados fiscais */}
+        <Route path="plans" element={<div>Configurações de Planos</div>} />{" "}
+        {/* Página de configurações de planos */}
       </Route>
     </Routes>
   );

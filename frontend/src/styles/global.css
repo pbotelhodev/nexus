@@ -25,6 +25,10 @@ body {
   color: #16a34a;
 }
 
+.bg-geral{
+  background-color: #f8f9fa
+}
+
 .scrollbar-hidden-dark {
   scrollbar-width: thin;
   scrollbar-color: rgba(51, 65, 85, 0.35) transparent;
