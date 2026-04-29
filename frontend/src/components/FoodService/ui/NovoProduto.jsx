@@ -10,8 +10,8 @@ import {
 
 const NovoProduto = ({ setModal }) => {
   return (
-    <div className="fixed top-0 right-0 bottom-0 left-18 lg:left-0 z-9999 flex items-center justify-center bg-white/70 backdrop-blur-sm p-4">
-      <div className="bg-white rounded-2xl w-full max-w-sm lg:max-w-200 max-h-[90dvh] overflow-y-auto">
+    <div className="fixed top-0 right-0 bottom-0 left-18 lg:left-0 z-9999 flex items-center justify-center bg-white/70  backdrop-blur-sm p-4">
+      <div className="bg-white rounded-2xl w-full max-w-sm lg:max-w-200 max-h-[90dvh] overflow-y-auto border border-slate-100">
         {/* Header */}
         <div className="flex gap-5 justify-between items-center p-5">
           <div className="flex items-center gap-3">
