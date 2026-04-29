@@ -13,17 +13,15 @@ const Cardapio = () => {
   /* States */
   const [filterActive, setFilterActive] = useState(1);
   const [editarCardapio, setEditarCardapio] = useState(false);
-  const [modalNovoProduto, setModalNovoProduto] = useState(false);
-  const [imagemAtualNew, setImagemAtualNew] = useState("");
+  const [modalNovoProduto, setNovoProduto] = useState(false);
+  const [dadosAtuais, setDadosAtuais] = useState({});
   const [toggleAtivo, setToggleAtivo] = useState([]);
   const [loading, setLoading] = useState(false);
   const [produtos, setProdutos] = useState([]);
 
-  /* Funções */
+  /* =========== Funções =========== */
 
-  /* Abrir o modal de novo produto */
-
-/*   const modalEditProduto = () => {}; */
+  /*   const modalEditProduto = () => {}; */
 
   const handleToggle = (nome) => {
     setToggleAtivo((prev) =>
@@ -33,7 +31,13 @@ const Cardapio = () => {
     );
   };
 
-  /* Effects */
+  const handleImagemAtual = (image, nome, legenda, categoria, preco) => {
+    setDadosAtuais({foto: image, nome: nome, legenda: legenda, categoria: categoria, preco: preco})
+    setEditarCardapio(true)
+  };
+
+
+  /* =========== Effects =========== */
 
   // Apenas lê do localStorage
   useEffect(() => {
@@ -52,7 +56,8 @@ const Cardapio = () => {
     setToggleAtivo(produtos.filter((e) => e.active).map((e) => e.nome));
   }, [produtos]);
 
-  /* Variáveis */
+  /* =========== Variáveis =========== */
+
   const categoriasPadrao = [
     { nome: "Tudo", id: 1 },
     { nome: "Bebidas", id: 2 },
@@ -80,6 +85,7 @@ const Cardapio = () => {
                   ? produtos.filter((e) => e.categoria === "Combos")
                   : [];
 
+  /* =========== Layout =========== */
   return (
     <div>
       <div className="p-5 flex flex-col lg:flex-row justify-between">
@@ -90,7 +96,7 @@ const Cardapio = () => {
         />
 
         <div
-          onClick={() => setModalNovoProduto(true)}
+          onClick={() => setNovoProduto(true)}
           className="flex font-bold text-sm items-center justify-center py-2 px-4 rounded-full bg-primary text-white cursor-pointer"
         >
           <Plus className="w-5 h-5 mr-2" /> Adicionar novo produto
@@ -138,7 +144,15 @@ const Cardapio = () => {
                   </button>
 
                   <div
-                    onClick={() => setEditarCardapio(!editarCardapio)}
+                    onClick={() =>
+                      handleImagemAtual(
+                        e.imagem,
+                        e.nome,
+                        e.legenda,
+                        e.categoria,
+                        e.valor,
+                      )
+                    }
                     className="flex text-[10px] font-bold uppercase cursor-pointer gap-1 items-center hover:bg-[#16a34a] p-2 rounded-full hover:text-white transition duration-300"
                   >
                     <Pen className="w-3 h-3" />
@@ -151,10 +165,10 @@ const Cardapio = () => {
         })}
       </div>
 
-      {modalNovoProduto && (
-        <NovoProduto setModal={setModalNovoProduto} />
+      {modalNovoProduto && <NovoProduto setModal={setNovoProduto} />}
+      {editarCardapio && (
+        <EditarProduto data={dadosAtuais} setModal={setEditarCardapio} />
       )}
-      {editarCardapio && <EditarProduto/>}
       {loading && <Loading />}
     </div>
   );

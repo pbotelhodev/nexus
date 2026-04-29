@@ -21,7 +21,7 @@ const NovoProduto = ({ setModal }) => {
             <div>
               <p className="font-extrabold text-lg">Novo Produto</p>
               <p className="font-semibold text-sm text-gray-500">
-                Adicione um novo item ao cardápio do Nexus ERP.
+                Adicione um novo item ao cardápio.
               </p>
             </div>
           </div>
