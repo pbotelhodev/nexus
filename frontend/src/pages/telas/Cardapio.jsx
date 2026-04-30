@@ -2,6 +2,7 @@
 /* Imports tools */
 import { Plus, Pen } from "lucide-react";
 import { useEffect, useState } from "react";
+import Switch from "react-switch";
 
 /* Import components */
 import Filtro from "../../components/FoodService/ui/Filtro";
@@ -32,10 +33,15 @@ const Cardapio = () => {
   };
 
   const handleImagemAtual = (image, nome, legenda, categoria, preco) => {
-    setDadosAtuais({foto: image, nome: nome, legenda: legenda, categoria: categoria, preco: preco})
-    setEditarCardapio(true)
+    setDadosAtuais({
+      foto: image,
+      nome: nome,
+      legenda: legenda,
+      categoria: categoria,
+      preco: preco,
+    });
+    setEditarCardapio(true);
   };
-
 
   /* =========== Effects =========== */
 
@@ -130,18 +136,11 @@ const Cardapio = () => {
                 </div>
 
                 <div className="flex justify-between border-t border-gray-100 pt-2">
-                  <button
-                    onClick={() => handleToggle(e.nome)}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full ${
-                      isLigado ? "bg-[#1aa350]" : "bg-gray-300"
-                    }`}
-                  >
-                    <span
-                      className={`inline-block h-5 w-5 transform rounded-full bg-white ${
-                        isLigado ? "translate-x-5" : "translate-x-0"
-                      }`}
-                    />
-                  </button>
+                  <Switch
+                    onChange={() => handleToggle(e.nome)}
+                    checked={isLigado}
+                    className="h-6 w-11"
+                  />
 
                   <div
                     onClick={() =>

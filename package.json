@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "concurrently": "^9.0.0"
+  },
+  "dependencies": {
+    "react-switch": "^7.1.0"
   }
 }
