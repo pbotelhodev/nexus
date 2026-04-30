@@ -14,7 +14,8 @@ const CardKDSPronto = ({ pedidos, status, icon: Icon }) => {
   const preparo = status == "em preparo";
 
   return (
-    <div className="flex flex-col h-[94dvh] gap-5">
+    <div className="flex flex-col h-full gap-5">
+      <div className="sm:block border-t-2 border-dashed lg:hidden "></div>
       {/* Header */}
       <div className="flex items-center gap-2 p-2">
         <Icon />
@@ -64,7 +65,9 @@ const CardKDSPronto = ({ pedidos, status, icon: Icon }) => {
             </div>
             <div className=" flex justify-between border-t-2 border-dotted border-slate-200 py-2 items-center">
               <p className="text-xs font-semibold">Pronto há 2 min</p>
-              <button className={`text-sm font-semibold ${e.status == 'pronto / saída' ? "bg-green-500" : null} text-white p-2 rounded-lg`}>
+              <button
+                className={`text-sm font-semibold ${e.status == "pronto / saída" ? "bg-green-500" : null} text-white p-2 rounded-lg`}
+              >
                 {e.status == "pronto / saída" ? "Coletado" : null}
               </button>
             </div>

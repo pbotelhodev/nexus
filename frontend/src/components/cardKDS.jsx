@@ -15,6 +15,8 @@ const CardKDS = ({ pedidos, status, icon: Icon }) => {
 
   return (
     <div className="flex flex-col h-[94dvh] gap-5">
+        
+        <div className="sm:block border-t-2 border-dashed lg:hidden "></div>
       {/* Header */}
       <div className="flex items-center gap-2 p-2">
         <Icon />
