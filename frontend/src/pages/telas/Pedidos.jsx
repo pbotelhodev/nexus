@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 /* Tools */
 import { useEffect, useState } from "react";
 import { ConciergeBell, ReceiptText, Send } from "lucide-react";
@@ -268,7 +269,7 @@ const Comanda = () => {
                     <div className="flex items-center justify-between gap-3">
                       <button
                         onClick={() => abrirModalObs(index, e.nota)}
-                        className="hidden text-xs font-semibold text-green-700 md:block"
+                        className="hidden text-xs font-semibold cursor-pointer text-green-700 md:block"
                       >
                         {e.nota
                           ? "Editar observação"
@@ -285,7 +286,7 @@ const Comanda = () => {
                       <div className="flex items-center gap-4 rounded-lg bg-slate-200 px-2 py-1">
                         <button
                           onClick={() => handleRemoveItem(index)}
-                          className="text-lg font-semibold text-green-700"
+                          className="text-lg font-semibold cursor-pointer text-green-700"
                         >
                           -
                         </button>
@@ -296,7 +297,7 @@ const Comanda = () => {
 
                         <button
                           onClick={() => handleAddItem(index)}
-                          className="text-lg font-semibold text-green-700"
+                          className="text-lg font-semibold cursor-pointer text-green-700"
                         >
                           +
                         </button>
@@ -406,14 +407,14 @@ const Comanda = () => {
               <div className="mt-5 grid grid-cols-2 gap-3">
                 <button
                   onClick={fecharModalObs}
-                  className="rounded-xl bg-slate-200 px-4 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-300"
+                  className="rounded-xl cursor-pointer bg-slate-200 px-4 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-300"
                 >
                   Cancelar
                 </button>
 
                 <button
                   onClick={salvarObs}
-                  className="rounded-xl bg-green-600 px-4 py-3 text-sm font-bold text-white transition hover:bg-green-700"
+                  className="rounded-xl cursor-pointer bg-green-600 px-4 py-3 text-sm font-bold text-white transition hover:bg-green-700"
                 >
                   Salvar observação
                 </button>

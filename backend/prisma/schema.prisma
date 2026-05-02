@@ -1,0 +1,329 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/* =================== Universal =================== */
+
+model Company {
+  id        String   @id @default(uuid()) // ID único da empresa
+  name      String // Nome da empresa
+  segment   String // Segmento: restaurant, workshop, market etc.
+  document  String? // CNPJ/CPF opcional
+  phone     String? // Telefone da empresa
+  email     String? // Email da empresa
+  active    Boolean  @default(true) // Se a empresa está ativa
+  createdAt DateTime @default(now()) // Data de criação
+  updatedAt DateTime @updatedAt // Atualiza automaticamente quando editar
+
+  planId String? // ID do plano contratado
+  plan   Plan?   @relation(fields: [planId], references: [id]) // Plano da empresa
+
+  users                   User[] // Usuários dessa empresa
+  activityLogs            ActivityLog[] // Logs de atividade da empresa
+  restaurantTables        RestaurantTable[] // Mesas do restaurante
+  restaurantSettings      RestaurantSettings? // Configurações do restaurante
+  restaurantTableSessions RestaurantTableSession[] // Sessões/comandas das mesas
+  restaurantProducts      RestaurantProduct[] // Produtos/cardápio
+  restaurantOrders        RestaurantOrder[] // Pedidos enviados
+  restaurantOrderItems    RestaurantOrderItem[] // Itens dos pedidos
+  restaurantPayments      RestaurantPayment[] // Pagamentos
+  restaurantCustomers     RestaurantCustomer[] // Clientes do restaurante
+  restaurantSuppliers     RestaurantSupplier[] // Fornecedores do restaurante
+  restaurantSupplierBills RestaurantSupplierBill[] // Contas dos fornecedores do restaurante
+
+  @@map("companies")
+}
+
+model User {
+  id           String   @id @default(uuid()) // ID único do usuário
+  name         String // Nome do usuário
+  email        String // Email de login
+  passwordHash String // Senha criptografada
+  role         String // Cargo: admin, gerente, garcom, chef etc.
+  active       Boolean  @default(true) // Se o usuário está ativo
+  createdAt    DateTime @default(now()) // Data de criação
+  updatedAt    DateTime @updatedAt // Atualiza automaticamente quando editar
+
+  companyId String // Empresa à qual o usuário pertence
+  company   Company @relation(fields: [companyId], references: [id]) // Relação com empresa
+
+  activityLogs               ActivityLog[] // Ações feitas por esse usuário
+  waiterTableSessions        RestaurantTableSession[] // Sessões em que esse usuário foi garçom
+  createdRestaurantOrders    RestaurantOrder[] // Pedidos criados por esse usuário
+  receivedRestaurantPayments RestaurantPayment[] // Pagamentos recebidos por esse usuário
+
+  @@map("users")
+}
+
+model Plan {
+  id          String   @id @default(uuid()) // ID único do plano
+  name        String // Nome do plano
+  slug        String   @unique // Identificador único: basic, pro, enterprise
+  description String? // Descrição do plano
+  price       Decimal  @db.Decimal(10, 2) // Preço do plano
+  active      Boolean  @default(true) // Se o plano está ativo
+  createdAt   DateTime @default(now()) // Data de criação
+  updatedAt   DateTime @updatedAt // Atualiza automaticamente quando editar
+
+  companies       Company[] // Empresas que usam esse plano
+  restaurantLimit RestaurantPlanLimit? // Limites do plano para restaurante
+
+  @@map("plans")
+}
+
+model ActivityLog {
+  id          String   @id @default(uuid()) // ID único do log
+  description String // Texto explicando a ação
+  type        String // Tipo da ação: create, update, delete, payment, table_open etc.
+  entity      String? // Entidade afetada: table, order, payment, product etc.
+  entityId    String? // ID do registro afetado
+  metadata    Json? // Dados extras opcionais
+  createdAt   DateTime @default(now()) // Data de criação do log
+
+  companyId String // Empresa dona do log
+  company   Company @relation(fields: [companyId], references: [id]) // Relação com empresa
+
+  userId String? // Usuário que fez a ação
+  user   User?   @relation(fields: [userId], references: [id]) // Relação com usuário
+
+  @@map("activity_logs")
+}
+
+/* =================== Food Services =================== */
+
+model RestaurantPlanLimit {
+  id         String   @id @default(uuid()) // ID único do limite
+  maxTables  Int // Máximo de mesas permitidas no plano
+  maxWaiters Int // Máximo de garçons permitidos no plano
+  active     Boolean  @default(true) // Se esse limite está ativo
+  createdAt  DateTime @default(now()) // Data de criação
+  updatedAt  DateTime @updatedAt // Atualiza automaticamente quando editar
+
+  planId String @unique // Plano relacionado
+  plan   Plan   @relation(fields: [planId], references: [id]) // Relação com plano
+
+  @@map("restaurant_plan_limits")
+}
+
+model RestaurantSettings {
+  id                   String   @id @default(uuid()) // ID único da configuração
+  tableCount           Int // Quantidade de mesas configuradas pelo restaurante
+  serviceChargePercent Decimal  @default(10.00) @db.Decimal(5, 2) // Taxa de serviço, ex: 10%
+  couvertValue         Decimal  @default(0.00) @db.Decimal(10, 2) // Valor do couvert
+  allowTableReopen     Boolean  @default(true) // Permite reabrir mesa
+  printPreBill         Boolean  @default(true) // Permite imprimir pré-nota
+  active               Boolean  @default(true) // Se configuração está ativa
+  createdAt            DateTime @default(now()) // Data de criação
+  updatedAt            DateTime @updatedAt // Atualiza automaticamente quando editar
+
+  companyId String  @unique // Empresa dona dessa configuração
+  company   Company @relation(fields: [companyId], references: [id]) // Relação com empresa
+
+  @@map("restaurant_settings")
+}
+
+model RestaurantTable {
+  id          String   @id @default(uuid()) // ID único da mesa
+  number      Int // Número da mesa
+  name        String? // Nome opcional, ex: Varanda 01
+  status      String   @default("livre") // livre, ocupada, reservada etc.
+  reservedFor String? // Nome da pessoa da reserva
+  active      Boolean  @default(true) // Se a mesa está ativa
+  createdAt   DateTime @default(now()) // Data de criação
+  updatedAt   DateTime @updatedAt // Atualiza automaticamente quando editar
+
+  companyId String // Empresa dona da mesa
+  company   Company @relation(fields: [companyId], references: [id]) // Relação com empresa
+
+  sessions RestaurantTableSession[] // Histórico/sessões dessa mesa
+
+  @@map("restaurant_tables")
+}
+
+model RestaurantTableSession {
+  id                 String    @id @default(uuid()) // ID único da sessão/comanda
+  openedAt           DateTime  @default(now()) // Quando a mesa foi aberta
+  closedAt           DateTime? // Quando a mesa foi fechada
+  subtotal           Decimal   @default(0.00) @db.Decimal(10, 2) // Soma dos itens sem taxas
+  serviceChargeValue Decimal   @default(0.00) @db.Decimal(10, 2) // Valor da taxa de serviço
+  couvertValue       Decimal   @default(0.00) @db.Decimal(10, 2) // Valor do couvert
+  discount           Decimal   @default(0.00) @db.Decimal(10, 2) // Desconto aplicado
+  total              Decimal   @default(0.00) @db.Decimal(10, 2) // Total final
+  status             String    @default("aberta") // aberta, aguardando_conta, fechada etc.
+  createdAt          DateTime  @default(now()) // Data de criação
+  updatedAt          DateTime  @updatedAt // Atualiza automaticamente quando editar
+
+  companyId String // Empresa dona da sessão
+  company   Company @relation(fields: [companyId], references: [id]) // Relação com empresa
+
+  tableId String // Mesa física relacionada
+  table   RestaurantTable @relation(fields: [tableId], references: [id]) // Relação com mesa
+
+  waiterId String? // Garçom responsável
+  waiter   User?   @relation(fields: [waiterId], references: [id]) // Relação com usuário/garçom
+
+  customerId String? // Cliente/anfitrião opcional
+  customer   RestaurantCustomer? @relation(fields: [customerId], references: [id]) // Relação com cliente
+
+  orders   RestaurantOrder[] // Pedidos dessa sessão
+  payments RestaurantPayment[] // Pagamentos dessa sessão
+
+  @@map("restaurant_table_sessions")
+}
+
+model RestaurantProduct {
+  id            String   @id @default(uuid()) // ID único do produto
+  name          String // Nome do produto
+  description   String? // Descrição do produto
+  ingredients   String? // Ingredientes/legenda
+  price         Decimal  @db.Decimal(10, 2) // Preço atual
+  imageUrl      String? // URL da imagem
+  category      String // Categoria fixa vinda do código
+  trackStock    Boolean  @default(false) // Se esse produto controla estoque
+  stockQuantity Int? // Quantidade disponível em estoque
+  available     Boolean  @default(true) // Disponível para venda
+  active        Boolean  @default(true) // Produto ativo no cadastro
+  createdAt     DateTime @default(now()) // Data de criação
+  updatedAt     DateTime @updatedAt // Atualiza automaticamente quando editar
+
+  companyId String // Empresa dona do produto
+  company   Company @relation(fields: [companyId], references: [id]) // Relação com empresa
+
+  orderItems RestaurantOrderItem[] // Itens de pedido que usaram esse produto
+
+  @@map("restaurant_products")
+}
+
+model RestaurantOrder {
+  id        String   @id @default(uuid()) // ID único do pedido
+  number    Int // Número sequencial do pedido
+  type      String // mesa, balcao ou delivery
+  status    String   @default("pendente") // pendente, preparo, pronto, coletado etc.
+  createdAt DateTime @default(now()) // Data de criação
+  updatedAt DateTime @updatedAt // Atualiza automaticamente quando editar
+
+  companyId String // Empresa dona do pedido
+  company   Company @relation(fields: [companyId], references: [id]) // Relação com empresa
+
+  tableSessionId String? // Sessão da mesa, se for pedido de mesa
+  tableSession   RestaurantTableSession? @relation(fields: [tableSessionId], references: [id]) // Relação com sessão
+
+  createdByUserId String? // Usuário que criou o pedido
+  createdByUser   User?   @relation(fields: [createdByUserId], references: [id]) // Relação com usuário
+
+  items    RestaurantOrderItem[] // Itens desse pedido
+  payments RestaurantPayment[] // Pagamentos ligados ao pedido
+
+  @@map("restaurant_orders")
+}
+
+model RestaurantOrderItem {
+  id                  String   @id @default(uuid()) // ID único do item
+  quantity            Int // Quantidade
+  note                String? // Observação do item
+  productNameSnapshot String // Nome do produto no momento da venda
+  unitPriceAtMoment   Decimal  @db.Decimal(10, 2) // Preço unitário no momento da venda
+  totalPrice          Decimal  @db.Decimal(10, 2) // Total do item
+  status              String   @default("pendente") // pendente, preparo, pronto, coletado etc.
+  createdAt           DateTime @default(now()) // Data de criação
+  updatedAt           DateTime @updatedAt // Atualiza automaticamente quando editar
+
+  companyId String // Empresa dona do item
+  company   Company @relation(fields: [companyId], references: [id]) // Relação com empresa
+
+  orderId String // Pedido ao qual o item pertence
+  order   RestaurantOrder @relation(fields: [orderId], references: [id]) // Relação com pedido
+
+  productId String? // Produto original, opcional
+  product   RestaurantProduct? @relation(fields: [productId], references: [id]) // Relação com produto
+
+  @@map("restaurant_order_items")
+}
+
+model RestaurantPayment {
+  id        String   @id @default(uuid()) // ID único do pagamento
+  amount    Decimal  @db.Decimal(10, 2) // Valor pago
+  method    String // pix, credito, debito, dinheiro
+  status    String   @default("pendente") // pendente, pago, cancelado
+  pixLink   String? // Link/chave Pix para gerar QR Code
+  paidAt    DateTime? // Quando foi pago
+  createdAt DateTime @default(now()) // Data de criação
+  updatedAt DateTime @updatedAt // Atualiza automaticamente quando editar
+
+  companyId String // Empresa dona do pagamento
+  company   Company @relation(fields: [companyId], references: [id]) // Relação com empresa
+
+  tableSessionId String? // Sessão de mesa paga, se houver
+  tableSession   RestaurantTableSession? @relation(fields: [tableSessionId], references: [id]) // Relação com sessão
+
+  orderId String? // Pedido pago, se for pagamento direto
+  order   RestaurantOrder? @relation(fields: [orderId], references: [id]) // Relação com pedido
+
+  receivedByUserId String? // Usuário/garçom que recebeu
+  receivedByUser   User?   @relation(fields: [receivedByUserId], references: [id]) // Relação com usuário
+
+  @@map("restaurant_payments")
+}
+
+model RestaurantCustomer {
+  id        String   @id @default(uuid()) // ID único do cliente
+  name      String // Nome do cliente
+  phone     String? // Telefone
+  email     String? // Email
+  document  String? // CPF/CNPJ
+  address   String? // Endereço
+  active    Boolean  @default(true) // Se cliente está ativo
+  createdAt DateTime @default(now()) // Data de criação
+  updatedAt DateTime @updatedAt // Atualiza automaticamente quando editar
+
+  companyId String // Empresa dona do cliente
+  company   Company @relation(fields: [companyId], references: [id]) // Relação com empresa
+
+  tableSessions RestaurantTableSession[] // Sessões em que esse cliente foi anfitrião
+
+  @@map("restaurant_customers")
+}
+
+model RestaurantSupplier {
+  id          String   @id @default(uuid()) // ID único do fornecedor
+  name        String // Nome do fornecedor
+  contactName String? // Nome da pessoa de contato
+  phone       String? // Telefone
+  email       String? // Email
+  document    String? // CNPJ/CPF
+  address     String? // Endereço
+  active      Boolean  @default(true) // Se fornecedor está ativo
+  createdAt   DateTime @default(now()) // Data de criação
+  updatedAt   DateTime @updatedAt // Atualiza automaticamente quando editar
+
+  companyId String // Empresa dona do fornecedor
+  company   Company @relation(fields: [companyId], references: [id]) // Relação com empresa
+
+  bills RestaurantSupplierBill[] // Contas desse fornecedor
+
+  @@map("restaurant_suppliers")
+}
+
+model RestaurantSupplierBill {
+  id          String   @id @default(uuid()) // ID único da conta
+  description String // Descrição da conta
+  value       Decimal  @db.Decimal(10, 2) // Valor da conta
+  dueDate     DateTime // Data de vencimento
+  paid        Boolean  @default(false) // Se foi paga
+  paidAt      DateTime? // Quando foi paga
+  createdAt   DateTime @default(now()) // Data de criação
+  updatedAt   DateTime @updatedAt // Atualiza automaticamente quando editar
+
+  companyId String // Empresa dona da conta
+  company   Company @relation(fields: [companyId], references: [id]) // Relação com empresa
+
+  supplierId String // Fornecedor relacionado
+  supplier   RestaurantSupplier @relation(fields: [supplierId], references: [id]) // Relação com fornecedor
+
+  @@map("restaurant_supplier_bills")
+}
