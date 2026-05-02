@@ -9,9 +9,31 @@ import Loading from "../../components/FoodService/ui/Loading";
 const Comanda = () => {
   const [filterActive, setFilterActive] = useState(1);
   const [produtos, setProdutos] = useState([]);
+  const [itensNota, setitensNota] = useState([]);
   const [loading, setLoading] = useState(false);
   const [couvert, setCouvert] = useState(false);
   const [garcom, setGarcom] = useState(false);
+
+  /* Funções */
+/* Insere o item a comanda */
+  const handleNovoItem = (item) => {
+    /* Mapeia primeiro pra saber se o item ja foi inserido */
+    const novoItem = {
+      nome: item.nome,
+      preco: item.preco,
+      quantidade: 1,
+      nota: "",
+    };
+
+    setitensNota((itensAtuais) => {
+      return [...itensAtuais, novoItem];
+    });
+  };
+  /* aumenta o item na comanda */
+  const handleAddunidade = (item) => {
+
+  }
+
 
   /* Effects */
 
@@ -31,70 +53,17 @@ const Comanda = () => {
   }, []);
 
   /* Variaveis */
-
-  const itensPedido = [
-    {
-      nome: "Burrata Caprese",
-      preco: 28.0,
-      quantidade: 2,
-      nota: "",
-      editavel: false,
-    },
-    {
-      nome: "Beef Tartare",
-      preco: 18.5,
-      quantidade: 1,
-      nota: "Sem alcaparras",
-      editavel: true,
-    },
-    {
-      nome: "Risotto de Cogumelos",
-      preco: 32.9,
-      quantidade: 1,
-      nota: "Sem queijo parmesão",
-      editavel: true,
-    },
-    {
-      nome: "Beef Tartare",
-      preco: 18.5,
-      quantidade: 1,
-      nota: "Sem alcaparras",
-      editavel: true,
-    },
-    {
-      nome: "Risotto de Cogumelos",
-      preco: 32.9,
-      quantidade: 1,
-      nota: "Sem queijo parmesão",
-      editavel: true,
-    },
-    {
-      nome: "Beef Tartare",
-      preco: 18.5,
-      quantidade: 1,
-      nota: "Sem alcaparras",
-      editavel: true,
-    },
-    {
-      nome: "Risotto de Cogumelos",
-      preco: 32.9,
-      quantidade: 1,
-      nota: "Sem queijo parmesão",
-      editavel: true,
-    },
-  ];
-
-  const subTotal = itensPedido.reduce((acc, prod) => {
+  
+  const subTotal = itensNota.reduce((acc, prod) => {
     return acc + prod.preco * prod.quantidade;
   }, 0);
 
   const couvertTax = 10;
   const garcomTax = subTotal * 0.1;
-
   const precoFinal =
     subTotal + (garcom ? garcomTax : 0) + (couvert ? couvertTax : 0);
 
-  const categorias = [
+  const filtros = [
     { nome: "Tudo", id: 1 },
     { nome: "Bebidas", id: 2 },
     { nome: "Entradas", id: 3 },
@@ -129,7 +98,7 @@ const Comanda = () => {
           {/* Filtros */}
           <div className="shrink-0">
             <Filtro
-              filtros={categorias}
+              filtros={filtros}
               funcaoFiltro={setFilterActive}
               filtroAtual={filterActive}
             />
@@ -141,6 +110,7 @@ const Comanda = () => {
               {produtosFilter?.map((e, index) => {
                 return (
                   <div
+                    onClick={() => handleNovoItem(e)}
                     key={`${e.nome}-${index}`}
                     className="flex h-65 flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white"
                   >
@@ -192,7 +162,7 @@ const Comanda = () => {
           {/* Produtos da comanda */}
           <div className="min-h-0 flex-1 overflow-y-auto p-5">
             <div className="flex flex-col gap-4">
-              {itensPedido.map((e, index) => (
+              {itensNota.map((e, index) => (
                 <div
                   className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4"
                   key={index}
@@ -231,7 +201,7 @@ const Comanda = () => {
           </div>
 
           {/* Valores + Botões */}
-          <div className="shrink-0 border-t border-slate-200 px-5 py-3">
+          <div className="shrink-0 border-t border-slate-200 px-5 py-5">
             <div className="flex flex-col gap-3">
               <div className="grid grid-cols-2 gap-3">
                 {/* 10% do garçom */}
@@ -244,7 +214,9 @@ const Comanda = () => {
                       className="size-4 accent-green-600"
                     />
 
-                    <p className="text-xs text-slate-500">10% do garçom</p>
+                    <p className="text-xs text-slate-500 font-semibold">
+                      10% do garçom
+                    </p>
                   </div>
 
                   <p className="mt-2 text-sm font-semibold text-slate-900">
@@ -262,7 +234,9 @@ const Comanda = () => {
                       className="size-4 accent-green-600"
                     />
 
-                    <p className="text-xs text-slate-500">Couvert</p>
+                    <p className="text-xs text-slate-500 font-semibold">
+                      Couvert
+                    </p>
                   </div>
 
                   <p className="mt-2 text-sm font-semibold text-slate-900">
