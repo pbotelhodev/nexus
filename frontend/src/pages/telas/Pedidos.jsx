@@ -14,31 +14,106 @@ const Comanda = () => {
   const [couvert, setCouvert] = useState(false);
   const [garcom, setGarcom] = useState(false);
 
-  /* Funções */
-/* Insere o item a comanda */
-  const handleNovoItem = (item) => {
-    /* Mapeia primeiro pra saber se o item ja foi inserido */
-    const novoItem = {
-      nome: item.nome,
-      preco: item.preco,
-      quantidade: 1,
-      nota: "",
-    };
+  const [modalObs, setModalObs] = useState(false);
+  const [itemObsIndex, setItemObsIndex] = useState(null);
+  const [textoObs, setTextoObs] = useState("");
 
-    setitensNota((itensAtuais) => {
-      return [...itensAtuais, novoItem];
+  /* Funções */
+
+  /* Insere o item na comanda */
+  const handleNovoItem = (item) => {
+    const itemExist = itensNota.some((e) => e.nome === item.nome);
+
+    if (itemExist) {
+      setitensNota((itensAtuais) => {
+        return itensAtuais.map((e) => {
+          if (item.nome === e.nome) {
+            return {
+              ...e,
+              quantidade: e.quantidade + 1,
+            };
+          }
+
+          return e;
+        });
+      });
+    } else {
+      const novoItem = {
+        nome: item.nome,
+        preco: item.preco,
+        quantidade: 1,
+        nota: "",
+      };
+
+      setitensNota((itensAtuais) => {
+        return [...itensAtuais, novoItem];
+      });
+    }
+  };
+
+  /* Aumenta o item na comanda */
+  const handleAddItem = (indexitem) => {
+    setitensNota((itensNota) => {
+      return itensNota.map((item, index) => {
+        if (index === indexitem) {
+          return { ...item, quantidade: item.quantidade + 1 };
+        }
+
+        return item;
+      });
     });
   };
-  /* aumenta o item na comanda */
-  const handleAddunidade = (item) => {
 
-  }
+  /* Diminui o item na comanda */
+  const handleRemoveItem = (indexitem) => {
+    setitensNota((itensNota) => {
+      return itensNota
+        .map((item, index) => {
+          if (index === indexitem) {
+            return { ...item, quantidade: item.quantidade - 1 };
+          }
 
+          return item;
+        })
+        .filter((e) => e.quantidade > 0);
+    });
+  };
+
+  /* Abre modal de observação */
+  const abrirModalObs = (indexItem, notaAtual) => {
+    setItemObsIndex(indexItem);
+    setTextoObs(notaAtual || "");
+    setModalObs(true);
+  };
+
+  /* Fecha modal de observação */
+  const fecharModalObs = () => {
+    setModalObs(false);
+    setItemObsIndex(null);
+    setTextoObs("");
+  };
+
+  /* Salva observação no item */
+  const salvarObs = () => {
+    setitensNota((itensAtuais) => {
+      return itensAtuais.map((item, index) => {
+        if (index === itemObsIndex) {
+          return {
+            ...item,
+            nota: textoObs,
+          };
+        }
+
+        return item;
+      });
+    });
+
+    fecharModalObs();
+  };
 
   /* Effects */
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLoading(true);
 
     setTimeout(() => {
@@ -53,13 +128,14 @@ const Comanda = () => {
   }, []);
 
   /* Variaveis */
-  
+
   const subTotal = itensNota.reduce((acc, prod) => {
     return acc + prod.preco * prod.quantidade;
   }, 0);
 
   const couvertTax = 10;
   const garcomTax = subTotal * 0.1;
+
   const precoFinal =
     subTotal + (garcom ? garcomTax : 0) + (couvert ? couvertTax : 0);
 
@@ -112,7 +188,7 @@ const Comanda = () => {
                   <div
                     onClick={() => handleNovoItem(e)}
                     key={`${e.nome}-${index}`}
-                    className="flex h-65 flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white"
+                    className="flex h-65 cursor-pointer flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white"
                   >
                     {/* Imagem */}
                     <div className="h-37.5 shrink-0 overflow-hidden">
@@ -161,43 +237,75 @@ const Comanda = () => {
 
           {/* Produtos da comanda */}
           <div className="min-h-0 flex-1 overflow-y-auto p-5">
-            <div className="flex flex-col gap-4">
-              {itensNota.map((e, index) => (
-                <div
-                  className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4"
-                  key={index}
-                >
-                  <div className="flex justify-between gap-3 text-sm font-bold">
-                    <div>{e.nome}</div>
-                    <div className="shrink-0">R$ {e.preco.toFixed(2)}</div>
-                  </div>
+            {itensNota.length === 0 ? (
+              <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-dashed border-slate-200 bg-slate-50 p-5 text-center">
+                <p className="text-sm font-bold text-slate-500">
+                  Nenhum item adicionado
+                </p>
 
-                  <div className="flex items-center justify-between gap-3">
-                    <button className="hidden text-xs font-semibold text-green-700 md:block">
-                      + Adicionar observação
-                    </button>
+                <p className="mt-1 text-xs font-medium text-slate-400">
+                  Clique em um produto do cardápio para inserir na comanda.
+                </p>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-4">
+                {itensNota.map((e, index) => (
+                  <div
+                    className="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4"
+                    key={index}
+                  >
+                    <div className="flex justify-between gap-3 text-sm font-bold">
+                      <div>{e.nome}</div>
+                      <div className="shrink-0">R$ {e.preco.toFixed(2)}</div>
+                    </div>
 
-                    <button className="block text-xs font-semibold text-green-700 md:hidden">
-                      + Obs.
-                    </button>
-
-                    <div className="flex items-center gap-4 rounded-lg bg-slate-200 px-2 py-1">
-                      <button className="text-lg font-semibold text-green-700">
-                        -
-                      </button>
-
-                      <div className="text-sm font-semibold">
-                        {e.quantidade}
+                    {e.nota && (
+                      <div className="rounded-lg bg-yellow-50 px-3 py-2 text-xs font-medium text-yellow-700">
+                        Obs: {e.nota}
                       </div>
+                    )}
 
-                      <button className="text-lg font-semibold text-green-700">
-                        +
+                    <div className="flex items-center justify-between gap-3">
+                      <button
+                        onClick={() => abrirModalObs(index, e.nota)}
+                        className="hidden text-xs font-semibold text-green-700 md:block"
+                      >
+                        {e.nota
+                          ? "Editar observação"
+                          : "+ Adicionar observação"}
                       </button>
+
+                      <button
+                        onClick={() => abrirModalObs(index, e.nota)}
+                        className="block text-xs font-semibold text-green-700 md:hidden"
+                      >
+                        {e.nota ? "Editar obs." : "+ Obs."}
+                      </button>
+
+                      <div className="flex items-center gap-4 rounded-lg bg-slate-200 px-2 py-1">
+                        <button
+                          onClick={() => handleRemoveItem(index)}
+                          className="text-lg font-semibold text-green-700"
+                        >
+                          -
+                        </button>
+
+                        <div className="text-sm font-semibold">
+                          {e.quantidade}
+                        </div>
+
+                        <button
+                          onClick={() => handleAddItem(index)}
+                          className="text-lg font-semibold text-green-700"
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Valores + Botões */}
@@ -214,7 +322,7 @@ const Comanda = () => {
                       className="size-4 accent-green-600"
                     />
 
-                    <p className="text-xs text-slate-500 font-semibold">
+                    <p className="text-xs font-semibold text-slate-500">
                       10% do garçom
                     </p>
                   </div>
@@ -234,7 +342,7 @@ const Comanda = () => {
                       className="size-4 accent-green-600"
                     />
 
-                    <p className="text-xs text-slate-500 font-semibold">
+                    <p className="text-xs font-semibold text-slate-500">
                       Couvert
                     </p>
                   </div>
@@ -274,6 +382,45 @@ const Comanda = () => {
         </div>
 
         {loading && <Loading />}
+
+        {modalObs && (
+          <div className="fixed inset-0 z-999 ml-18 flex items-center justify-center bg-black/40 p-5 backdrop-blur-sm">
+            <div className="w-full max-w-md rounded-2xl bg-white p-5 shadow-xl">
+              <div className="mb-4">
+                <h2 className="text-lg font-bold text-slate-900">
+                  Observação do item
+                </h2>
+
+                <p className="mt-1 text-sm font-medium text-slate-500">
+                  Adicione uma instrução para a cozinha ou atendimento.
+                </p>
+              </div>
+
+              <textarea
+                value={textoObs}
+                onChange={(e) => setTextoObs(e.target.value)}
+                placeholder="Ex: sem cebola, ponto da carne, molho separado..."
+                className="h-32 w-full resize-none rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm font-medium text-slate-700 outline-none transition focus:border-green-600 focus:bg-white"
+              />
+
+              <div className="mt-5 grid grid-cols-2 gap-3">
+                <button
+                  onClick={fecharModalObs}
+                  className="rounded-xl bg-slate-200 px-4 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-300"
+                >
+                  Cancelar
+                </button>
+
+                <button
+                  onClick={salvarObs}
+                  className="rounded-xl bg-green-600 px-4 py-3 text-sm font-bold text-white transition hover:bg-green-700"
+                >
+                  Salvar observação
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
