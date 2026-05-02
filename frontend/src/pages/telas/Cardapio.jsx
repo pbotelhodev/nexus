@@ -114,8 +114,8 @@ const Cardapio = () => {
           const isLigado = toggleAtivo.includes(e.nome);
 
           return (
-            <div key={e.nome}>
-              <div className="overflow-hidden rounded-t-2xl max-h-40 flex items-center justify-center">
+            <div key={e.nome} className="border border-slate-200 rounded-2xl">
+              <div className="overflow-hidden rounded-t-2xl h-40">
                 <img
                   src={e.imagem}
                   className="w-full h-full object-cover"

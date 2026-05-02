@@ -17,11 +17,6 @@ const AppLayout = () => {
 
       {/* ÁREA PRINCIPAL */}
       <div className="flex flex-col flex-1 min-h-0 min-w-0 sticky top-0">
-        {/* HEADER SUPERIOR */}
-
-        {/* <div className="hidden lg:flex lg:flex-col lg:min-w-0">
-          <Header />
-        </div> */}
 
         {/* CONTEÚDO DA PÁGINA*/}
         <Outlet context={{ menuAberto }} />

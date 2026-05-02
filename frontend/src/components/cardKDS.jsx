@@ -15,8 +15,7 @@ const CardKDS = ({ pedidos, status, icon: Icon }) => {
 
   return (
     <div className="flex flex-col h-[94dvh] gap-5">
-        
-        <div className="sm:block border-t-2 border-dashed lg:hidden "></div>
+      <div className="sm:block border-t-2 border-dashed lg:hidden " />
       {/* Header */}
       <div className="flex items-center gap-2 p-2">
         <Icon />
@@ -32,7 +31,7 @@ const CardKDS = ({ pedidos, status, icon: Icon }) => {
         {pedidosFiltrados.map((e) => (
           <div
             key={e.id}
-            className="p-5 bg-white rounded-2xl flex flex-col gap-2 border border-slate-200"
+            className={`p-5 bg-white rounded-2xl flex flex-col gap-2 ${preparo && e.tempo[0] >= 2 ? "border-2 border-red-400" : "border border-slate-200"} `}
           >
             <div className="flex justify-between">
               <div className="flex gap-1">
