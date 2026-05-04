@@ -8,7 +8,7 @@ const listarEmpresas = async (req, res) => {
   } catch (err) {
     return res.status(500).json({
       message: "Erro ao listar as empresas",
-      error: err.message,
+      error: err.message, 
     });
   }
 };
