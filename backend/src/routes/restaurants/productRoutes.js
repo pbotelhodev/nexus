@@ -4,6 +4,6 @@ const productController = require("../../controllers/restaurants/productControll
 const router = express.Router()
 
 router.get("/products", productController.listarProdutos)
-/* router.post("/products", productController.cadastrarProduto) */
+router.post("/products", productController.cadastrarProduto)
 
 module.exports = router

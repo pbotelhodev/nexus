@@ -9,7 +9,7 @@ const listarProdutos = async (idEmpresa) => {
   return produtos;
 };
 
-const cadastrarProdutos = async (idEmpresa, data) => {
+const cadastrarProduto = async (idEmpresa, data) => {
   const novoProduto = await prisma.restaurantProduct.create({
     data: {
       name: data.name,
@@ -19,13 +19,13 @@ const cadastrarProdutos = async (idEmpresa, data) => {
       category: data.category,
       trackStock: data.trackStock,
       stockQuantity: data.stockQuantity,
-      active: data.active,
-      
+      companyId: idEmpresa
     },
   });
+  return novoProduto
 }
 
 module.exports = {
   listarProdutos,
-  cadastrarProdutos,
+  cadastrarProduto,
 };
