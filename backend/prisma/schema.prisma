@@ -179,13 +179,13 @@ model RestaurantProduct {
   id            String   @id @default(uuid()) // ID único do produto
   name          String // Nome do produto
   description   String? // Descrição do produto
-  ingredients   String? // Ingredientes/legenda
+  
   price         Decimal  @db.Decimal(10, 2) // Preço atual
   imageUrl      String? // URL da imagem
   category      String // Categoria fixa vinda do código
   trackStock    Boolean  @default(false) // Se esse produto controla estoque
   stockQuantity Int? // Quantidade disponível em estoque
-  available     Boolean  @default(true) // Disponível para venda
+
   active        Boolean  @default(true) // Produto ativo no cadastro
   createdAt     DateTime @default(now()) // Data de criação
   updatedAt     DateTime @updatedAt // Atualiza automaticamente quando editar
