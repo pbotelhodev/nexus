@@ -3,6 +3,7 @@
 import { Plus, Pen } from "lucide-react";
 import { useEffect, useState } from "react";
 import Switch from "react-switch";
+import axios from "axios"
 
 /* Import components */
 import Filtro from "../../components/FoodService/ui/Filtro";
@@ -21,6 +22,16 @@ const Cardapio = () => {
   const [produtos, setProdutos] = useState([]);
 
   /* =========== Funções =========== */
+
+  const apiNexx = axios.create({
+    baseURL: baseURL,
+    headers: {
+      'x-company-id': idEmpresa,
+    }
+  })
+
+
+
 
   /*   const modalEditProduto = () => {}; */
 
@@ -63,6 +74,9 @@ const Cardapio = () => {
   }, [produtos]);
 
   /* =========== Variáveis =========== */
+
+  const idEmpresa = "c4981838-1ef4-4b87-ad90-9358b44b64c9";
+  const baseURL = "http://localhost:5000/api";
 
   const categoriasPadrao = [
     { nome: "Tudo", id: 1 },

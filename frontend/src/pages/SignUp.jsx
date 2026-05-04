@@ -109,15 +109,15 @@ const SignUp = () => {
   const panelContent = {
     1: {
       title: "Crie sua conta corporativa.",
-      desc: "Precisamos de alguns dados essenciais para configurar seu ambiente seguro no Nexium.",
+      desc: "Precisamos de alguns dados essenciais para configurar seu ambiente seguro no Nexx.",
     },
     2: {
       title: "Personalize sua experiência.",
-      desc: "Selecione o segmento do seu negócio para que possamos adaptar o Nexium às suas necessidades específicas.",
+      desc: "Selecione o segmento do seu negócio para que possamos adaptar o Nexx às suas necessidades específicas.",
     },
     3: {
       title: "Escolha o plano ideal.",
-      desc: "Dimensione o poder do Nexium de acordo com o tamanho e a complexidade da sua operação.",
+      desc: "Dimensione o poder do Nexx de acordo com o tamanho e a complexidade da sua operação.",
     },
   };
 
@@ -368,7 +368,7 @@ const SignUp = () => {
                       Selecione seu plano
                     </h2>
                     <p className="text-gray-500 text-sm">
-                      Dimensione o poder do Nexium para sua empresa.
+                      Dimensione o poder do Nexx para sua empresa.
                     </p>
                   </div>
 

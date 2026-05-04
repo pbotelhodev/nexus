@@ -79,7 +79,7 @@ const Sidebar = ({ menuAberto, setMenuAberto }) => {
         <div className="flex items-center gap-2 mb-1 overflow-hidden transition-all duration-300">
           <img
             src={Logo}
-            alt="Logo Nexium"
+            alt="Logo Nexx"
             className="w-6 h-6 shrink-0 transition-all duration-300"
           />
 
@@ -90,7 +90,7 @@ const Sidebar = ({ menuAberto, setMenuAberto }) => {
                 : "opacity-0 max-w-0 -translate-x-2"
             }`}
           >
-            Nexium
+            Nexx
           </span>
         </div>
       </div>

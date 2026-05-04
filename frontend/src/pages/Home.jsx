@@ -69,7 +69,7 @@ const Home = () => {
       initials: "PJ",
       color: "bg-blue-800",
       quote:
-        '"A Nexium organizou meu fluxo de trabalho e eliminou ruídos. Hoje produzo com mais foco e consistência."',
+        '"A Nexx organizou meu fluxo de trabalho e eliminou ruídos. Hoje produzo com mais foco e consistência."',
     },
     {
       name: "Gabriel Barboza",
@@ -77,7 +77,7 @@ const Home = () => {
       initials: "GB",
       color: "bg-orange-800",
       quote:
-        '"Com a Nexium, centralizei meus clientes e processos. Ganhei controle real da operação e mais eficiência nas entregas."',
+        '"Com a Nexx, centralizei meus clientes e processos. Ganhei controle real da operação e mais eficiência nas entregas."',
     },
   ];
 
@@ -121,7 +121,7 @@ const Home = () => {
             <div className="hidden md:flex relative mt-12 lg:mt-0 justify-center">
               <img
                 src={HeroMockup}
-                alt="Interface do Sistema Nexium"
+                alt="Interface do Sistema Nexx"
                 className="w-full max-w-2xl h-auto drop-shadow-2xl rounded-xl object-contain"
               />
             </div>
@@ -233,7 +233,7 @@ const Home = () => {
             <div className="hidden md:flex lg:pl-10 justify-center">
               <img
                 src={EndMockup}
-                alt="Sistema de PDV e Impressão Nexium"
+                alt="Sistema de PDV e Impressão Nexx"
                 className="w-full max-w-xl h-auto drop-shadow-2xl rounded-xl object-contain"
               />
             </div>
@@ -253,7 +253,7 @@ const Home = () => {
                 <br />
                 escolheram a
                 <br />
-                Nexium
+                Nexx
               </h2>
               <p className="text-md text-gray-600 mb-10 max-w-md">
                 Junte-se a centenas de empresas que modernizaram sua gestão com

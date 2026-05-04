@@ -208,7 +208,7 @@ const SegmentoDetalhe = () => {
               ></div>
               <img
                 src={DashboardMockup}
-                alt="Dashboard Nexium"
+                alt="Dashboard Nexx"
                 className="relative rounded-2xl shadow-2xl border border-gray-200 object-cover aspect-4/3 w-full"
               />
             </div>

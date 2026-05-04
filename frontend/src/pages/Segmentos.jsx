@@ -39,7 +39,7 @@ export default function Segmentos() {
             seu <span className="text-emerald-600">segmento.</span>
           </h1>
           <p className="text-md text-gray-600 max-w-2xl mx-auto mb-10">
-            Não importa a sua área de atuação, o Nexium possui ferramentas
+            Não importa a sua área de atuação, o Nexx possui ferramentas
             otimizadas para a realidade da sua operação. Encontre a sua abaixo.
           </p>
 

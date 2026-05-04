@@ -13,7 +13,7 @@ const Footer = () => {
             <div className="lg:col-span-1">
               <div className="flex items-center gap-2 mb-6">
                 <Link to="/ ">
-                  <img src={Logo} className="h-13 w-13" alt="Nexium Logo" />
+                  <img src={Logo} className="h-10 w-10" alt="Nexx Logo" />
                 </Link>
               </div>
               <p className="text-[#aadfba] text-sm mb-6 max-w-xs leading-relaxed">
@@ -128,7 +128,7 @@ const Footer = () => {
 
           {/* Bottom Bar */}
           <div className="border-t border-emerald-800 pt-5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#aadfba] text-center md:text-left">
-            <p>© 2026 Nexium. Automação para o seu negócio.</p>
+            <p>© 2026 Nexx. Automação para o seu negócio.</p>
             <p className="flex flex-wrap justify-center md:justify-end items-center gap-1">
               Construído com a tecnologia de ponta por{" "}
               <img
